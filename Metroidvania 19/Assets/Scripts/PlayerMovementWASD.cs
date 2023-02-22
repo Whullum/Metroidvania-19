@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementWASD : MonoBehaviour
 {
     public float speed;
     // Start is called before the first frame update
