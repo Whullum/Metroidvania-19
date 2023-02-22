@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     // Public variables
     public string enemyType;
-    public GameObject player;
     public float health;
     public float detectDistance;
     public float patrolSpeed;
@@ -20,6 +19,7 @@ public class Enemy : MonoBehaviour
     private bool canSwapTarget;
     private bool onPatrol;
     private bool onAttack;
+    private GameObject player;
 
     // Component variables
     private Seeker seeker;
@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         // Set defaults for public variables
+        player = (player == null) ? GameObject.FindGameObjectWithTag("Player") : player;
         enemyType = (enemyType == null) ? "Melee" : enemyType;
         health = (health == 0f) ? 100f : health;
         detectDistance = (detectDistance == 0f) ? 10f : detectDistance;
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
         aiDestSetter = GetComponent<AIDestinationSetter>();
 
         // Sets private variables
+        player = GameObject.FindGameObjectWithTag("Player");
         patrolIndex = 0;
         patrolDirection = 1;
         canSwapTarget = true;
@@ -60,6 +62,7 @@ public class Enemy : MonoBehaviour
         // Sets up enemy at first patrol position, and sets A* Path target as well
         transform.position = patrolPositions[0].transform.position;
         aiDestSetter.target = patrolPositions[0];
+        aiPath.maxSpeed = patrolSpeed;
     }
 
     // Update is called once per frame
