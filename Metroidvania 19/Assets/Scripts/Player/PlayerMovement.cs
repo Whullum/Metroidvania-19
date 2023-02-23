@@ -12,22 +12,28 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 mousePos;
     private float currentSpeed;
     private float horizontalTurn;
-    private float segmentSize;
-    public int movementInput;
+    private int movementInput;
 
-    [Header("Movement")]
-    [SerializeField] private float sineWaveScale = 40;
-    [SerializeField] private float sineWaveSpeed = 10;
+    [Header("Core Movement")]
+    [Range(0.1f, 100)]
     [SerializeField] private float accelerationSpeed = 1;
+    [Range(0.1f, 100)]
     [SerializeField] private float decelerationSpeed = 2;
     [SerializeField] private float maxSpeed = 30;
     [SerializeField] private float rotationSpeed = 3;
+    [Range(-5f, 5f)]
+    [SerializeField] private float segmentSeparation = -.1f;
     [Range(3, 100)]
     [SerializeField] private int bodySize = 3;
     [SerializeField] private GameObject bodySegment;
     [SerializeField] private GameObject tailSegment;
-    [SerializeField] private float segmentSeparation = -.5f;
-    [SerializeField] private bool keyboardInput;
+    [Header("Sine Wave Movement")]
+    [Range(0f, 100f)]
+    [SerializeField] private float sineWaveScale = 40;
+    [Range(0f, 100f)]
+    [SerializeField] private float sineWaveSpeed = 10;
+    [Header("Input Type")]
+    [SerializeField] private InputType inputType = InputType.Mouse;
 
 
     private void Awake()
@@ -55,9 +61,12 @@ public class PlayerMovement : MonoBehaviour
         SineWaveMotion();
     }
 
+    /// <summary>
+    /// Checks player input and sets all input-related variables.
+    /// </summary>
     private void GetInput()
     {
-        if (keyboardInput)
+        if (inputType == InputType.Keyboard)
         {
             horizontalTurn = Input.GetAxis("Horizontal");
 
@@ -77,6 +86,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Accelerates or decelerates the body depending on player input.
+    /// </summary>
     private void Accelerate()
     {
         if (movementInput == 1)
@@ -85,15 +97,32 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * decelerationSpeed);
     }
 
+    /// <summary>
+    /// Moves the body towards it's right vector and limits rigidbody velocity.
+    /// </summary>
     private void Move()
     {
         float accelerationMultiplier = 1 - (rBdoy.velocity.magnitude / maxSpeed);
         rBdoy.AddForce(transform.right * Time.deltaTime * currentSpeed * accelerationMultiplier * movementInput, ForceMode2D.Impulse);
     }
 
+    /// <summary>
+    /// Moves the body in a sine wave motion always in its perpendicular movement vector.
+    /// </summary>
+    private void SineWaveMotion()
+    {
+        float acceleration = -Mathf.Sin(Time.time * sineWaveSpeed) * sineWaveScale;
+        float force = acceleration * rBdoy.mass;
+        force = force * currentSpeed / maxSpeed;
+        rBdoy.AddForce(Vector2.Perpendicular(transform.right) * force);
+    }
+
+    /// <summary>
+    /// Rotates the body to look towards the mouse position or keyboard input and flips player sprite depending on it's facing direction.
+    /// </summary>
     private void Rotate()
     {
-        if (!keyboardInput)
+        if (inputType == InputType.Mouse)
         {
             Vector3 lookDirection = mousePos - transform.position;
             float targetRotation = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
@@ -113,47 +142,51 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipY = true;
     }
 
+    /// <summary>
+    /// Moves all the body segments except for the head
+    /// </summary>
     private void MoveSegments()
     {
         for (int i = 1; i < bodyParts.Count; i++)
         {
+            // Get previous segment position
             Vector3 prevPosition = bodyParts[i - 1].transform.position;
-            Vector3 moveDirection = (prevPosition - bodyParts[i].transform.position).normalized;
 
-            Vector3 lookDir = (prevPosition - bodyParts[i].transform.position).normalized;
+            // Calculate rotation
+            Vector3 lookDir = (prevPosition - bodyParts[i].transform.position).normalized; // We want to look towards the previous segment
             float rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-
-            Vector3 newPosition = prevPosition - moveDirection * (segmentSize + segmentSeparation);
             Quaternion newRotation = Quaternion.Euler(0, 0, rotation);
 
-            bodyParts[i].Move(newPosition, newRotation);
+            bodyParts[i].Move(prevPosition, segmentSeparation, newRotation);
         }
     }
 
+    /// <summary>
+    /// Initializes the body with it's initial shape and lenght.
+    /// </summary>
     private void CreateBody()
     {
-        segmentSize = GetComponent<Collider2D>().bounds.size.x;
         bodyParts.Add(GetComponent<BodySegment>());
 
         for (int i = 0; i < bodySize; i++)
         {
-            AddBodySegment(i);
+            if (i == bodySize - 1)
+                AddBodySegment(true);
+            else
+                AddBodySegment(false);
         }
     }
 
-    private void SineWaveMotion()
-    {
-        float acceleration = -Mathf.Sin(Time.time * sineWaveSpeed) * sineWaveScale;
-        float force = acceleration * rBdoy.mass;
-        force = force * currentSpeed / maxSpeed;
-        rBdoy.AddForce(Vector2.Perpendicular(transform.right) * force);
-    }
-
-    private void AddBodySegment(int sortingOrder)
+    /// <summary>
+    /// Creates and adds a body segment to the player.
+    /// </summary>
+    /// <param name="isTail">If set to true, the last segment will be changes to be a normal body part and the tail segment will be created at the end of the body.</param>
+    private void AddBodySegment(bool isTail)
     {
         GameObject segment = bodySegment;
 
-        if (sortingOrder == bodySize - 1)
+        // If this is the last body part, we create the tail GameObject and recreate the previous one
+        if (isTail)
         {
             segment = tailSegment;
             GameObject lastSegment = bodyParts[bodyParts.Count - 1].gameObject;
@@ -171,6 +204,9 @@ public class PlayerMovement : MonoBehaviour
         CalculateSortingOrder();
     }
 
+    /// <summary>
+    /// Calculates the sorting order of the body parts.
+    /// </summary>
     private void CalculateSortingOrder()
     {
         for (int i = bodyParts.Count - 1; i >= 0; i--)

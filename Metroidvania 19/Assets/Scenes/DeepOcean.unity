@@ -910,18 +910,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cd78411e3cacf4d9b0064ee0be8ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: 0
-  sineWaveScale: 40
-  sineWaveSpeed: 10
   accelerationSpeed: 1
   decelerationSpeed: 2
   maxSpeed: 30
   rotationSpeed: 3
+  segmentSeparation: -0.1
   bodySize: 7
   bodySegment: {fileID: 7302917351678238606, guid: 6f947032ec3176548bede7f1bcf01f15, type: 3}
   tailSegment: {fileID: 3397249260772081202, guid: 312ff4ecc4706f845a2e898e294a098f, type: 3}
-  segmentSeparation: -0.4
-  keyboardInput: 0
+  sineWaveScale: 40
+  sineWaveSpeed: 10
+  inputType: 0
 --- !u!50 &1620983013
 Rigidbody2D:
   serializedVersion: 4
