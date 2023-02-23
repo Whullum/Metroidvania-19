@@ -1,127 +1,182 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BodySegment))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(BodySegment))]
 public class PlayerMovement : MonoBehaviour
 {
-    public static bool IsMoving { get; private set; }
-
-    private List<BodySegment> bodySegments = new List<BodySegment>();
+    private List<BodySegment> bodyParts = new List<BodySegment>();
     private Rigidbody2D rBdoy;
+    private SpriteRenderer spriteRenderer;
     private Vector3 mousePos;
-    private Vector3 lastPosition;
-    private Vector3 velocity;
-    private float segmentSize;
+    private float currentSpeed;
     private float horizontalTurn;
+    private float segmentSize;
+    public int movementInput;
 
-    [Header("Movement values")]
-    [SerializeField] private float reachedDistance = 0.5f;
-    [SerializeField] private float speed;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float bodyMoveVelocity = 3;
+    [Header("Movement")]
+    [SerializeField] private float sineWaveScale = 40;
+    [SerializeField] private float sineWaveSpeed = 10;
+    [SerializeField] private float accelerationSpeed = 1;
+    [SerializeField] private float decelerationSpeed = 2;
+    [SerializeField] private float maxSpeed = 30;
+    [SerializeField] private float rotationSpeed = 3;
+    [Range(3, 100)]
+    [SerializeField] private int bodySize = 3;
+    [SerializeField] private GameObject bodySegment;
+    [SerializeField] private GameObject tailSegment;
+    [SerializeField] private float segmentSeparation = -.5f;
     [SerializeField] private bool keyboardInput;
-    [Header("Body segments")]
-    [SerializeField] private List<GameObject> segmentPrefabs;
-    [SerializeField] private float distanceBetweenSegments;
+
 
     private void Awake()
     {
         rBdoy = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        lastPosition = transform.position;
-        segmentSize = GetComponent<Collider2D>().bounds.size.x;
-        bodySegments.Clear();
-        bodySegments.Add(GetComponent<BodySegment>());
+        CreateBody();
     }
 
     private void Update()
     {
         GetInput();
-        CalculateVelocity();
+        Accelerate();
     }
 
     private void FixedUpdate()
     {
-        CreateSegments();
-        Move();
         Rotate();
+        Move();
         MoveSegments();
+        SineWaveMotion();
     }
 
     private void GetInput()
     {
         if (keyboardInput)
+        {
             horizontalTurn = Input.GetAxis("Horizontal");
+
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+                movementInput = 1;
+            else
+                movementInput = 0;
+        }
         else
+        {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (Input.GetMouseButton(0))
+                movementInput = 1;
+            else
+                movementInput = 0;
+        }
+    }
+
+    private void Accelerate()
+    {
+        if (movementInput == 1)
+            currentSpeed = Mathf.Lerp(currentSpeed, maxSpeed, Time.deltaTime * accelerationSpeed);
+        else
+            currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * decelerationSpeed);
     }
 
     private void Move()
     {
-        rBdoy.velocity = transform.right * Time.fixedDeltaTime * speed;
+        float accelerationMultiplier = 1 - (rBdoy.velocity.magnitude / maxSpeed);
+        rBdoy.AddForce(transform.right * Time.deltaTime * currentSpeed * accelerationMultiplier * movementInput, ForceMode2D.Impulse);
     }
 
     private void Rotate()
     {
-        Vector3 lookDirection = mousePos - transform.position;
-        float targetRotation = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, 0f, targetRotation), Time.fixedDeltaTime * rotationSpeed);
-
-        rBdoy.MoveRotation(rotation);
-
-        //if (horizontalTurn != 0)
-        //    transform.Rotate(new Vector3(0f, 0f, -rotationSpeed * horizontalTurn * Time.fixedDeltaTime));
-    }
-
-    private void CalculateVelocity()
-    {
-        if (transform.hasChanged)
+        if (!keyboardInput)
         {
-            velocity = (transform.position - lastPosition) / Time.deltaTime;
-            transform.hasChanged = false;
-        }
-        lastPosition = transform.position;
+            Vector3 lookDirection = mousePos - transform.position;
+            float targetRotation = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, 0f, targetRotation), Time.fixedDeltaTime * rotationSpeed);
 
-        if (velocity.magnitude <= bodyMoveVelocity)
-            IsMoving = false;
+            rBdoy.MoveRotation(rotation);
+        }
         else
-            IsMoving = true;
-    }
-
-    private void CreateSegments()
-    {
-        if (segmentPrefabs.Count <= 0) return;
-
-        BodySegment leader = bodySegments[bodySegments.Count - 1];
-        float distance = Vector2.Distance(leader.Path[0].Position, leader.Path[leader.Path.Count - 1].Position);
-
-        if (distance >= segmentSize + distanceBetweenSegments)
         {
-            BodySegment newSegment = Instantiate(segmentPrefabs[0], leader.Path[0].Position, leader.Path[0].Rotation, transform).GetComponent<BodySegment>();
-
-            bodySegments.Add(newSegment);
-
-            segmentPrefabs.RemoveAt(0);
+            if (horizontalTurn != 0)
+                transform.Rotate(new Vector3(0f, 0f, -rotationSpeed * horizontalTurn * Time.fixedDeltaTime));
         }
+
+        if (transform.right.x >= 0)
+            spriteRenderer.flipY = false;
+        else
+            spriteRenderer.flipY = true;
     }
 
     private void MoveSegments()
     {
-        if (!IsMoving) return;
-
-        for (int i = 1; i < bodySegments.Count; i++)
+        for (int i = 1; i < bodyParts.Count; i++)
         {
-            BodySegment nextSegment = bodySegments[i - 1];
+            Vector3 prevPosition = bodyParts[i - 1].transform.position;
+            Vector3 moveDirection = (prevPosition - bodyParts[i].transform.position).normalized;
 
-            bodySegments[i].transform.position = nextSegment.Path[0].Position;
-            bodySegments[i].transform.rotation = nextSegment.Path[0].Rotation;
+            Vector3 lookDir = (prevPosition - bodyParts[i].transform.position).normalized;
+            float rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
-            nextSegment.Path.RemoveAt(0);
+            Vector3 newPosition = prevPosition - moveDirection * (segmentSize + segmentSeparation);
+            Quaternion newRotation = Quaternion.Euler(0, 0, rotation);
+
+            bodyParts[i].Move(newPosition, newRotation);
         }
+    }
+
+    private void CreateBody()
+    {
+        segmentSize = GetComponent<Collider2D>().bounds.size.x;
+        bodyParts.Add(GetComponent<BodySegment>());
+
+        for (int i = 0; i < bodySize; i++)
+        {
+            AddBodySegment(i);
+        }
+    }
+
+    private void SineWaveMotion()
+    {
+        float acceleration = -Mathf.Sin(Time.time * sineWaveSpeed) * sineWaveScale;
+        float force = acceleration * rBdoy.mass;
+        force = force * currentSpeed / maxSpeed;
+        rBdoy.AddForce(Vector2.Perpendicular(transform.right) * force);
+    }
+
+    private void AddBodySegment(int sortingOrder)
+    {
+        GameObject segment = bodySegment;
+
+        if (sortingOrder == bodySize - 1)
+        {
+            segment = tailSegment;
+            GameObject lastSegment = bodyParts[bodyParts.Count - 1].gameObject;
+            BodySegment oldSegment = Instantiate(bodySegment, lastSegment.transform.position, lastSegment.transform.rotation, transform).GetComponent<BodySegment>();
+
+            bodyParts.RemoveAt(bodyParts.Count - 1);
+            bodyParts.Add(oldSegment);
+
+            Destroy(lastSegment);
+        }
+
+        BodySegment newSegment = Instantiate(segment, bodyParts[bodyParts.Count - 1].transform.position, bodyParts[bodyParts.Count - 1].transform.rotation, transform).GetComponent<BodySegment>();
+        bodyParts.Add(newSegment);
+
+        CalculateSortingOrder();
+    }
+
+    private void CalculateSortingOrder()
+    {
+        for (int i = bodyParts.Count - 1; i >= 0; i--)
+        {
+            bodyParts[bodyParts.Count - 1 - i].SetSortingOrder(i);
+        }
+        spriteRenderer.sortingOrder = bodyParts.Count;
     }
 }
