@@ -5,13 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(BodySegment))]
 [RequireComponent(typeof(PlayerMovement))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     public static  List<BodySegment> BodyParts { get { return bodyParts; } }
+    public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
     private static List<BodySegment> bodyParts = new List<BodySegment>();
+    private int currentHealth;
 
     [Range(3, 100)]
+    [SerializeField] private int segmentHealth = 2;
     [SerializeField] private int bodySize = 3;
     [SerializeField] private GameObject bodySegment;
     [SerializeField] private GameObject baseBodySegment;
@@ -22,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         CreateBody();
+        currentHealth = segmentHealth * bodySize;
     }
 
     /// <summary>
@@ -95,5 +99,17 @@ public class PlayerController : MonoBehaviour
 
         Destroy(tail);
         Destroy(previousTailSegment);
+    }
+
+    public bool Damage(int amount)
+    {
+        if (CurrentHealth - amount <= 0)
+            return true;
+        return false;
+    }
+
+    public void Death()
+    {
+
     }
 }
