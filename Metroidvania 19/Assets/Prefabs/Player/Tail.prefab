@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3397249260772081201}
   - component: {fileID: 3397249260772081214}
-  - component: {fileID: 3397249260772081215}
   - component: {fileID: 3397249260772081200}
+  - component: {fileID: 3397249260772081215}
   - component: {fileID: -7210049245274746599}
   m_Layer: 3
   m_Name: Tail
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &3397249260772081215
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3397249260772081202}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.5, y: 0}
-  m_Size: {x: 2, y: 0.8}
-  m_Direction: 1
 --- !u!50 &3397249260772081200
 Rigidbody2D:
   serializedVersion: 4
@@ -124,6 +108,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &3397249260772081215
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3397249260772081202}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.5, y: 0}
+  m_Size: {x: 2, y: 0.8}
+  m_Direction: 1
 --- !u!114 &-7210049245274746599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,5 +136,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e9b247260d5584d9412d45ecc472eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sineWaveScale: 20
-  sineWaveSpeed: 10
