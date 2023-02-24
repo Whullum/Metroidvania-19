@@ -18,6 +18,7 @@ public class PlayerProjectile : MonoBehaviour
         //if(Input.GetMouseButton(1))
         if(Input.GetMouseButtonDown(1))
         {
+            bulletSpawnPoint.rotation = bulletSpawnPoint.rotation * Quaternion.Euler(0,0,Random.Range(-180f, -170f));
             var bulletInstance = Instantiate(bulletObject, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bulletInstance.GetComponent<Bullet>().bulletLifeTime = lifeTime;
             bulletInstance.transform.localScale = new Vector3(bulletSize,bulletSize,0);
