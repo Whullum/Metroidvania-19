@@ -11,20 +11,29 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Core Movement")]
     [Range(0.1f, 100)]
+    [Tooltip("Acceleration speed of the body.")]
     [SerializeField] private float accelerationSpeed = 1;
     [Range(0.1f, 100)]
+    [Tooltip("Deceleration speed of the body.")]
     [SerializeField] private float decelerationSpeed = 2;
+    [Tooltip("Maximum speed the body will reach.")]
     [SerializeField] private float maxSpeed = 30;
+    [Tooltip("Rotation speed when mouse input is selected.")]
     [SerializeField] private float mouseRotationSpeed = 3;
+    [Tooltip("Rotation speed when keyboard input is selected.")]
     [SerializeField] private float keyboardRotationSpeed = 200;
     [Range(-5f, 5f)]
+    [Tooltip("Separation between body segments. Can be positive (more separation), or negative (less separation).")]
     [SerializeField] private float segmentSeparation = -.1f;
     [Header("Sine Wave Movement")]
     [Range(0f, 100f)]
+    [Tooltip("Amount of movement of the sine wave.")]
     [SerializeField] private float sineWaveScale = 40;
     [Range(0f, 100f)]
+    [Tooltip("Speed of the sine wave.")]
     [SerializeField] private float sineWaveSpeed = 10;
     [Header("Input Type")]
+    [Tooltip("Input type for controlling the player.")]
     [SerializeField] private InputType inputType = InputType.Mouse;
 
 
