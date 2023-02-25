@@ -3,26 +3,23 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+// Direction that the player will be looking in when they are spawned into a new room
+public enum DoorDirection
+{
+    NORTH,
+    SOUTH,
+    EAST,
+    WEST
+}
+
 [Serializable]
 public class Door : MonoBehaviour
 {
-    // Direction that the player will be looking in when they are spawned into a new room
-    private enum DoorDirection
-    {
-        NORTH,
-        SOUTH,
-        EAST,
-        WEST
-    }
-
     [SerializeField] private int doorNumber;
     [SerializeField] private string connectingMapName;
     [SerializeField] private MapNode parentMapNode;
     [SerializeField] private MapManager mapManager;
-    [SerializeField] private DoorDirection playerSpawnLocation;
-
-    private const float mapXIncrement = 100f;
-    private const float mapYIncrement = 60f;
+    [SerializeField] private DoorDirection playerSpawnDirection;
 
     public int DoorNumber { get => doorNumber; set => doorNumber = value; }
 
@@ -38,41 +35,33 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            MapNode connectingNode = GetConnectingNode();
+            // Access the correct MapNode through the mapLevels dictionary
+            MapNode connectingNode = mapManager.CurrentMap.mapLevels[connectingMapName];
 
             Instantiate(connectingNode.gameObject);
 
+            // Spawn the player in the correct direction
             Vector3 startingDisplacement = new Vector3();
-            Vector3 maskImagePosition = mapManager.maskImage.transform.position;
-            switch (playerSpawnLocation)
+            switch (playerSpawnDirection)
             {
+                // Doors are rotated, so use the door's local X axis to get the correct starting direction
                 case DoorDirection.NORTH:
-                    mapManager.maskImage.transform.position = new Vector3(maskImagePosition.x, maskImagePosition.y + mapYIncrement, 0);
+                case DoorDirection.WEST:
                     startingDisplacement = new Vector3(3, 0);
                     break;
                 case DoorDirection.SOUTH:
-                    mapManager.maskImage.transform.position = new Vector3(maskImagePosition.x, maskImagePosition.y - mapYIncrement, 0);
-                    startingDisplacement = new Vector3(-3, 0);
-                    break;
                 case DoorDirection.EAST:
-                    mapManager.maskImage.transform.position = new Vector3(maskImagePosition.x + mapXIncrement, maskImagePosition.y, 0);
                     startingDisplacement = new Vector3(-3, 0);
-                    break;
-                case DoorDirection.WEST:
-                    mapManager.maskImage.transform.position = new Vector3(maskImagePosition.x - mapXIncrement, maskImagePosition.y, 0);
-                    startingDisplacement = new Vector3(3, 0);
                     break;
             }
 
+            // Recenter the minimap to the correct location
+            mapManager.RecenterMinimap(playerSpawnDirection);
+
+            // Spawn the player in front of the door with the matching doorNumber in the connected level/node
             Door connectingDoor = connectingNode.GetConnectingDoorNumber(this.doorNumber);
             collision.gameObject.transform.position = connectingDoor.transform.position + startingDisplacement;
-
             Destroy(this.parentMapNode.gameObject);
         }
-    }
-
-    private MapNode GetConnectingNode()
-    {
-        return mapManager.CurrentMap.mapLevels[connectingMapName];
     }
 }

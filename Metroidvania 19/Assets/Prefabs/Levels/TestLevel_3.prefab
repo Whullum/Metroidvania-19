@@ -58,7 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b91cbb80ddd11489ae4711aecd7f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeName: TestLevel2
   doors:
   - {fileID: 3007000285035015541}
   - {fileID: 8753664076796613262}
@@ -1162,6 +1161,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
       propertyPath: playerSpawnLocation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
+      propertyPath: playerSpawnDirection
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

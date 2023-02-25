@@ -58,7 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b91cbb80ddd11489ae4711aecd7f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeName: TestLevel1
   doors:
   - {fileID: 7706189334177290013}
 --- !u!1 &3271295850630822187
@@ -72,6 +71,9 @@ GameObject:
   - component: {fileID: 3271295850630822186}
   - component: {fileID: 3271295850630822191}
   - component: {fileID: 3271295850630822184}
+  - component: {fileID: 3578802939928203271}
+  - component: {fileID: 6649964783100303276}
+  - component: {fileID: 6027452869049014532}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -1026,6 +1028,103 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!19719996 &3578802939928203271
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271295850630822187}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+--- !u!50 &6649964783100303276
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271295850630822187}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!66 &6027452869049014532
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271295850630822187}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 3578802939928203271}
+    m_ColliderPaths:
+    - - X: -180000000
+        Y: -20000000
+      - X: 110000000
+        Y: -20000000
+      - X: 110000000
+        Y: -60000000
+      - X: 120000000
+        Y: -60000000
+      - X: 120000000
+        Y: -10000000
+      - X: -190000000
+        Y: -10000000
+      - X: -190000000
+        Y: -140000000
+      - X: 120000000
+        Y: -140000000
+      - X: 120000000
+        Y: -80000000
+      - X: 110000000
+        Y: -80000000
+      - X: 110000000
+        Y: -130000000
+      - X: -180000000
+        Y: -130000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 11.99997, y: -14}
+      - {x: 11.99997, y: -8}
+      - {x: 11, y: -8.00003}
+      - {x: 10.99997, y: -13}
+      - {x: -18, y: -12.99997}
+      - {x: -17.999971, y: -2}
+      - {x: 11, y: -2.0000293}
+      - {x: 11.00003, y: -6}
+      - {x: 12, y: -5.999971}
+      - {x: 11.99997, y: -1}
+      - {x: -19, y: -1.0000293}
+      - {x: -18.999971, y: -14}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
 --- !u!1001 &3271295849640806848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1095,6 +1194,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
       propertyPath: playerSpawnLocation
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
+      propertyPath: playerSpawnDirection
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []

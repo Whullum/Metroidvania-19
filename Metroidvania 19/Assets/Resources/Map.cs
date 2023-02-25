@@ -4,8 +4,6 @@ using System;
 using UnityEngine;
 using UnityEditor;
 
-
-
 [Serializable]
 public class StringMapNodeDictionary : SerializableDictionary<string, MapNode> { }
 
