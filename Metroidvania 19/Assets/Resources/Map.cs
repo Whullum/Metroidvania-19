@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEditor;
+
+
+
+[Serializable]
+public class StringMapNodeDictionary : SerializableDictionary<string, MapNode> { }
 
 [CreateAssetMenu(fileName = "Map", menuName = "ScriptableObjects/Map", order = 1)]
 public class Map : ScriptableObject
 {
-    public MapNode[] mapNodes;
+    [SerializeField]
+    public StringMapNodeDictionary mapLevels;
 }

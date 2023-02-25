@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13063b8792b32eb48a7c8b4475f63ea6, type: 3}
   m_Name: TestMap
   m_EditorClassIdentifier: 
-  mapNodes:
-  - {fileID: 5806848126843226694, guid: 06456e2573c94ab4780a4f7aca1e9222, type: 3}
-  - {fileID: 775770384133935005, guid: 2561cd743f2817241854594739476a10, type: 3}
+  mapLevels:
+    m_keys:
+    - TestLevel_1
+    - TestLevel_2
+    - TestLevel_3
+    - TestLevel_4
+    m_values:
+    - {fileID: 3271295850092198802, guid: 24d88ad0b47d6854199fe29c38d9884c, type: 3}
+    - {fileID: 3271295850092198802, guid: 09bb627a5f7730f4b8b31198c3f98baa, type: 3}
+    - {fileID: 3271295850092198802, guid: 21ca42f1b40a3774c8487e327bd1b9af, type: 3}
+    - {fileID: 3271295850092198802, guid: a1c4dbac0a8ee184297864f9290520fb, type: 3}
