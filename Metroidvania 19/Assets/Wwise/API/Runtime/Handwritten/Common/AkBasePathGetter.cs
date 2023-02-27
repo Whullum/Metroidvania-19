@@ -13,7 +13,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2023 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 /// <summary>
@@ -81,7 +81,9 @@ public partial class AkBasePathGetter
 		if (string.IsNullOrEmpty(fullBasePath))
 			fullBasePath = AkWwiseInitializationSettings.ActivePlatformSettings.SoundbankPath;
 
-#if UNITY_EDITOR || !UNITY_ANDROID
+#if !UNITY_EDITOR && UNITY_WEBGL
+		fullBasePath = System.IO.Path.Combine(UnityEngine.Application.persistentDataPath, fullBasePath);
+#elif UNITY_EDITOR || !UNITY_ANDROID
 		fullBasePath = System.IO.Path.Combine(UnityEngine.Application.streamingAssetsPath, fullBasePath);
 #endif
 

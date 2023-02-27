@@ -12,8 +12,9 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2023 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
+
 public class AkWwiseInitializationSettings : AkCommonPlatformSettings
 {
 	[UnityEngine.HideInInspector]
@@ -89,10 +90,10 @@ public class AkWwiseInitializationSettings : AkCommonPlatformSettings
 		"UserSettings.m_SpatialAudioSettings.m_CalcEmitterVirtualPosition",
 		"UserSettings.m_SpatialAudioSettings.m_UseObstruction",
 		"UserSettings.m_SpatialAudioSettings.m_UseOcclusion",
+		"UserSettings.m_SpatialAudioSettings.m_LoadBalancingSpread",
 		"CommsSettings.m_PoolSize",
 		"CommsSettings.m_DiscoveryBroadcastPort",
 		"CommsSettings.m_CommandPort",
-		"CommsSettings.m_NotificationPort",
 		"CommsSettings.m_InitializeSystemComms",
 		"CommsSettings.m_NetworkName",
 		"AdvancedSettings.m_IOMemorySize",
@@ -345,13 +346,12 @@ public class AkWwiseInitializationSettings : AkCommonPlatformSettings
 
 		if (canSetBasePath && AkSoundEngine.SetBasePath(soundBankBasePath) != AKRESULT.AK_Success)
 		{
+#if !UNITY_ANDROID || UNITY_EDITOR
 #if UNITY_EDITOR
 			var format = "WwiseUnity: Failed to set SoundBanks base path to <{0}>. Make sure SoundBank path is correctly set under Edit > Project Settings > Wwise > Editor > Asset Management.";
 #else
 			var format = "WwiseUnity: Failed to set SoundBanks base path to <{0}>. Make sure SoundBank path is correctly set under Edit > Project Settings > Wwise > Initialization.";
 #endif
-
-#if !UNITY_ANDROID || UNITY_EDITOR
 			// It might be normal for SetBasePath to return AK_PathNotFound on Android. Silence the error log to avoid confusion.
 			UnityEngine.Debug.LogErrorFormat(format, soundBankBasePath);
 #endif

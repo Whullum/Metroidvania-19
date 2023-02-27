@@ -13,7 +13,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2023 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 [UnityEngine.AddComponentMenu("Wwise/Spatial Audio/AkSpatialAudioListener")]
@@ -85,10 +85,14 @@ public class AkSpatialAudioListener : UnityEngine.MonoBehaviour
 		public bool Add(AkSpatialAudioListener listener)
 		{
 			if (listener == null)
+			{
 				return false;
+			}
 
 			if (listenerList.Contains(listener))
+			{
 				return false;
+			}
 
 			listenerList.Add(listener);
 			Refresh();
@@ -103,10 +107,14 @@ public class AkSpatialAudioListener : UnityEngine.MonoBehaviour
 		public bool Remove(AkSpatialAudioListener listener)
 		{
 			if (listener == null)
+			{
 				return false;
+			}
 
 			if (!listenerList.Remove(listener))
+			{
 				return false;
+			}
 
 			Refresh();
 			return true;
@@ -117,7 +125,9 @@ public class AkSpatialAudioListener : UnityEngine.MonoBehaviour
 			if (ListenerList.Count == 1)
 			{
 				if (s_SpatialAudioListener != null)
+				{
 					AkSoundEngine.UnregisterSpatialAudioListener(s_SpatialAudioListener.gameObject);
+				}
 
 				s_SpatialAudioListener = ListenerList[0];
 

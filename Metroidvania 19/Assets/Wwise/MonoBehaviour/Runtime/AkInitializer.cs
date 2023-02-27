@@ -13,7 +13,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2023 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
@@ -40,6 +40,11 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 	public AkWwiseAddressablesInitializationSettings InitializationSettings;
 #else
 	public AkWwiseInitializationSettings InitializationSettings;
+#endif
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+    [System.Runtime.InteropServices.DllImport("__Internal")]
+    private static extern bool AkVerifyPluginRegistration();
 #endif
 
 	private void Awake()
@@ -85,7 +90,14 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 #endif
 
 		if (ms_Instance == this)
+		{
+#if UNITY_WEBGL && !UNITY_EDITOR
+			bool bRegistered = AkVerifyPluginRegistration();
+			if (!bRegistered)
+				UnityEngine.Debug.Log("Wwise plug-in registration has failed. Some plug-ins may fail to initialize.");
+#endif
 			AkSoundEngineController.Instance.Init(this);
+		}
 	}
 
 	private void OnDisable()

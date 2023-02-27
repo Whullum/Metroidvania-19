@@ -13,7 +13,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2023 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 /// @brief This class is an example of how to load banks in Wwise, if the bank data was preloaded in memory.  
@@ -123,8 +123,8 @@ public class AkMemBankLoader : UnityEngine.MonoBehaviour
         yield return ms_www;
         uint uInMemoryBankSize = AllocateAlignedBuffer(ms_www.bytes);
 #endif
-
-        var result = AkSoundEngine.LoadBankMemoryView(ms_pInMemoryBankPtr, uInMemoryBankSize, out ms_bankID);
+		uint BankType;
+        var result = AkSoundEngine.LoadBankMemoryView(ms_pInMemoryBankPtr, uInMemoryBankSize, out ms_bankID, out BankType);
 		if (result != AKRESULT.AK_Success)
 			UnityEngine.Debug.LogError("WwiseUnity: AkMemBankLoader: bank loading failed with result " + result);
 	}

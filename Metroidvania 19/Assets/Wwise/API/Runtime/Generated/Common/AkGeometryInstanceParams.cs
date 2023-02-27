@@ -10,16 +10,16 @@
 //------------------------------------------------------------------------------
 
 
-public class AkTaskContext : global::System.IDisposable {
+public class AkGeometryInstanceParams : global::System.IDisposable {
   private global::System.IntPtr swigCPtr;
   protected bool swigCMemOwn;
 
-  internal AkTaskContext(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal AkGeometryInstanceParams(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  internal static global::System.IntPtr getCPtr(AkTaskContext obj) {
+  internal static global::System.IntPtr getCPtr(AkGeometryInstanceParams obj) {
     return (obj == null) ? global::System.IntPtr.Zero : obj.swigCPtr;
   }
 
@@ -28,7 +28,7 @@ public class AkTaskContext : global::System.IDisposable {
     swigCPtr = cPtr;
   }
 
-  ~AkTaskContext() {
+  ~AkGeometryInstanceParams() {
     Dispose(false);
   }
 
@@ -42,7 +42,7 @@ public class AkTaskContext : global::System.IDisposable {
       if (swigCPtr != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          AkSoundEnginePINVOKE.CSharp_delete_AkTaskContext(swigCPtr);
+          AkSoundEnginePINVOKE.CSharp_delete_AkGeometryInstanceParams(swigCPtr);
         }
         swigCPtr = global::System.IntPtr.Zero;
       }
@@ -50,10 +50,18 @@ public class AkTaskContext : global::System.IDisposable {
     }
   }
 
-  public uint uIdxThread { set { AkSoundEnginePINVOKE.CSharp_AkTaskContext_uIdxThread_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkTaskContext_uIdxThread_get(swigCPtr); } 
+  public AkGeometryInstanceParams() : this(AkSoundEnginePINVOKE.CSharp_new_AkGeometryInstanceParams(), true) {
   }
 
-  public AkTaskContext() : this(AkSoundEnginePINVOKE.CSharp_new_AkTaskContext(), true) {
+  public AkWorldTransform PositionAndOrientation { set { AkSoundEnginePINVOKE.CSharp_AkGeometryInstanceParams_PositionAndOrientation_set(swigCPtr, AkWorldTransform.getCPtr(value)); } 
+    get {
+      global::System.IntPtr cPtr = AkSoundEnginePINVOKE.CSharp_AkGeometryInstanceParams_PositionAndOrientation_get(swigCPtr);
+      AkWorldTransform ret = (cPtr == global::System.IntPtr.Zero) ? null : new AkWorldTransform(cPtr, false);
+      return ret;
+    } 
+  }
+
+  public UnityEngine.Vector3 Scale { set { AkSoundEnginePINVOKE.CSharp_AkGeometryInstanceParams_Scale_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkGeometryInstanceParams_Scale_get(swigCPtr); } 
   }
 
 }
