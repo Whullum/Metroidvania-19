@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,16 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerController : MonoBehaviour, IDamageable
 {
+    #region variables
+
+    /// <summary>
+    /// Invoked when the player recovers/adds a new segment to the body.
+    /// </summary>
+    public static Action SegmentAdded;
+    /// <summary>
+    /// Invoked when the player losses a segment from the body.
+    /// </summary>
+    public static Action SegmentRemoved;
     public static List<BodySegment> BodyParts { get { return bodyParts; } }
     public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
@@ -32,6 +43,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private ParticleSystem segmentAddedEffect;
     [Tooltip("Particle effect used when a segment is decoupled from the body.")]
     [SerializeField] private ParticleSystem segmentDecoupledEffect;
+
+    #endregion
 
     private void Start()
     {
@@ -83,6 +96,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         Instantiate(segmentAddedEffect, newSegment.transform.position, Quaternion.identity, newSegment.transform);
 
         CalculateSortingOrder();
+
+        SegmentAdded?.Invoke();
     }
 
     /// <summary>
@@ -110,6 +125,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         Instantiate(segmentDecoupledEffect, segmentToRemove.transform.position, Quaternion.identity, segmentToRemove.transform);
         segmentToRemove.Decouple();
+
+        SegmentRemoved?.Invoke();
     }
 
     /// <summary>
