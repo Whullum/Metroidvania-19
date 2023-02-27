@@ -6,7 +6,9 @@ public class PlayerMelee : MonoBehaviour
 {
     GameObject HurtBox;
     
-    public float hurtBoxTime = 2f;
+    [Tooltip("Length of cooldown")]
+    public float timeInactive = 2f;
+
     float cooldown = 0;
     void Start()
     {
@@ -22,8 +24,8 @@ public class PlayerMelee : MonoBehaviour
     private void GetInput()
     {
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            Debug.Log("Right MouseClick");
-            cooldown = Time.time + hurtBoxTime;
+            
+            cooldown = Time.time + timeInactive;
             HurtBox.SetActive(true);
         }
         else if(Time.time > cooldown)

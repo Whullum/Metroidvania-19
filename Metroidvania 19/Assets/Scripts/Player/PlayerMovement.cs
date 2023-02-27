@@ -179,4 +179,14 @@ public class PlayerMovement : MonoBehaviour
         }
         spriteRenderer.sortingOrder = bodyParts.Count;
     }
+
+    public float GetSpeed()
+    {
+        return currentSpeed;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        currentSpeed = speed;
+    }
 }
