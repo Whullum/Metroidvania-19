@@ -51,6 +51,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         CreateInitialBody();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        CameraController.ShakeCamera?.Invoke();
+    }
+
     /// <summary>
     /// Initializes the body with the minimum shape it will have: HEAD - BASE BODY - BODY SEGMENT - TAIL.
     /// </summary>
