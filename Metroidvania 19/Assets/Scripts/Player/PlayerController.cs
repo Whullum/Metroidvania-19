@@ -7,66 +7,80 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    public static  List<BodySegment> BodyParts { get { return bodyParts; } }
+    public static List<BodySegment> BodyParts { get { return bodyParts; } }
     public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
     private static List<BodySegment> bodyParts = new List<BodySegment>();
     private int currentHealth;
+    private int maxHealth;
 
-    [Range(3, 100)]
+    [Header("Player Body")]
+    [Range(2, 10)]
+    [Tooltip("The minimum amount of segments the player will have at any time.")]
+    [SerializeField] private int minimumBodySize = 2;
+    [Header("Body Segments")]
+    [Range(1, 100)]
+    [Tooltip("Amount of health each body segment has.")]
     [SerializeField] private int segmentHealth = 2;
-    [SerializeField] private int bodySize = 3;
+    [Tooltip("Default body segment used to extend the player body.")]
     [SerializeField] private GameObject bodySegment;
+    [Tooltip("Base body segment, created after the head when the body is > than 2 segments.")]
     [SerializeField] private GameObject baseBodySegment;
+    [Tooltip("Tail segment of the player.")]
     [SerializeField] private GameObject tailSegment;
+    [Tooltip("Particle effect used when a new segment is added to the body.")]
     [SerializeField] private ParticleSystem segmentAddedEffect;
-    [SerializeField] private ParticleSystem segmentDestroyedEffect;
+    [Tooltip("Particle effect used when a segment is decoupled from the body.")]
+    [SerializeField] private ParticleSystem segmentDecoupledEffect;
 
     private void Start()
     {
-        CreateBody();
-        currentHealth = segmentHealth * bodySize;
+        CreateInitialBody();
     }
 
     /// <summary>
-    /// Initializes the body with it's initial shape and lenght.
+    /// Initializes the body with the minimum shape it will have: HEAD - BASE BODY - BODY SEGMENT - TAIL.
     /// </summary>
-    private void CreateBody()
+    private void CreateInitialBody()
     {
         bodyParts.Add(GetComponent<BodySegment>());
 
-        for (int i = 0; i < bodySize; i++)
+        for (int i = 1; i < minimumBodySize; i++)
         {
-            if (i == bodySize - 1)
-                AddBodySegment(true);
-            else
-                AddBodySegment(false);
+            AddBodySegment();
         }
     }
 
     /// <summary>
-    /// Creates and adds a body segment to the player.
+    /// Creates and adds a body segment to the player. Calculates the new health of the player.
     /// </summary>
-    /// <param name="isTail">If set to true, the last segment will be changes to be a normal body part and the tail segment will be created at the end of the body.</param>
-    private void AddBodySegment(bool isTail)
+    /// <param name="partToAdd">Prefab of the new part to be created.</param>
+    /// <param name="bodyIndex">Body position where this part will go.</param>
+    private void AddBodySegment()
     {
-        GameObject segment = bodySegment;
+        GameObject segmentPrefab = bodySegment;
+        int bodyIndex = bodyParts.Count - 1;
 
-        // If this is the last body part, we create the tail GameObject and recreate the previous one
-        if (isTail)
+        // If only the head is present, we create the tail segment
+        if (bodyParts.Count == 1)
         {
-            segment = tailSegment;
-            GameObject lastSegment = bodyParts[bodyParts.Count - 1].gameObject;
-            BodySegment oldSegment = Instantiate(bodySegment, lastSegment.transform.position, lastSegment.transform.rotation, transform).GetComponent<BodySegment>();
-
-            bodyParts.RemoveAt(bodyParts.Count - 1);
-            bodyParts.Add(oldSegment);
-
-            Destroy(lastSegment);
+            segmentPrefab = tailSegment;
+            bodyIndex = bodyParts.Count;
         }
+        // If the head and the tail are present, we create the base body segment
+        else if (bodyParts.Count == 2)
+            segmentPrefab = baseBodySegment;
 
-        BodySegment newSegment = Instantiate(segment, bodyParts[bodyParts.Count - 1].transform.position, bodyParts[bodyParts.Count - 1].transform.rotation, transform).GetComponent<BodySegment>();
-        bodyParts.Add(newSegment);
+        // Creates a new body segment depending on the actual body size. If the body size is large enough, the default body segment will be created
+        BodySegment newSegment = Instantiate(segmentPrefab, bodyParts[bodyParts.Count - 1].transform.position, bodyParts[bodyParts.Count - 1].transform.rotation, transform).GetComponent<BodySegment>();
+        bodyParts.Insert(bodyIndex, newSegment);
+
+        // Calculate the new maxHealth with the new body size
+        maxHealth = segmentHealth * bodyParts.Count;
+        currentHealth = maxHealth;
+
+        // Effect for adding a new body part
+        Instantiate(segmentAddedEffect, newSegment.transform.position, Quaternion.identity, newSegment.transform);
 
         CalculateSortingOrder();
     }
@@ -87,29 +101,62 @@ public class PlayerController : MonoBehaviour, IDamageable
     /// </summary>
     private void RemoveBodySegment()
     {
-        GameObject tail = bodyParts[bodyParts.Count - 1].gameObject;
-        bodyParts.RemoveAt(bodyParts.Count - 1);
-        GameObject previousTailSegment = bodyParts[bodyParts.Count - 1].gameObject;
-        bodyParts.RemoveAt(bodyParts.Count - 1);
+        int secondToLastSegment = bodyParts.Count - 2;
 
-        BodySegment newTail = Instantiate(tailSegment, previousTailSegment.transform.position, previousTailSegment.transform.rotation, transform).GetComponent<BodySegment>();
-        bodyParts.Add(newTail);
+        BodySegment segmentToRemove = bodyParts[secondToLastSegment];
+        bodyParts.RemoveAt(secondToLastSegment);
 
         CalculateSortingOrder();
 
-        Destroy(tail);
-        Destroy(previousTailSegment);
+        Instantiate(segmentDecoupledEffect, segmentToRemove.transform.position, Quaternion.identity, segmentToRemove.transform);
+        segmentToRemove.Decouple();
+    }
+
+    /// <summary>
+    /// Restores the specified amount of health and regrows the body segments acordingly.
+    /// </summary>
+    /// <param name="amount">Amount of health to restore.</param>
+    public void RestoreHealth(int amount)
+    {
+        currentHealth += amount;
+
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        int totalSegments = currentHealth / segmentHealth; // Total segment this body has indenpendently of the health
+        int segmentsToAdd = Mathf.Abs(bodyParts.Count - totalSegments); // Substract the total amount of segments to add
+
+        for (int i = 0; i < segmentsToAdd; i++)
+            AddBodySegment();
     }
 
     public bool Damage(int amount)
     {
-        if (CurrentHealth - amount <= 0)
+        currentHealth -= amount;
+
+        // If the player has no health, they die
+        if (currentHealth <= 0)
             return true;
+
+        // Calculate the amount of segments to destroy
+        float segmentsLeft = (float)currentHealth / (float)segmentHealth;
+        float segmentsToDestroy = Mathf.FloorToInt(bodyParts.Count - segmentsLeft);
+
+        if (segmentsToDestroy > 0)
+        {
+            for (int i = 0; i < segmentsToDestroy; i++)
+            {
+                // If the amount of segments to destroy is more than the actual minimum size of the body, we can't destroy those
+                if (bodyParts.Count == minimumBodySize)
+                    return false;
+                RemoveBodySegment();
+            }
+        }
         return false;
     }
 
     public void Death()
     {
-
+        Destroy(gameObject);
     }
 }
