@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -13,7 +11,7 @@ public enum DoorDirection
 }
 
 [Serializable]
-public class Door : MonoBehaviour
+public class Door : InteractableObject
 {
     [SerializeField] private int doorNumber;
     [SerializeField] private string connectingMapName;
@@ -63,5 +61,15 @@ public class Door : MonoBehaviour
             collision.gameObject.transform.position = connectingDoor.transform.position + startingDisplacement;
             Destroy(this.parentMapNode.gameObject);
         }
+    }
+
+    public override void OnActivation()
+    {
+        
+    }
+
+    public override void OnDeactivation()
+    {
+        
     }
 }
