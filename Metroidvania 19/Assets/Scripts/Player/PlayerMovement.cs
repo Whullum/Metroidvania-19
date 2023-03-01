@@ -150,4 +150,14 @@ public class PlayerMovement : MonoBehaviour
             PlayerController.BodyParts[i].Move(prevPosition, segmentSeparation, newRotation);
         }
     }
+
+    public float GetSpeed()
+    {
+        return currentSpeed;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        currentSpeed = speed;
+    }
 }

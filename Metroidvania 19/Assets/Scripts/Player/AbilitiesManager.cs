@@ -14,6 +14,7 @@ public class AbilitiesManager : MonoBehaviour
     {
         GetComponent<PlayerMelee>().enabled= Melee;
         GetComponent<PlayerProjectile>().enabled = Projectile;
+        GetComponent<PlayerDash>().enabled = Dash;
     }
 
 

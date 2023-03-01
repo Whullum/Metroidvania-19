@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
+
         Destroy(gameObject, bulletLifeTime);
     }
 
@@ -15,6 +16,7 @@ public class Bullet : MonoBehaviour
     {
         //Destroys target
         //Destroy(collision.gameObject)
-        Destroy(gameObject);
+        if(collision.gameObject.tag != "Respawn" || collision.gameObject.tag != "Player")
+            Destroy(gameObject);
     }
 }
