@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Obstacle
-  - 
+  - DistortionEffect
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: InteractableObject
     uniqueID: 3482457761
+    locked: 0
+  - name: DistortionLayer
+    uniqueID: 1861892421
     locked: 0
