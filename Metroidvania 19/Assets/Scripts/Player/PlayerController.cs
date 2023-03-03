@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         // Creates a new body segment depending on the actual body size. If the body size is large enough, the default body segment will be created
         BodySegment newSegment = Instantiate(segmentPrefab, bodyParts[bodyParts.Count - 1].transform.position, bodyParts[bodyParts.Count - 1].transform.rotation, transform).GetComponent<BodySegment>();
+        newSegment.Player = this;
         bodyParts.Insert(bodyIndex, newSegment);
 
         // Calculate the new maxHealth with the new body size
