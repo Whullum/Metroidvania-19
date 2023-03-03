@@ -23,3 +23,7 @@ MonoBehaviour:
     - {fileID: 3271295850092198802, guid: 09bb627a5f7730f4b8b31198c3f98baa, type: 3}
     - {fileID: 3271295850092198802, guid: 21ca42f1b40a3774c8487e327bd1b9af, type: 3}
     - {fileID: 3271295850092198802, guid: a1c4dbac0a8ee184297864f9290520fb, type: 3}
+  mapMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 38264e979beceed4c9377a51ca0c6bcc, type: 2}
