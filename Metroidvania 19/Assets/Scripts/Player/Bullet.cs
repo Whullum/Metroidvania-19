@@ -1,22 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletLifeTime = 3;
+    public float BulletLifeTime { get; set; } = 3;
+
+    [SerializeField] private int bulletDamage = 5;
 
     private void Awake()
     {
-
-        Destroy(gameObject, bulletLifeTime);
+        Destroy(gameObject, BulletLifeTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Destroys target
-        //Destroy(collision.gameObject)
-        if(collision.gameObject.tag != "Respawn" || collision.gameObject.tag != "Player")
-            Destroy(gameObject);
+        if (collision.collider.TryGetComponent(out IDamageable damageable))
+        {
+            if (damageable.Damage(bulletDamage))
+                damageable.Death();
+        }
+
+        Destroy(gameObject);
     }
 }
