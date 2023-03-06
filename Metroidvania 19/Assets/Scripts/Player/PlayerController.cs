@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Range(2, 10)]
     [Tooltip("The minimum amount of segments the player will have at any time.")]
     [SerializeField] private int minimumBodySize = 2;
+    [Range(2, 50)]
+    [SerializeField] private int maximumBodySize = 10;
+    [SerializeField] private float growthThreshold = 1;
     [Header("Body Segments")]
     [Range(1, 100)]
     [Tooltip("Amount of health each body segment has.")]
@@ -67,6 +70,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             AddBodySegment();
         }
+        maxHealth = segmentHealth * bodyParts.Count;
+        currentHealth = maxHealth;
     }
 
     /// <summary>
@@ -95,8 +100,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         bodyParts.Insert(bodyIndex, newSegment);
 
         // Calculate the new maxHealth with the new body size
-        maxHealth = segmentHealth * bodyParts.Count;
-        currentHealth = maxHealth;
+        //maxHealth = segmentHealth * bodyParts.Count;
+        //currentHealth = maxHealth;
 
         // Effect for adding a new body part
         Instantiate(segmentAddedEffect, newSegment.transform.position, Quaternion.identity, newSegment.transform);
@@ -153,6 +158,14 @@ public class PlayerController : MonoBehaviour, IDamageable
             AddBodySegment();
     }
 
+    public void GrowBody(bool restoreHealth)
+    {
+        maxHealth += segmentHealth;
+
+        if (restoreHealth)
+            RestoreHealth(maxHealth);
+    }
+
     public bool Damage(int amount)
     {
         currentHealth -= amount;
@@ -180,6 +193,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void Death()
     {
-        Destroy(gameObject);
+        for (int i = 1; i < bodyParts.Count; i++)
+        {
+            bodyParts[i].Decouple();
+        }
+        GetComponent<PlayerMovement>().enabled = false;
     }
 }

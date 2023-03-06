@@ -4,21 +4,28 @@ using UnityEngine;
 public class Dropper : MonoBehaviour
 {
     [Header("Drop Properties")]
-    [SerializeField] private int minDropAmount;
-    [SerializeField] private int maxDropAmount;
-    [SerializeField] private float dropForce;
-    [SerializeField] private float dropDelay;
+    [SerializeField] private Drop[] drop;
     [Header("Drop GameObject")]
-    [SerializeField] private DroppedObject dropPrefab;
-    [SerializeField] private float dropPrefabMass;
-    [SerializeField] private float dropPrefabGravityScale;
-    [SerializeField] private float dropPrefabDrag;
+    [SerializeField] private float dropForce = 5f;
+    [SerializeField] private float dropDelay = 0f;
+    [SerializeField] private float dropPrefabMass = 1f;
+    [SerializeField] private float dropPrefabGravityScale = .2f;
+    [SerializeField] private float dropPrefabDrag = 2f;
 
     public void Drop(bool destroyGameObject)
     {
-        int dropAmount = Random.Range(minDropAmount, maxDropAmount + 1);
+        for (int i = 0; i < drop.Length; i++)
+        {
+            int dropCount = Random.Range(drop[i].MinDropAmount, drop[i].MaxDropAmount);
 
-        StartCoroutine(ToggleDrop(dropAmount, destroyGameObject));
+            for (int j = 0; j < dropCount; j++)
+            {
+                DroppedObject newDrop = Instantiate(drop[i].DropPrefab, transform.position, drop[i].DropPrefab.transform.rotation);
+                newDrop.Drop(dropPrefabMass, dropPrefabGravityScale, dropPrefabDrag, dropForce);
+            }
+        }
+        if (destroyGameObject)
+            Destroy(gameObject);
     }
 
     private IEnumerator ToggleDrop(int amount, bool destroyGameObject)
@@ -27,13 +34,19 @@ public class Dropper : MonoBehaviour
 
         while (count > 0)
         {
-            DroppedObject newDrop = Instantiate(dropPrefab, transform.position, dropPrefab.transform.rotation);
-            newDrop.Drop(dropPrefabMass, dropPrefabGravityScale, dropPrefabDrag, dropForce);
 
             count--;
+
             yield return new WaitForSeconds(dropDelay);
         }
-        if (destroyGameObject)
-            Destroy(gameObject);
+
     }
+}
+
+[System.Serializable]
+public struct Drop
+{
+    public DroppedObject DropPrefab;
+    public int MinDropAmount;
+    public int MaxDropAmount;
 }

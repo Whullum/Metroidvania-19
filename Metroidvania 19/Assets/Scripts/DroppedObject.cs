@@ -12,5 +12,6 @@ public class DroppedObject : MonoBehaviour
         rBdoy.gravityScale = gavityScale;
         rBdoy.drag = drag;
         rBdoy.AddForce(Random.insideUnitCircle.normalized * dropForce, ForceMode2D.Impulse);
+        rBdoy.AddTorque(Random.insideUnitCircle.y * dropForce);
     }
 }

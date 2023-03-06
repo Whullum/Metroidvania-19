@@ -222,6 +222,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Death()
     {
-        Destroy(gameObject);
+        GetComponent<Dropper>().Drop(true);
     }
 }
