@@ -6,22 +6,17 @@ public class InteractableLever : InteractableObject
     private HingeJoint2D joint;
     private Coroutine checkCoroutine;
     private bool isUsed;
-    private bool isActivated;
     private const int CHECK_TIME = 2;
 
-    [SerializeField] private InteractableObject interactableObject;
+    [Tooltip("Initial state of this lever.")]
+    [SerializeField] private bool isActivated;
     [Tooltip("Minimum angle to activate the lever.")]
     [SerializeField] private float triggerSensibility = 5f;
+    [SerializeField] private InteractableObject interactableObject;
 
-    private void Awake()
-    {
-        joint = GetComponent<HingeJoint2D>();
-    }
+    private void Awake() => joint = GetComponent<HingeJoint2D>();
 
-    private void Start()
-    {
-        transform.rotation = Quaternion.Euler(0f, 0f, joint.limits.min);
-    }
+    private void Start() => InitializeLever();
 
     private void Update()
     {
@@ -50,9 +45,11 @@ public class InteractableLever : InteractableObject
 
         while (checkTime < CHECK_TIME)
         {
+            // Check current angles
             float activationAngle = Mathf.Abs(joint.jointAngle - joint.limits.min);
             float deactivationAngle = Mathf.Abs(joint.jointAngle - joint.limits.max);
 
+            // Check if lever has been activated
             if (!isActivated && activationAngle <= triggerSensibility)
             {
                 OnActivation();
@@ -60,6 +57,7 @@ public class InteractableLever : InteractableObject
                 yield break;
             }
 
+            // Check if lever has been deactivated
             if (isActivated && deactivationAngle <= triggerSensibility)
             {
                 OnDeactivation();
@@ -69,6 +67,24 @@ public class InteractableLever : InteractableObject
 
             checkTime += Time.deltaTime;
             yield return null;
+        }
+        checkCoroutine = null;
+    }
+
+    /// <summary>
+    /// Initializes the lever depending on its initial state.
+    /// </summary>
+    private void InitializeLever()
+    {
+        if (isActivated)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, joint.limits.max);
+            interactableObject.OnActivation();
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, joint.limits.min);
+            interactableObject.OnDeactivation();
         }
     }
 

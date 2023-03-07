@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
+    public int CurrentHealth { get { return health; } set { health = value; } }
+
     // Public variables
     public string enemyType;
-    public float health;
+    public int health;
     public float detectDistance;
     public float patrolSpeed;
     public float attackSpeed;
@@ -32,13 +34,14 @@ public class Enemy : MonoBehaviour
         // Set defaults for public variables
         player = (player == null) ? GameObject.FindGameObjectWithTag("Player") : player;
         enemyType = (enemyType == null) ? "Melee" : enemyType;
-        health = (health == 0f) ? 100f : health;
+        health = (health == 0) ? 100 : health;
         detectDistance = (detectDistance == 0f) ? 10f : detectDistance;
         patrolSpeed = (patrolSpeed == 0f) ? 3f : patrolSpeed;
         attackSpeed = (attackSpeed == 0f) ? 5f : attackSpeed;
 
         // If no patrol positions declared, make one
-        if (patrolPositions.Count == 0) { 
+        if (patrolPositions.Count == 0)
+        {
             GameObject g = new GameObject("Default Patrol Spot");
             g.transform.parent = transform.parent;
             g.transform.position = transform.position;
@@ -77,24 +80,30 @@ public class Enemy : MonoBehaviour
 
         if (playerDistance < detectDistance // Close enough
             && lineOfSight.collider.tag == "Player" // Can see player
-            && onPatrol) { // In the midst of a patrol
+            && onPatrol)
+        { // In the midst of a patrol
             StartCoroutine(BeginAttack());
-        } 
+        }
         else if (playerDistance > detectDistance // Far enough
-                 && onAttack) { // In the midst of attacking
+                 && onAttack)
+        { // In the midst of attacking
             StartCoroutine(BeginPatrol());
         }
 
         // Update calls for patrol and attack
-        if (onPatrol) {
+        if (onPatrol)
+        {
             Patrol();
-        } else if (onAttack) {
+        }
+        else if (onAttack)
+        {
             Attack();
         }
     }
 
     // Function that's called once to transition from attack to patrol
-    private IEnumerator BeginPatrol() {
+    private IEnumerator BeginPatrol()
+    {
         yield return new WaitForEndOfFrame();
         onAttack = false;
 
@@ -102,9 +111,11 @@ public class Enemy : MonoBehaviour
         int closestPatrolIndex = 0;
 
         // For loop that finds the closest patrol position
-        for (int i = 0; i < patrolPositions.Count; i++) {
+        for (int i = 0; i < patrolPositions.Count; i++)
+        {
             float newDistance = (player.transform.position - patrolPositions[i].position).magnitude;
-            if (newDistance < closestPatrolDistance) {
+            if (newDistance < closestPatrolDistance)
+            {
                 closestPatrolDistance = newDistance;
                 closestPatrolIndex = i;
             }
@@ -115,14 +126,15 @@ public class Enemy : MonoBehaviour
         aiPath.maxSpeed = patrolSpeed;
         aiDestSetter.target = patrolPositions[patrolIndex];
         //Debug.Log("Heading back to patrol in spot " + patrolIndex);
-        
+
         // Wait for a bit before setting onPatrol true again
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(1f);
         onPatrol = true;
     }
 
     // Function that's called once to transition from patrol to attack
-    private IEnumerator BeginAttack() {
+    private IEnumerator BeginAttack()
+    {
         yield return new WaitForEndOfFrame();
         onPatrol = false;
 
@@ -138,22 +150,30 @@ public class Enemy : MonoBehaviour
     }
 
     // Function that's constantly called while on patrol mode.
-    private void Patrol() {
+    private void Patrol()
+    {
         if (aiPath.reachedEndOfPath // Arrived at a patrol point
-            && patrolPositions.Count > 1) { // There's a patrol path instead of just a single position
+            && patrolPositions.Count > 1)
+        { // There's a patrol path instead of just a single position
 
-            if (patrolIndex == 0) { // If at the start
+            if (patrolIndex == 0)
+            { // If at the start
                 aiPath.slowdownDistance = patrolSpeed; // Slowdown on approach
                 patrolDirection = 1;
-            } else if (patrolIndex == patrolPositions.Count - 1) { // If at the end
+            }
+            else if (patrolIndex == patrolPositions.Count - 1)
+            { // If at the end
                 aiPath.slowdownDistance = patrolSpeed; // Slowdown on approach
                 patrolDirection = -1;
-            } else { // If at midpoint of patrol path
+            }
+            else
+            { // If at midpoint of patrol path
                 aiPath.slowdownDistance = 0; // Remove slowdown on approach
             }
 
             // If we're ready to swap targets to the next patrol point.
-            if (canSwapTarget) {
+            if (canSwapTarget)
+            {
                 patrolIndex += patrolDirection;
                 aiDestSetter.target = patrolPositions[patrolIndex];
                 canSwapTarget = false;
@@ -163,14 +183,17 @@ public class Enemy : MonoBehaviour
     }
 
     // Function used to prevent Update from calling twice while swapping targets on patrol
-    private IEnumerator SwapTargetTimer() {
+    private IEnumerator SwapTargetTimer()
+    {
         yield return new WaitForSeconds(0.1f);
         canSwapTarget = true;
     }
 
     // Function that's constantly called while on attack mode.
-    private void Attack() {
-        switch (enemyType) {
+    private void Attack()
+    {
+        switch (enemyType)
+        {
             case ("Melee"):
                 aiPath.maxSpeed = attackSpeed;
                 //Debug.Log("chaaaaaarge!");
@@ -186,5 +209,19 @@ public class Enemy : MonoBehaviour
                 // Do Nothing
                 break;
         }
+    }
+
+    public bool Damage(int amount)
+    {
+        if (health - amount <= 0)
+            return true;
+
+        health -= amount;
+        return false;
+    }
+
+    public void Death()
+    {
+        GetComponent<Dropper>().Drop(true);
     }
 }

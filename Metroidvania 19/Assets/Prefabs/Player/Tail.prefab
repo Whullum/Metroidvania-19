@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7210049245274746599}
   m_Layer: 3
   m_Name: Tail
-  m_TagString: Untagged
+  m_TagString: PlayerSegment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

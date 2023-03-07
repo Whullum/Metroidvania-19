@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class BodySegment : MonoBehaviour
 {
+    public PlayerController Player { get; set; }
+
     private Rigidbody2D rBdoy;
     private SpriteRenderer spriteRenderer;
     private float segmentSize;

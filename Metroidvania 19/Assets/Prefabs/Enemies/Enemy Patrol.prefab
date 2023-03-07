@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Patrol Endpoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 4510918105942456949}
   - component: {fileID: 4510918105942456950}
   - component: {fileID: 4510918105942456951}
+  - component: {fileID: 1765388447}
+  - component: {fileID: 1765388446}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -80,8 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: Melee
-  player: {fileID: 0}
-  health: 0
+  health: 5
   detectDistance: 0
   patrolSpeed: 0
   attackSpeed: 0
@@ -172,6 +173,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!61 &1765388447
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510918105942456952}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1765388446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510918105942456952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0fc4c504a93a74fb77befb98a81e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop:
+  - DropPrefab: {fileID: -1867616486093155401, guid: 023e049fe82f18f45ac121939a19e275, type: 3}
+    MinDropAmount: 3
+    MaxDropAmount: 5
+  dropForce: 5
+  dropDelay: 0
+  dropPrefabMass: 1
+  dropPrefabGravityScale: 0.2
+  dropPrefabDrag: 2
 --- !u!1 &4510918106036156616
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +266,7 @@ GameObject:
   m_Layer: 0
   m_Name: Patrol Startpoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -230,7 +278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4510918106309711911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 4.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
