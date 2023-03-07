@@ -40,7 +40,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Roation: 0.582
+    - _Roation: 0.562
     - _Rotation: 0
     m_Colors: []
   m_BuildTextureStacks: []
