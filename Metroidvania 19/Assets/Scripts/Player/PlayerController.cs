@@ -54,11 +54,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         CreateInitialBody();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        CameraController.ShakeCamera?.Invoke();
-    }
-
     /// <summary>
     /// Initializes the body with the minimum shape it will have: HEAD - BASE BODY - BODY SEGMENT - TAIL.
     /// </summary>
@@ -170,6 +165,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         currentHealth -= amount;
 
+        CameraController.ShakeCamera?.Invoke();
+
         // If the player has no health, they die
         if (currentHealth <= 0)
             return true;
@@ -195,8 +192,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         for (int i = 1; i < bodyParts.Count; i++)
         {
-            bodyParts[i].Decouple();
+            RemoveBodySegment();
         }
         GetComponent<PlayerMovement>().enabled = false;
+
+        Rigidbody2D body = GetComponent<Rigidbody2D>();
+        body.gravityScale = .2f;
+        body.AddTorque(transform.up.x * body.velocity.magnitude);
     }
 }

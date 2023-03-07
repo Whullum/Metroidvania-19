@@ -27,20 +27,6 @@ public class Dropper : MonoBehaviour
         if (destroyGameObject)
             Destroy(gameObject);
     }
-
-    private IEnumerator ToggleDrop(int amount, bool destroyGameObject)
-    {
-        int count = amount;
-
-        while (count > 0)
-        {
-
-            count--;
-
-            yield return new WaitForSeconds(dropDelay);
-        }
-
-    }
 }
 
 [System.Serializable]
