@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 4190267990066291935}
   m_Layer: 3
   m_Name: BaseBodySegment
-  m_TagString: Untagged
+  m_TagString: PlayerSegment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,3 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e9b247260d5584d9412d45ecc472eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityScale: 0.3
+  drag: 2
+  decoupleForce: 300
+  torqueForce: 15
+  despawnTime: 20

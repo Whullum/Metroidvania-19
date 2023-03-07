@@ -1,21 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerMelee))]
+[RequireComponent(typeof(PlayerProjectile))]
+[RequireComponent(typeof(PlayerDash))]
 public class AbilitiesManager : MonoBehaviour
 {
-    public bool Projectile = false;
-    public bool Melee = false;
-    public bool Dash = false;
+    private PlayerMelee melee;
+    private PlayerProjectile projectile;
+    private PlayerDash dash;
 
+    [SerializeField] private bool Projectile = false;
+    [SerializeField] private bool Melee = false;
+    [SerializeField] private bool Dash = false;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        GetComponent<PlayerMelee>().enabled= Melee;
-        GetComponent<PlayerProjectile>().enabled = Projectile;
-        GetComponent<PlayerDash>().enabled = Dash;
+        melee = GetComponent<PlayerMelee>();
+        projectile = GetComponent<PlayerProjectile>();
+        dash = GetComponent<PlayerDash>();
     }
 
-
+    void Update()
+    {
+        melee.enabled = Melee;
+        projectile.enabled = Projectile;
+        dash.enabled = Dash;
+    }
 }

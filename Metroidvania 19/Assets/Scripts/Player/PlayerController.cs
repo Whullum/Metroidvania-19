@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Range(2, 10)]
     [Tooltip("The minimum amount of segments the player will have at any time.")]
     [SerializeField] private int minimumBodySize = 2;
+    [Range(2, 50)]
+    [SerializeField] private int maximumBodySize = 10;
+    [SerializeField] private float growthThreshold = 1;
     [Header("Body Segments")]
     [Range(1, 100)]
     [Tooltip("Amount of health each body segment has.")]
@@ -51,11 +54,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         CreateInitialBody();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        CameraController.ShakeCamera?.Invoke();
-    }
-
     /// <summary>
     /// Initializes the body with the minimum shape it will have: HEAD - BASE BODY - BODY SEGMENT - TAIL.
     /// </summary>
@@ -67,6 +65,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             AddBodySegment();
         }
+        maxHealth = segmentHealth * bodyParts.Count;
+        currentHealth = maxHealth;
     }
 
     /// <summary>
@@ -91,11 +91,12 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         // Creates a new body segment depending on the actual body size. If the body size is large enough, the default body segment will be created
         BodySegment newSegment = Instantiate(segmentPrefab, bodyParts[bodyParts.Count - 1].transform.position, bodyParts[bodyParts.Count - 1].transform.rotation, transform).GetComponent<BodySegment>();
+        newSegment.Player = this;
         bodyParts.Insert(bodyIndex, newSegment);
 
         // Calculate the new maxHealth with the new body size
-        maxHealth = segmentHealth * bodyParts.Count;
-        currentHealth = maxHealth;
+        //maxHealth = segmentHealth * bodyParts.Count;
+        //currentHealth = maxHealth;
 
         // Effect for adding a new body part
         Instantiate(segmentAddedEffect, newSegment.transform.position, Quaternion.identity, newSegment.transform);
@@ -152,9 +153,19 @@ public class PlayerController : MonoBehaviour, IDamageable
             AddBodySegment();
     }
 
+    public void GrowBody(bool restoreHealth)
+    {
+        maxHealth += segmentHealth;
+
+        if (restoreHealth)
+            RestoreHealth(maxHealth);
+    }
+
     public bool Damage(int amount)
     {
         currentHealth -= amount;
+
+        CameraController.ShakeCamera?.Invoke();
 
         // If the player has no health, they die
         if (currentHealth <= 0)
@@ -179,6 +190,14 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void Death()
     {
-        Destroy(gameObject);
+        for (int i = 1; i < bodyParts.Count; i++)
+        {
+            RemoveBodySegment();
+        }
+        GetComponent<PlayerMovement>().enabled = false;
+
+        Rigidbody2D body = GetComponent<Rigidbody2D>();
+        body.gravityScale = .2f;
+        body.AddTorque(transform.up.x * body.velocity.magnitude);
     }
 }
