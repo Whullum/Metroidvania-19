@@ -117,7 +117,7 @@ MonoBehaviour:
   damage: 1
   activationTime: 1
   explosionRadius: 5
-  explosionForce: 25
+  explosionForce: 15
   collisionLayers:
     serializedVersion: 2
     m_Bits: 8

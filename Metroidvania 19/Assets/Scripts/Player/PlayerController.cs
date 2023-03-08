@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private static List<BodySegment> bodyParts = new List<BodySegment>();
     private int currentHealth;
+    private int totalHealth;
     private int maxHealth;
 
     [Header("Player Body")]
@@ -31,7 +32,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private int minimumBodySize = 2;
     [Range(2, 50)]
     [SerializeField] private int maximumBodySize = 10;
-    [SerializeField] private float growthThreshold = 1;
     [Header("Body Segments")]
     [Range(1, 100)]
     [Tooltip("Amount of health each body segment has.")]
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        maxHealth = maximumBodySize * segmentHealth;
         CreateInitialBody();
     }
 
@@ -65,8 +66,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             AddBodySegment();
         }
-        maxHealth = segmentHealth * bodyParts.Count;
-        currentHealth = maxHealth;
+        totalHealth = segmentHealth * bodyParts.Count;
+        currentHealth = totalHealth;
     }
 
     /// <summary>
@@ -95,8 +96,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         bodyParts.Insert(bodyIndex, newSegment);
 
         // Calculate the new maxHealth with the new body size
-        //maxHealth = segmentHealth * bodyParts.Count;
-        //currentHealth = maxHealth;
+        CalculateTotalHealth();
+        currentHealth = totalHealth;
 
         // Effect for adding a new body part
         Instantiate(segmentAddedEffect, newSegment.transform.position, Quaternion.identity, newSegment.transform);
@@ -120,19 +121,26 @@ public class PlayerController : MonoBehaviour, IDamageable
     /// <summary>
     /// Removes the last body segment from the player body.
     /// </summary>
-    private void RemoveBodySegment()
+    private void RemoveBodySegment(int bodyIndex)
     {
-        int secondToLastSegment = bodyParts.Count - 2;
-
-        BodySegment segmentToRemove = bodyParts[secondToLastSegment];
-        bodyParts.RemoveAt(secondToLastSegment);
+        BodySegment segmentToRemove = bodyParts[bodyIndex];
+        bodyParts.RemoveAt(bodyIndex);
 
         CalculateSortingOrder();
 
         Instantiate(segmentDecoupledEffect, segmentToRemove.transform.position, Quaternion.identity, segmentToRemove.transform);
         segmentToRemove.Decouple();
 
+        CalculateTotalHealth();
         SegmentRemoved?.Invoke();
+    }
+
+    private void CalculateTotalHealth()
+    {
+        totalHealth = segmentHealth * bodyParts.Count;
+
+        if (totalHealth > maxHealth)
+            totalHealth = maxHealth;
     }
 
     /// <summary>
@@ -143,22 +151,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         currentHealth += amount;
 
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
-
-        int totalSegments = currentHealth / segmentHealth; // Total segment this body has indenpendently of the health
-        int segmentsToAdd = Mathf.Abs(bodyParts.Count - totalSegments); // Substract the total amount of segments to add
-
-        for (int i = 0; i < segmentsToAdd; i++)
-            AddBodySegment();
+        if (currentHealth > totalHealth)
+            currentHealth = totalHealth;
     }
 
-    public void GrowBody(bool restoreHealth)
+    public void GrowBody()
     {
-        maxHealth += segmentHealth;
-
-        if (restoreHealth)
-            RestoreHealth(maxHealth);
+        if (totalHealth < maxHealth)
+            AddBodySegment();
     }
 
     public bool Damage(int amount)
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 // If the amount of segments to destroy is more than the actual minimum size of the body, we can't destroy those
                 if (bodyParts.Count == minimumBodySize)
                     return false;
-                RemoveBodySegment();
+                RemoveBodySegment(bodyParts.Count - 2);
             }
         }
         return false;
@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         for (int i = 1; i < bodyParts.Count; i++)
         {
-            RemoveBodySegment();
+            RemoveBodySegment(i);
         }
         GetComponent<PlayerMovement>().enabled = false;
 

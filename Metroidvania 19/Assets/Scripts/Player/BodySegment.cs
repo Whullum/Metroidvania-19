@@ -2,13 +2,15 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public class BodySegment : MonoBehaviour
+public class BodySegment : MonoBehaviour, IDamageable
 {
     public PlayerController Player { get; set; }
+    public int CurrentHealth { get { return Player.CurrentHealth; } set { } }
 
     private Rigidbody2D rBdoy;
     private SpriteRenderer spriteRenderer;
     private float segmentSize;
+    private bool canDamage = true;
 
     [Header("Decouple Parameters")]
     [Range(0.1f, 1f)]
@@ -63,7 +65,20 @@ public class BodySegment : MonoBehaviour
         rBdoy.AddTorque(torqueForce);
         rBdoy.gravityScale = gravityScale;
         rBdoy.drag = drag;
+        canDamage = false;
 
         Destroy(gameObject, despawnTime);
+    }
+
+    public bool Damage(int amount)
+    {
+        if (canDamage)
+            return Player.Damage(amount);
+        return false;
+    }
+
+    public void Death()
+    {
+        Player.Death();
     }
 }
