@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class PlayerHealthRestore : DroppedObject
+public class PlayerSegmentGrow : MonoBehaviour
 {
-    [Range(1, 100)]
-    [SerializeField] private int restoreAmount = 1;
     [SerializeField] private float despawnTime = 15f;
     [SerializeField] private ParticleSystem meatEatedEffect;
 
@@ -17,7 +15,7 @@ public class PlayerHealthRestore : DroppedObject
         if (collision.CompareTag("Player"))
         {
             if (collision.TryGetComponent(out PlayerController player))
-                player.RestoreHealth(restoreAmount);
+                player.GrowBody();
 
             meatEatedEffect.Play();
             meatEatedEffect.transform.parent = null;
