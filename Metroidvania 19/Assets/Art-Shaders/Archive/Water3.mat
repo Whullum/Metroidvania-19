@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Water3
+  m_Shader: {fileID: -6465566751694194690, guid: 532486ec5a2c03c41a91e386726cd5cf, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _RenderTexture:
+        m_Texture: {fileID: 8400000, guid: 47d0b8c7ca20d224dac7afb1413f07aa, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 0.7
+    - _CausticsMovement: 2
+    - _CausticsPower: 9
+    - _CausticsScale: 10
+    - _RefractionAmount: 0.2
+    - _ShoreLineLength: 10
+    m_Colors:
+    - _CausticsColor: {r: 0, g: 0.85490197, b: 2, a: 0}
+    - _CausticsSpeed: {r: -0.1, g: 0.01, b: 0, a: 0}
+    - _ShoreLineColor: {r: 0, g: 0.629617, b: 1, a: 0}
+    - _WaterColor: {r: 0.57861626, g: 1.5482005, b: 2, a: 1}
+    - _WaterOffset: {r: 0, g: 0.5, b: 0, a: 0}
+    - _WaterTiling: {r: 1, g: -0.1, b: 0, a: 0}
+  m_BuildTextureStacks: []
