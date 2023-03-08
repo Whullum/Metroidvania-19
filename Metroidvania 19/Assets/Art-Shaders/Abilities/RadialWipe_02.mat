@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RadialWipeBG
-  m_Shader: {fileID: -6465566751694194690, guid: a4846ff147b6f614cae4bf5895f7636a, type: 3}
+  m_Name: RadialWipe_02
+  m_Shader: {fileID: -6465566751694194690, guid: 57e11f839db1c3a49a578f8070ec8445, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -38,15 +38,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _ColorEnds: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Roation: 1
+    - _Rotation: 0
     m_Colors:
-    - _Color: {r: 0.1990609, g: 1, b: 0, a: 0}
-    - _Color1: {r: 0, g: 0, b: 0, a: 0}
-    - _Color2: {r: 0.13688485, g: 0.6981132, b: 0, a: 0}
+    - _Color1: {r: 1, g: 0, b: 0, a: 0}
+    - _Color2: {r: 0, g: 0, b: 0, a: 0}
+    - _Color3: {r: 0.0880425, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &9054841655622896254
+--- !u!114 &2474996620058894473
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

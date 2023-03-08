@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RadialWipe
+  m_Name: RadialWipe_03
   m_Shader: {fileID: -6465566751694194690, guid: 57e11f839db1c3a49a578f8070ec8445, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,7 +41,7 @@ Material:
     - _ColorEnds: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Roation: 0.8
+    - _Roation: 0.834
     - _Rotation: 0
     m_Colors:
     - _Color1: {r: 1, g: 0, b: 0, a: 0}
