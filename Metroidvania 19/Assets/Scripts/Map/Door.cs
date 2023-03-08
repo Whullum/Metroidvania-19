@@ -15,12 +15,14 @@ public class Door : InteractableObject
 {
     [SerializeField] private int doorNumber;
     [SerializeField] private string connectingMapName;
+    [SerializeField] private bool isLocked;
     [SerializeField] private MapNode parentMapNode;
     [SerializeField] private MapManager mapManager;
     [SerializeField] private DoorDirection playerSpawnDirection;
     [SerializeField] private const int playerSpawnDistance = 5;
 
     public int DoorNumber { get => doorNumber; set => doorNumber = value; }
+    public bool IsLocked { get => isLocked; set => isLocked = value; }
 
     private void Start()
     {
@@ -32,7 +34,7 @@ public class Door : InteractableObject
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && isLocked == false)
         {
             // Access the correct MapNode through the mapLevels dictionary
             MapNode connectingNode = null;
@@ -49,13 +51,13 @@ public class Door : InteractableObject
                 {
                     // Doors are rotated, so use the door's local X axis to get the correct starting direction
                     case DoorDirection.NORTH:
-                        startingDisplacement = new Vector3(0, playerSpawnDistance);
+                        startingDisplacement = new Vector3(0, -playerSpawnDistance);
                         break;
                     case DoorDirection.EAST:
                         startingDisplacement = new Vector3(-playerSpawnDistance, 0);
                         break;
                     case DoorDirection.SOUTH:
-                        startingDisplacement = new Vector3(0, -playerSpawnDistance);
+                        startingDisplacement = new Vector3(0, playerSpawnDistance);
                         break;
                     case DoorDirection.WEST:
                         startingDisplacement = new Vector3(playerSpawnDistance, 0);

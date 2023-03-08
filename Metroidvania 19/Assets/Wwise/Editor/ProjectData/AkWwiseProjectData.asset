@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: e141918a34c9484cb3bda3e5087243a3
     GuidInternal: 
-    m_lastTime: -8585238270132523474
+    m_lastTime: -8585234370798976392
     List:
     - name: Main
       guid: f77bd21f14399d4a94db90a4a0cc08f3
@@ -94,8 +94,127 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 7c09fb960ce3bb48b66a8b53e7e942ec
     GuidInternal: 
-    m_lastTime: -8585240871549668433
+    m_lastTime: -8585234370905170194
     List:
+    - name: Play_Bite
+      guid: 5de9772d9b73e547b2e0b587e5ce6e16
+      id: 1810912708
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Bite
+        ObjectType: 3
+        guid: 5de9772d9b73e547b2e0b587e5ce6e16
+      Path: Events\Default Work Unit\Play_Bite
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Dash
+      guid: d00213fbc3519741a2134794f253daca
+      id: 2211787386
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Dash
+        ObjectType: 3
+        guid: d00213fbc3519741a2134794f253daca
+      Path: Events\Default Work Unit\Play_Dash
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Projectile
+      guid: 8bac5be0a9637d44bdfa8d12cc9cca92
+      id: 880148599
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Projectile
+        ObjectType: 3
+        guid: 8bac5be0a9637d44bdfa8d12cc9cca92
+      Path: Events\Default Work Unit\Play_Projectile
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Serpent_UI_Sounds_Cancel
+      guid: 7d2d5d720ff49a4cb997e6b8eb6323ec
+      id: 3636396448
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Serpent_UI_Sounds_Cancel
+        ObjectType: 3
+        guid: 7d2d5d720ff49a4cb997e6b8eb6323ec
+      Path: Events\Default Work Unit\Play_Serpent_UI_Sounds_Cancel
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Serpent_UI_Sounds_Confirm
+      guid: 06eee668d910004d9c438c79581c5333
+      id: 2233317182
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Serpent_UI_Sounds_Confirm
+        ObjectType: 3
+        guid: 06eee668d910004d9c438c79581c5333
+      Path: Events\Default Work Unit\Play_Serpent_UI_Sounds_Confirm
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Serpent_UI_Sounds_Hover
+      guid: bab53d9cb8bc7e4495c39e0520dac3d4
+      id: 1879942652
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Serpent_UI_Sounds_Hover
+        ObjectType: 3
+        guid: bab53d9cb8bc7e4495c39e0520dac3d4
+      Path: Events\Default Work Unit\Play_Serpent_UI_Sounds_Hover
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Serpent_UI_Sounds_Select
+      guid: b21c9c8df32a854da18346294d58ddcc
+      id: 2449954062
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Serpent_UI_Sounds_Select
+        ObjectType: 3
+        guid: b21c9c8df32a854da18346294d58ddcc
+      Path: Events\Default Work Unit\Play_Serpent_UI_Sounds_Select
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Stage_1
       guid: 29ab6b63b267b74c8ff62387cc1d5b94
       id: 2818024140
@@ -125,8 +244,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 56e918e04993ac419dd8a9c4f1330f30
     GuidInternal: 
-    m_lastTime: -8585240871549658418
-    List: []
+    m_lastTime: -8585233696374860710
+    List:
+    - name: EnemyProximity
+      guid: b3b9658407ce364cb630a17e12ada0be
+      id: 1850949742
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 56e918e04993ac419dd8a9c4f1330f30
+      - ElementName: EnemyProximity
+        ObjectType: 13
+        guid: b3b9658407ce364cb630a17e12ada0be
+      Path: Game Parameters\Default Work Unit\EnemyProximity
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -139,7 +272,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: b069793efb8e01418c211b9c5f1aab60
     GuidInternal: 
-    m_lastTime: -8585240871540096835
+    m_lastTime: -8585234374118586962
     List:
     - name: Gameplay
       guid: 596586587b4cfb44aa83529eb257bfa1
@@ -220,6 +353,22 @@ MonoBehaviour:
         - ElementName: Defeat_Enemy
           ObjectType: 8
           guid: 8b57e6fcc582f94e85540e2225473dde
+      - name: Final_Stage
+        guid: 12897150544a064baac675ee261ab557
+        id: 3808459912
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: b069793efb8e01418c211b9c5f1aab60
+        - ElementName: Gameplay
+          ObjectType: 9
+          guid: 596586587b4cfb44aa83529eb257bfa1
+        - ElementName: Final_Stage
+          ObjectType: 8
+          guid: 12897150544a064baac675ee261ab557
       - name: Low_Health
         guid: 1a7d90dcbd133340acbde53b7fa3811b
         id: 72790338
@@ -300,7 +449,7 @@ MonoBehaviour:
     m_lastTime: -8585240871540076815
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0500000006000000
+  ExpandedWaapiItemIds: 
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
