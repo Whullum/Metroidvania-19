@@ -2889,6 +2889,10 @@ PrefabInstance:
       value: Door_EastWest
       objectReference: {fileID: 0}
     - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
+      propertyPath: doorLock
+      value: 
+      objectReference: {fileID: 11400000, guid: 697d2bbedbd71fb419964be71806d910, type: 2}
+    - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
       propertyPath: isLocked
       value: 1
       objectReference: {fileID: 0}

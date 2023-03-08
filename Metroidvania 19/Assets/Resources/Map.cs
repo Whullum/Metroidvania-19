@@ -12,5 +12,6 @@ public class Map : ScriptableObject
 {
     [SerializeField]
     public StringMapNodeDictionary mapLevels;
+    public List<Door> mapDoors;
     public AK.Wwise.Event mapMusic;
 }

@@ -15,14 +15,13 @@ public class Door : InteractableObject
 {
     [SerializeField] private int doorNumber;
     [SerializeField] private string connectingMapName;
-    [SerializeField] private bool isLocked;
     [SerializeField] private MapNode parentMapNode;
     [SerializeField] private MapManager mapManager;
+    [SerializeField] private DoorLock doorLock;
     [SerializeField] private DoorDirection playerSpawnDirection;
     [SerializeField] private const int playerSpawnDistance = 5;
 
     public int DoorNumber { get => doorNumber; set => doorNumber = value; }
-    public bool IsLocked { get => isLocked; set => isLocked = value; }
 
     private void Start()
     {
@@ -30,11 +29,13 @@ public class Door : InteractableObject
 
         if (parentMapNode == null)
             parentMapNode = GetComponentInParent<MapNode>();
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && isLocked == false)
+        if (collision.gameObject.tag == "Player" && CheckDoorLockStatus())
         {
             // Access the correct MapNode through the mapLevels dictionary
             MapNode connectingNode = null;
@@ -79,9 +80,20 @@ public class Door : InteractableObject
         }
     }
 
+    private bool CheckDoorLockStatus()
+    {
+        if (doorLock == null)
+            return true;
+        else
+            return !doorLock.isLocked;
+    }
+
     public override void OnActivation()
     {
-        
+        if (doorLock != null)
+        {
+            doorLock.isLocked = false;
+        }
     }
 
     public override void OnDeactivation()
