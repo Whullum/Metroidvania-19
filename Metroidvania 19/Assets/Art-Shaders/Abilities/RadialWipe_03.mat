@@ -41,10 +41,10 @@ Material:
     - _ColorEnds: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Roation: 0.834
+    - _Roation: 0.956017
     - _Rotation: 0
     m_Colors:
-    - _Color1: {r: 1, g: 0, b: 0, a: 0}
+    - _Color1: {r: 0, g: 0.878356, b: 1, a: 0}
     - _Color2: {r: 0, g: 0, b: 0, a: 0}
     - _Color3: {r: 0.0880425, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

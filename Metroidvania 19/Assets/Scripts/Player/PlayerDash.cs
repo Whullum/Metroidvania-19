@@ -6,7 +6,9 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     [Tooltip("Length of cooldown")]
-    public float timeInactive = 0f;
+    public float timeInactive = 5f;
+
+    private AbilitiesShader shader;
 
     [SerializeField] float dashSpeed = 0f;
     [SerializeField] float dashDuration = 10f;
@@ -17,14 +19,23 @@ public class PlayerDash : MonoBehaviour
     bool isDashing = false;
     PlayerMovement playerMovement;
 
-    private void Start()
+    private void Awake()
     {
+        shader = FindObjectOfType<AbilitiesShader>();
         playerMovement = GetComponent<PlayerMovement>();
     }
-    // Update is called once per frame
+
+    private void OnEnable() {
+        if (shader.enabled) { StartCoroutine(shader.toggleAnim(2, true)); }
+    }
+
+    private void OnDisable() {
+        if (shader.enabled) { StartCoroutine(shader.toggleAnim(2, false)); }
+    }
+    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > cooldown && isDashing == false)
+        if (Input.GetKeyDown(KeyCode.F) && Time.time > cooldown && isDashing == false)
         {
             
             SetDashSpeed(true);
@@ -33,7 +44,7 @@ public class PlayerDash : MonoBehaviour
         }
         else if (dashTime <= Time.time && cooldown == 0f && isDashing)
         {
-            
+            StartCoroutine(shader.DashCooldown((int)timeInactive));
             SetDashSpeed(false);
             isDashing = false;
         }

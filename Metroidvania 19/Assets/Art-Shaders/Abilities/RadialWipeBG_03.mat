@@ -40,7 +40,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Roation: 0.834
+    - _Roation: 0.956017
     m_Colors:
     - _Color: {r: 0.1990609, g: 1, b: 0, a: 0}
     - _Color1: {r: 0, g: 0, b: 0, a: 0}
