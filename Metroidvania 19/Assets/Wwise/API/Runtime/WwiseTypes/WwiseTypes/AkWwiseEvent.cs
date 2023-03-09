@@ -12,8 +12,9 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2023 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
+
 #if !(UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
 
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
@@ -130,6 +131,30 @@ namespace AK.Wwise
 #endif
 
 			m_playingId = AkSoundEngine.PostEvent(Id, gameObject, flags, callback, cookie);
+			VerifyPlayingID(m_playingId);
+			return m_playingId;
+		}
+
+		/// <summary>
+		///     Posts this Event on a GameObject ID.
+		/// </summary>
+		/// <param name="gameObjectId">The GameObject ID</param>
+		/// <returns>Returns the playing ID.</returns>
+		public uint Post(ulong gameObjectId)
+		{
+			if (!IsValid())
+				return AkSoundEngine.AK_INVALID_PLAYING_ID;
+
+#if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
+			var args = new object[] { gameObjectId };
+			var argTypes = new System.Type[] { gameObjectId.GetType() };
+			if (!AkAddressableBankManager.Instance.LoadedBankContainsEvent(Name, Id, this, "Post", argTypes, args))
+			{
+				return AkSoundEngine.AK_PENDING_EVENT_LOAD_ID;
+			}
+#endif
+
+			m_playingId = AkSoundEngine.PostEvent(Id, gameObjectId);
 			VerifyPlayingID(m_playingId);
 			return m_playingId;
 		}

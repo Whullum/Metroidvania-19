@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8787597473645043435}
   m_Layer: 3
   m_Name: BodySegment
-  m_TagString: Untagged
+  m_TagString: PlayerSegment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7302917351678238606}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.86, y: -0.06, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1139827361
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7291120cd1442d946b835ec7f48b13d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -136,5 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e9b247260d5584d9412d45ecc472eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sineWaveScale: 20
-  sineWaveSpeed: 10
+  gravityScale: 0.3
+  drag: 2
+  decoupleForce: 300
+  torqueForce: 15
+  despawnTime: 20

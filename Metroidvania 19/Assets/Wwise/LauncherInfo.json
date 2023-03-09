@@ -1,13 +1,29 @@
 {
-    "originalSdkFolder": "D:\\Wwise\\Wwise 2021.1.12.7973\\SDK",
+    "originalSdkFolder": "D:\\Wwise\\Wwise 2022.1.1.8100\\SDK",
     "currentVersion": {
-        "build": 2529,
+        "build": 2644,
         "major": 1,
-        "minor": 12,
+        "minor": 1,
         "nickname": "",
-        "year": 2021
+        "year": 2022
     },
     "installedBundleGroups": [
+        {
+            "id": "Packages",
+            "valueId": "Unity"
+        },
+        {
+            "id": "Packages",
+            "valueId": "Extensions"
+        },
+        {
+            "id": "DeploymentPlatforms",
+            "valueId": "Mac"
+        },
+        {
+            "id": "DeploymentPlatforms",
+            "valueId": "Windows"
+        },
         {
             "id": "Packages",
             "valueId": "Unity"

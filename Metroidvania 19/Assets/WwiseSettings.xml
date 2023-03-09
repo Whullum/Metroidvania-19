@@ -10,9 +10,11 @@
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <WwiseInstallationPathMac />
-  <WwiseInstallationPathWindows>D:\Wwise\Wwise 2021.1.12.7973</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../Metroidvania 19_WwiseProject/Metroidvania 19_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseInstallationPathWindows>D:\Wwise\Wwise 2022.1.1.8100</WwiseInstallationPathWindows>
+  <WwiseProjectPath>../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/Metroidvania 19_WwiseProject.wproj</WwiseProjectPath>
   <UseWaapi>true</UseWaapi>
   <WaapiPort>8080</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>
+  <XMLTranslatorTimeout>10</XMLTranslatorTimeout>
+  <WaapiTranslatorTimeout>0</WaapiTranslatorTimeout>
 </WwiseSettings>

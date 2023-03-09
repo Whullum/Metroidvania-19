@@ -13,7 +13,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2023 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 public abstract class AkObstructionOcclusion : UnityEngine.MonoBehaviour
@@ -60,18 +60,24 @@ public abstract class AkObstructionOcclusion : UnityEngine.MonoBehaviour
 		for (var i = 0; i < currentListenerList.Count; ++i)
 		{
 			if (!ObstructionOcclusionValues.ContainsKey(currentListenerList[i]))
+			{
 				ObstructionOcclusionValues.Add(currentListenerList[i], new ObstructionOcclusionValue());
+			}
 		}
 
 		// remove listeners
 		foreach (var ObsOccPair in ObstructionOcclusionValues)
 		{
 			if (!currentListenerList.Contains(ObsOccPair.Key))
+			{
 				listenersToRemove.Add(ObsOccPair.Key);
+			}
 		}
 
 		for (var i = 0; i < listenersToRemove.Count; ++i)
+		{
 			ObstructionOcclusionValues.Remove(listenersToRemove[i]);
+		}
 
 		listenersToRemove.Clear();
 	}
@@ -91,7 +97,9 @@ public abstract class AkObstructionOcclusion : UnityEngine.MonoBehaviour
 				var magnitude = difference.magnitude;
 
 				if (maxDistance > 0 && magnitude > maxDistance)
+				{
 					ObsOccValue.targetValue = ObsOccValue.currentValue;
+				}
 				else
 				{
 					ObsOccValue.targetValue =
@@ -117,7 +125,9 @@ public abstract class AkObstructionOcclusion : UnityEngine.MonoBehaviour
 		foreach (var ObsOccPair in ObstructionOcclusionValues)
 		{
 			if (ObsOccPair.Value.Update(fadeRate))
+			{
 				SetObstructionOcclusion(ObsOccPair);
+			}
 		}
 	}
 
@@ -129,7 +139,9 @@ public abstract class AkObstructionOcclusion : UnityEngine.MonoBehaviour
 		public bool Update(float fadeRate)
 		{
 			if (UnityEngine.Mathf.Approximately(targetValue, currentValue))
+			{
 				return false;
+			}
 
 			currentValue += fadeRate * UnityEngine.Mathf.Sign(targetValue - currentValue) * UnityEngine.Time.deltaTime;
 			currentValue = UnityEngine.Mathf.Clamp(currentValue, 0.0f, 1.0f);

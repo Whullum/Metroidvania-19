@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{3F2A3947-0B8E-76C6-99E4-5918CBF9EA7E}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<StateGroups>
+				<StateGroup Id="89505537" Name="Gameplay">
+					<States>
+						<State Id="72790338" Name="Low_Health"/>
+						<State Id="144681581" Name="Defeat_Enemy"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="779278001" Name="Death"/>
+						<State Id="1160234136" Name="Normal"/>
+						<State Id="2764240573" Name="Combat"/>
+						<State Id="3438683684" Name="Approach_Enemy"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{0E5A9E28-4545-BF41-5EA6-7DB4C7CB09DE}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="1769791" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-combat-track-no-viola-screech.wav</ShortName>
+					<CachePath>SFX/serpent-combat-track-no-viola-screech_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="468232282" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-combat-2-22-23-full.wav</ShortName>
+					<CachePath>SFX/serpent-combat-2-22-23-full_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="666427947" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stage-1-beat-no-arp-no-pulse.wav</ShortName>
+					<CachePath>SFX/stage-1-beat-no-arp-no-pulse_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="667552379" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stage-1-bass-eighth-note-pulse.wav</ShortName>
+					<CachePath>SFX/stage-1-bass-eighth-note-pulse_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="682576048" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-enemy-defeat-stinger-2-25-23.wav</ShortName>
+					<CachePath>SFX/serpent-enemy-defeat-stinger-2-25-23_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="705393609" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-approaching.wav</ShortName>
+					<CachePath>SFX/serpent-approaching_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="801245890" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stage-1-bass-whole-notes.wav</ShortName>
+					<CachePath>SFX/stage-1-bass-whole-notes_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="803851251" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stage-1-transition-hit.wav</ShortName>
+					<CachePath>SFX/stage-1-transition-hit_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="804177259" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stage-1-beat.wav</ShortName>
+					<CachePath>SFX/stage-1-beat_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="895425634" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stage-1-bridge-variation.wav</ShortName>
+					<CachePath>SFX/stage-1-bridge-variation_D79FB2B7.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2818024140" Name="Play_Stage_1" DurationType="Infinite">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="1160234136"/>
+							<MediaRefs>
+								<MediaRef Id="666427947"/>
+								<MediaRef Id="667552379"/>
+								<MediaRef Id="801245890"/>
+								<MediaRef Id="803851251"/>
+								<MediaRef Id="804177259"/>
+								<MediaRef Id="895425634"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="2764240573"/>
+							<MediaRefs>
+								<MediaRef Id="1769791"/>
+								<MediaRef Id="468232282"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="144681581"/>
+							<MediaRefs>
+								<MediaRef Id="682576048"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="3438683684"/>
+							<MediaRefs>
+								<MediaRef Id="705393609"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="779278001"/>
+							<MediaRefs>
+								<MediaRef Id="682576048"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="748895195"/>
+							<MediaRefs>
+								<MediaRef Id="666427947"/>
+								<MediaRef Id="667552379"/>
+								<MediaRef Id="801245890"/>
+								<MediaRef Id="803851251"/>
+								<MediaRef Id="804177259"/>
+								<MediaRef Id="895425634"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+			</Events>
+			<StateGroups>
+				<StateGroup Id="89505537" Name="Gameplay">
+					<States>
+						<State Id="72790338" Name="Low_Health"/>
+						<State Id="144681581" Name="Defeat_Enemy"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="779278001" Name="Death"/>
+						<State Id="1160234136" Name="Normal"/>
+						<State Id="2764240573" Name="Combat"/>
+						<State Id="3438683684" Name="Approach_Enemy"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{742A6F6D-5590-B79D-E375-E96652900C65}</FileHash>
+</SoundBanksInfo>

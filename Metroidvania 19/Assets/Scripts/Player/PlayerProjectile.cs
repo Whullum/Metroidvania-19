@@ -78,7 +78,7 @@ public class PlayerProjectile : MonoBehaviour
         
         
         var bulletInstance = Instantiate(bulletObject, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        bulletInstance.GetComponent<Bullet>().bulletLifeTime = lifeTime;
+        bulletInstance.GetComponent<Bullet>().BulletLifeTime = lifeTime;
         bulletInstance.transform.localScale = new Vector3(bulletSize, bulletSize, 0);
 
         bulletInstance.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;

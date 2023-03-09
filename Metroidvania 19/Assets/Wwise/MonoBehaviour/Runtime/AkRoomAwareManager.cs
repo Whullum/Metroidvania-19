@@ -13,7 +13,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2023 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 /// @brief This manager tracks the AkRoomAwareObjects and the AkRooms in which they enter and exit.
@@ -46,7 +46,9 @@ public static class AkRoomAwareManager
 	public static void ObjectEnteredRoom(UnityEngine.Collider collider, AkRoom room)
 	{
 		if (!collider)
+		{
 			return;
+		}
 
 		ObjectEnteredRoom(AkRoomAwareObject.GetAkRoomAwareObjectFromCollider(collider), room);
 	}
@@ -54,7 +56,9 @@ public static class AkRoomAwareManager
 	public static void ObjectEnteredRoom(AkRoomAwareObject roomAwareObject, AkRoom room)
 	{
 		if (!roomAwareObject || !room)
+		{
 			return;
+		}
 
 		var enteredRoom = room.TryEnter(roomAwareObject);
 		if (enteredRoom)
@@ -67,7 +71,9 @@ public static class AkRoomAwareManager
 	public static void ObjectExitedRoom(UnityEngine.Collider collider, AkRoom room)
 	{
 		if (!collider)
+		{
 			return;
+		}
 
 		ObjectExitedRoom(AkRoomAwareObject.GetAkRoomAwareObjectFromCollider(collider), room);
 	}
@@ -75,7 +81,9 @@ public static class AkRoomAwareManager
 	public static void ObjectExitedRoom(AkRoomAwareObject roomAwareObject, AkRoom room)
 	{
 		if (!roomAwareObject || !room)
+		{
 			return;
+		}
 
 		room.Exit(roomAwareObject);
 		roomAwareObject.ExitedRoom(room);
@@ -87,7 +95,9 @@ public static class AkRoomAwareManager
 		foreach (var roomAwareObject in m_RoomAwareObjectToUpdate)
 		{
 			if (m_RoomAwareObjects.Contains(roomAwareObject))
+			{
 				roomAwareObject.SetGameObjectInHighestPriorityActiveAndEnabledRoom();
+			}
 		}
 		m_RoomAwareObjectToUpdate.Clear();
 	}
