@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAppendage : MonoBehaviour
@@ -9,47 +10,187 @@ public class PlayerAppendage : MonoBehaviour
     Vector3 vector3;
     Camera cam;
     private Vector3 appendageRotation;
-    GetEnemy enemy;
+    GetTarget target;
     bool caught = false;
     Vector3 objectPos;
-
-    [SerializeField] float maxDistance = 20f;
+    PlayerMovement playerMove;
+    float curSpeed;
+    private List<AppendageSegment> appendageSegments = new List<AppendageSegment>();
+    int segmentCounter = 0;
+    Vector3 copyGrapplePoint;
+    [SerializeField] float breakDistance = 20f;
+    [SerializeField] float targetPull = 2.0f;
+    [SerializeField] float appendageSize = 12f;
+    [SerializeField] float appendageWidth = 1.0f;
+    [SerializeField] float segmentSize = 3f;
+    //[SerializeField] float playerSpeed = 5f;
     // Start is called before the first frame update
     void Start()
     {
-        enemy = transform.GetChild(3).GetComponent<GetEnemy>();
-        grapplePoint = gameObject.transform.GetChild(2);
+        target = transform.parent.parent.transform.GetChild(3).GetComponent<GetTarget>();
+        grapplePoint = gameObject.transform.parent.parent.GetChild(2).transform;
+        copyGrapplePoint = grapplePoint.position;
         appendage = GetComponent<LineRenderer>();
         cam = Camera.main;
+        playerMove = GetComponent<PlayerMovement>();
+        for (int x = 0; x < appendageSize; x++)
+        {
+            appendageSegments.Add(new AppendageSegment(grapplePoint.position));
+            //grapplePoint.position = new Vector3(0, 0, 90);
+            copyGrapplePoint -= new Vector3(0, segmentSize);
+
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Object is " + enemy.IsObjectClose());
-        //Debug.Log("Caught object: " + caught);
-        Debug.Log("Distance: " + Vector3.Distance(transform.position, objectPos));
-        if (Input.GetMouseButton(1) && (enemy.IsObjectClose() || caught)) {
-            if(enemy.objectPos != null)
-                objectPos = enemy.objectPos.position;
-            
-            vector3 = Input.mousePosition;
-            appendage.SetPosition(0, grapplePoint.position);
-            appendage.SetPosition(1, objectPos);
+        
+        
+        if (Input.GetMouseButton(1) && (target.IsObjectClose() || caught)) {
+            if(target.objectPos != null)
+                objectPos = target.objectPos.position;
+
+            appendage.enabled= true;
+            DrawAppendage();
+            //appendage.SetPosition(0, grapplePoint.position);
+
+            /*
+            if(segmentCounter < appendageSize || appendageSegments[(int)appendageSize-1].curPos != objectPos) {
+
+                appendageSegments.Add(new AppendageSegment(grapplePoint.position));
+                segmentCounter++; 
+            }*/
+            //appendage.SetPosition(appendage.positionCount - 1, objectPos);
+
+            //SimulatePhysics();
+
+
+
+            //gameObject.transform.localScale.Set(Vector3.Distance(appendage.GetPosition(1), appendage.GetPosition(0)),appendage.startWidth,0);
+
+            gameObject.transform.parent.parent.GetComponent<Rigidbody2D>().AddForce((objectPos-transform.parent.parent.position).normalized * targetPull);
             caught= true;
+            
         }
         
-        if(Vector3.Distance(transform.position, objectPos) > maxDistance || Input.GetMouseButton(1) == false)
+        if (Vector3.Distance(transform.parent.parent.position, objectPos) > breakDistance || Input.GetMouseButton(1) == false)
         {
             caught= false;
+            
         }
 
         if (caught == false)
         {
-            appendage.SetPosition(0, Vector3.zero);
-            appendage.SetPosition(1, Vector3.zero);
+            appendage.enabled = false;
+            //appendage.SetPosition(0, Vector3.zero);
+            //appendage.SetPosition(appendage.positionCount-1, Vector3.zero); 
         }
 
 
     }
+
+
+    private void FixedUpdate()
+    {
+        if (Input.GetMouseButton(1) && (target.IsObjectClose() || caught))
+            SimulatePhysics();
+    }
+
+    public struct AppendageSegment
+    {
+        public Vector3 curPos;
+        public Vector3 prevPos;
+
+        public AppendageSegment(Vector3 pos)
+        {
+            curPos = pos;   
+            prevPos = pos;
+        }
+    }
+
+    private void DrawAppendage()
+    {
+        float appendWidth = appendageWidth;
+        appendage.startWidth = appendWidth;
+        appendage.endWidth = appendWidth;
+
+        Vector3[] appendPos = new Vector3[(int)appendageSize];
+        for (int x = 0; x < appendageSize; x++)
+        {
+            appendPos[x] = appendageSegments[x].curPos;
+        }
+
+        appendage.positionCount = appendPos.Length;
+        appendage.SetPositions(appendPos);
+    }
+
+    private void SimulatePhysics()
+    {
+        Vector3 gravity = new Vector3(0, -1f);
+        for(int x = 1; x < appendageSize-2; x++)
+        {
+            AppendageSegment firstSeg= appendageSegments[x];
+            Vector3 velocity = firstSeg.curPos - firstSeg.prevPos;
+            firstSeg.prevPos = firstSeg.curPos;
+            firstSeg.curPos += velocity;
+            firstSeg.curPos +=  gravity * Time.deltaTime;
+            appendageSegments[x] = firstSeg;
+        }
+        
+        for(int x =0; x < 50; x++)
+        {
+            Constraints();
+        }
+    }
+
+    private void Constraints()
+    {
+        AppendageSegment firstSeg = appendageSegments[0];
+        firstSeg.curPos = grapplePoint.position;
+        appendageSegments[0] = firstSeg;
+
+
+
+        AppendageSegment lastSeg = appendageSegments[(int)appendageSize-1];
+
+        lastSeg.curPos = Vector3.MoveTowards(lastSeg.curPos, objectPos, 1f * Time.deltaTime);
+        lastSeg.curPos = objectPos;
+        appendageSegments[(int)appendageSize - 1] = lastSeg;
+
+        for (int x = 0; x < appendageSize-1; x++)
+        {
+            AppendageSegment segOne= appendageSegments[x];
+            AppendageSegment segTwo= appendageSegments[x+1];
+
+            float distance = (segOne.curPos - segTwo.curPos).magnitude;
+            float error = Mathf.Abs(distance - segmentSize);
+            Vector3 direction = Vector3.zero;
+
+            if(distance > segmentSize)
+            {
+                direction = (segOne.curPos - segTwo.curPos).normalized;
+            }else if(distance < segmentSize)
+            {
+                direction = (segTwo.curPos- segOne.curPos).normalized;
+            }
+
+            Vector3 errorAmount = direction * error;
+
+            if(x != 0)
+            {
+                segOne.curPos -= errorAmount * 0.5f;
+                appendageSegments[x] = segOne;
+                segTwo.curPos += errorAmount * 0.5f;
+                appendageSegments[x+1] = segTwo;
+            }
+            else
+            {
+                segTwo.curPos += errorAmount;
+                appendageSegments[x + 1] = segTwo;
+            }
+        }
+    }
+    
 }
