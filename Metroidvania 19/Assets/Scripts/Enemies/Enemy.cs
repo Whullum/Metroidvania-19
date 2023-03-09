@@ -29,6 +29,9 @@ public class Enemy : MonoBehaviour, IDamageable
     private AIPath aiPath;
     private AIDestinationSetter aiDestSetter;
 
+    [SerializeField]
+    private Animator enemyAnimator;
+
     void Awake()
     {
         // Set defaults for public variables
@@ -94,10 +97,12 @@ public class Enemy : MonoBehaviour, IDamageable
         if (onPatrol)
         {
             Patrol();
+            enemyAnimator.SetBool("playerSpotted", false);
         }
         else if (onAttack)
         {
             Attack();
+            enemyAnimator.SetBool("playerSpotted", true);
         }
     }
 
