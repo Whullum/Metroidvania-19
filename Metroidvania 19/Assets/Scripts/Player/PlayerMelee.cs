@@ -1,35 +1,56 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMelee : MonoBehaviour
 {
-    GameObject HurtBox;
-    
-    [Tooltip("Length of cooldown")]
-    public float timeInactive = 2f;
+    private LayerMask playerLayer;
+    private bool isAttacking;
 
-    float cooldown = 0;
-    void Start()
-    {
-        HurtBox = transform.GetChild(0).gameObject;
-    }
+    [Header("Attack Properties")]
+    [SerializeField] private int attackDamage;
+    [SerializeField] private float attackRadius = .7f;
+    [SerializeField] private float attackCooldown;
+    [SerializeField] private Transform attackPosition;
+    [Header("Debug Info")]
+    [SerializeField] private bool debugInfo;
 
-    // Update is called once per frame
-    void Update()
-    {
-        GetInput();
-    }
+    private void Awake() => playerLayer = LayerMask.GetMask("Player", "PlayerSegment");
+
+    private void Update() => GetInput();
 
     private void GetInput()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            
-            cooldown = Time.time + timeInactive;
-            HurtBox.SetActive(true);
-        }
-        else if(Time.time > cooldown)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking)
+            StartCoroutine(Attack());
+    }
+
+    private IEnumerator Attack()
+    {
+        isAttacking = true;
+
+        // ** MELEE ATTACK SOUND ** 
+
+        Collider2D[] damagedEntities = Physics2D.OverlapCircleAll(attackPosition.position, attackRadius, ~playerLayer);
+
+        if (damagedEntities.Length > 0)
         {
-            HurtBox.SetActive(false);
-            
+            for (int i = 0; i < damagedEntities.Length; i++)
+            {
+                if (damagedEntities[i].TryGetComponent(out IDamageable damageable))
+                    if (damageable.Damage(attackDamage))
+                        damageable.Death();
+            }
         }
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        isAttacking = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!debugInfo) return;
+
+        Gizmos.DrawWireSphere(attackPosition.position, attackRadius);
     }
 }
