@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public float detectDistance;
     public float patrolSpeed;
     public float attackSpeed;
+    public float kickbackStrength;
+    public float recoveryDelay;
     public List<Transform> patrolPositions;
 
     // Private variables
@@ -21,6 +23,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private bool canSwapTarget;
     private bool onPatrol;
     private bool onAttack;
+    private float scaleSize;
     private GameObject player;
 
     // Component variables
@@ -28,6 +31,9 @@ public class Enemy : MonoBehaviour, IDamageable
     private Rigidbody2D rb;
     private AIPath aiPath;
     private AIDestinationSetter aiDestSetter;
+
+    [SerializeField]
+    private Animator enemyAnimator;
 
     void Awake()
     {
@@ -37,7 +43,9 @@ public class Enemy : MonoBehaviour, IDamageable
         health = (health == 0) ? 100 : health;
         detectDistance = (detectDistance == 0f) ? 10f : detectDistance;
         patrolSpeed = (patrolSpeed == 0f) ? 3f : patrolSpeed;
-        attackSpeed = (attackSpeed == 0f) ? 5f : attackSpeed;
+        attackSpeed = (attackSpeed == 0f && enemyType != "Ranged") ? 5f : attackSpeed;
+        kickbackStrength = (kickbackStrength == 0f) ? 3f : kickbackStrength;
+        recoveryDelay = (recoveryDelay == 0f) ? 2f : recoveryDelay;
 
         // If no patrol positions declared, make one
         if (patrolPositions.Count == 0)
@@ -61,6 +69,7 @@ public class Enemy : MonoBehaviour, IDamageable
         canSwapTarget = true;
         onPatrol = true;
         onAttack = false;
+        scaleSize = transform.localScale.x;
 
         // Sets up enemy at first patrol position, and sets A* Path target as well
         transform.position = patrolPositions[0].transform.position;
@@ -76,10 +85,10 @@ public class Enemy : MonoBehaviour, IDamageable
         float playerDistance = (playerDirection).magnitude;
 
         RaycastHit2D lineOfSight = Physics2D.Raycast(transform.position, playerDirection, 100f);
-        //Debug.DrawRay(transform.position,playerDirection * 100f, Color.red); // Uncomment to debug line of sight
+        Debug.DrawRay(transform.position,playerDirection * 100f, Color.red); // Uncomment to debug line of sight
 
         if (playerDistance < detectDistance // Close enough
-            && lineOfSight.collider.tag == "Player" // Can see player
+            && (lineOfSight.collider.tag == "Player" || lineOfSight.collider.tag == "PlayerSegment")// Can see player
             && onPatrol)
         { // In the midst of a patrol
             StartCoroutine(BeginAttack());
@@ -94,10 +103,20 @@ public class Enemy : MonoBehaviour, IDamageable
         if (onPatrol)
         {
             Patrol();
+            enemyAnimator.SetBool("playerSpotted", false);
         }
         else if (onAttack)
         {
             Attack();
+            enemyAnimator.SetBool("playerSpotted", true);
+        }
+        
+        if (aiPath.enabled) {
+            if (aiPath.desiredVelocity.x < 0) {
+                transform.localScale = new Vector3(-1, 1, 1) * scaleSize;
+            } else {
+                transform.localScale = new Vector3(1, 1, 1) * scaleSize;
+            }
         }
     }
 
@@ -141,11 +160,11 @@ public class Enemy : MonoBehaviour, IDamageable
         // Enemy stops for a second and targets player.
         aiPath.maxSpeed = 0f;
         aiDestSetter.target = player.transform;
-        //Debug.Log("DETECTED!");
+        Debug.Log("DETECTED!");
 
         // Wait for a bit before setting onAttack true again
         yield return new WaitForSeconds(1f);
-        //Debug.LogWarning("ATTACK!");
+        Debug.LogWarning("ATTACK!");
         onAttack = true;
     }
 
@@ -196,8 +215,6 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             case ("Melee"):
                 aiPath.maxSpeed = attackSpeed;
-                //Debug.Log("chaaaaaarge!");
-                // Bash into player
                 break;
             case ("Ranged"):
                 aiPath.maxSpeed = attackSpeed;
@@ -223,5 +240,24 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Death()
     {
         GetComponent<Dropper>().Drop(true);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.collider.tag == "Player" || other.collider.tag == "PlayerSegment") {
+            StartCoroutine(contactAnim(other));
+        } else if (other.collider.tag == "Respawn") {
+            Damage(1);
+        }
+    }
+
+    private IEnumerator contactAnim(Collision2D player) {
+        yield return new WaitForEndOfFrame();
+        Vector3 forceDir = this.transform.position - player.transform.position;
+
+        aiPath.enabled = false;
+        rb.AddForce(forceDir * kickbackStrength, ForceMode2D.Impulse);
+        player.gameObject.GetComponent<Rigidbody2D>().AddForce(-forceDir * kickbackStrength, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(recoveryDelay);
+        aiPath.enabled = true;
     }
 }

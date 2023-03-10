@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{3F2A3947-0B8E-76C6-99E4-5918CBF9EA7E}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{8131DC9A-933F-50E4-244E-94068E23F701}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -19,8 +19,16 @@
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="2886307548" Name="MusicBus"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
+				<Bus Id="3803850708" Name="SFXBus"/>
 			</Busses>
+			<GameParameters>
+				<GameParameter Id="988953028" Name="SFXVolume"/>
+				<GameParameter Id="1850949742" Name="EnemyProximity"/>
+				<GameParameter Id="2346531308" Name="MusicVolume"/>
+				<GameParameter Id="2918011349" Name="MasterVolume"/>
+			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="89505537" Name="Gameplay">
 					<States>
@@ -31,11 +39,12 @@
 						<State Id="1160234136" Name="Normal"/>
 						<State Id="2764240573" Name="Combat"/>
 						<State Id="3438683684" Name="Approach_Enemy"/>
+						<State Id="3808459912" Name="Final_Stage"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{0E5A9E28-4545-BF41-5EA6-7DB4C7CB09DE}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{9387027F-EBD1-A691-55F5-78FFCD5FDCFA}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -43,9 +52,77 @@
 					<ShortName>serpent-combat-track-no-viola-screech.wav</ShortName>
 					<CachePath>SFX/serpent-combat-track-no-viola-screech_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="6248674" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Bite_B6D7FE85.wem</CachePath>
+				</File>
+				<File Id="37041311" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Bite_BEDA350A.wem</CachePath>
+				</File>
+				<File Id="60042754" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Projectile_E84BB5F2.wem</CachePath>
+				</File>
+				<File Id="64386608" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Dash_FFE05E29.wem</CachePath>
+				</File>
+				<File Id="92583617" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-low-health-theme_3-1-23.wav</ShortName>
+					<CachePath>SFX/serpent-low-health-theme_3-1-23_DBAED6A3.wem</CachePath>
+				</File>
+				<File Id="164842256" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Serpent_UI_Sounds Cancel.wav</ShortName>
+					<CachePath>SFX/Serpent_UI_Sounds Cancel_10C4C929.wem</CachePath>
+				</File>
+				<File Id="274882924" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Serpent_UI_Sounds Hover.wav</ShortName>
+					<CachePath>SFX/Serpent_UI_Sounds Hover_10C4C929.wem</CachePath>
+				</File>
+				<File Id="294707591" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Dash_698B75CB.wem</CachePath>
+				</File>
+				<File Id="335044009" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Projectile_AD7F87FF.wem</CachePath>
+				</File>
+				<File Id="361366896" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Bite_CEDCFC0F.wem</CachePath>
+				</File>
+				<File Id="403974749" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Serpent_UI_Sounds Confirm.wav</ShortName>
+					<CachePath>SFX/Serpent_UI_Sounds Confirm_10C4C929.wem</CachePath>
+				</File>
+				<File Id="409018971" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Serpent_UI_Sounds Select.wav</ShortName>
+					<CachePath>SFX/Serpent_UI_Sounds Select_10C4C929.wem</CachePath>
+				</File>
+				<File Id="443146525" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Bite_9AD757DC.wem</CachePath>
+				</File>
 				<File Id="468232282" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>serpent-combat-2-22-23-full.wav</ShortName>
 					<CachePath>SFX/serpent-combat-2-22-23-full_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="527192411" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Dash_CA0FBAD7.wem</CachePath>
+				</File>
+				<File Id="568651304" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Projectile_3CF9B8C4.wem</CachePath>
+				</File>
+				<File Id="586078574" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Projectile_02DFDABD.wem</CachePath>
+				</File>
+				<File Id="652589882" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-death-stinger.wav</ShortName>
+					<CachePath>SFX/serpent-death-stinger_D79FB2B7.wem</CachePath>
 				</File>
 				<File Id="666427947" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-beat-no-arp-no-pulse.wav</ShortName>
@@ -63,6 +140,10 @@
 					<ShortName>serpent-approaching.wav</ShortName>
 					<CachePath>SFX/serpent-approaching_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="764234410" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Dash_16341782.wem</CachePath>
+				</File>
 				<File Id="801245890" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-bass-whole-notes.wav</ShortName>
 					<CachePath>SFX/stage-1-bass-whole-notes_D79FB2B7.wem</CachePath>
@@ -75,12 +156,148 @@
 					<ShortName>stage-1-beat.wav</ShortName>
 					<CachePath>SFX/stage-1-beat_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="811387639" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Bite_E58BB581.wem</CachePath>
+				</File>
 				<File Id="895425634" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-bridge-variation.wav</ShortName>
 					<CachePath>SFX/stage-1-bridge-variation_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="900095094" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-final-stage-3-6-23.wav</ShortName>
+					<CachePath>SFX/serpent-final-stage-3-6-23_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="906963111" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Projectile_53D82A68.wem</CachePath>
+				</File>
+				<File Id="1024829567" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
+					<CachePath>SFX/SFX_Player_Ability_Dash_35119819.wem</CachePath>
+				</File>
 			</Media>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="418265525" Name="Gentle_Program_Compressor_Minus_14dB_RMS" LibName="Wwise Compressor" LibId="7077891"/>
+				</ShareSets>
+			</Plugins>
 			<Events>
+				<Event Id="1810912708" Name="Play_Bite" DurationType="OneShot" DurationMin="0.5762495" DurationMax="0.96341705">
+					<MediaRefs>
+						<MediaRef Id="6248674"/>
+						<MediaRef Id="37041311"/>
+						<MediaRef Id="361366896"/>
+						<MediaRef Id="443146525"/>
+						<MediaRef Id="811387639"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2211787386" Name="Play_Dash" DurationType="OneShot" DurationMin="0.6843655" DurationMax="1.029473">
+					<MediaRefs>
+						<MediaRef Id="64386608"/>
+						<MediaRef Id="294707591"/>
+						<MediaRef Id="527192411"/>
+						<MediaRef Id="764234410"/>
+						<MediaRef Id="1024829567"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3738780720" Name="Play_MainMenu" DurationType="Infinite">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="1160234136"/>
+							<MediaRefs>
+								<MediaRef Id="666427947"/>
+								<MediaRef Id="667552379"/>
+								<MediaRef Id="801245890"/>
+								<MediaRef Id="803851251"/>
+								<MediaRef Id="804177259"/>
+								<MediaRef Id="895425634"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="2764240573"/>
+							<MediaRefs>
+								<MediaRef Id="1769791"/>
+								<MediaRef Id="468232282"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="144681581"/>
+							<MediaRefs>
+								<MediaRef Id="682576048"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="3438683684"/>
+							<MediaRefs>
+								<MediaRef Id="705393609"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="779278001"/>
+							<MediaRefs>
+								<MediaRef Id="652589882"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="72790338"/>
+							<MediaRefs>
+								<MediaRef Id="92583617"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="3808459912"/>
+							<MediaRefs>
+								<MediaRef Id="900095094"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="748895195"/>
+							<MediaRefs>
+								<MediaRef Id="666427947"/>
+								<MediaRef Id="667552379"/>
+								<MediaRef Id="801245890"/>
+								<MediaRef Id="803851251"/>
+								<MediaRef Id="804177259"/>
+								<MediaRef Id="895425634"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="880148599" Name="Play_Projectile" DurationType="OneShot" DurationMin="0.5727782" DurationMax="0.91354495">
+					<MediaRefs>
+						<MediaRef Id="60042754"/>
+						<MediaRef Id="335044009"/>
+						<MediaRef Id="568651304"/>
+						<MediaRef Id="586078574"/>
+						<MediaRef Id="906963111"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3636396448" Name="Play_Serpent_UI_Sounds_Cancel" DurationType="OneShot" DurationMin="1.3029166" DurationMax="1.3029166">
+					<MediaRefs>
+						<MediaRef Id="164842256"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2233317182" Name="Play_Serpent_UI_Sounds_Confirm" DurationType="OneShot" DurationMin="1.3029166" DurationMax="1.3029166">
+					<MediaRefs>
+						<MediaRef Id="403974749"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="418265525"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="1879942652" Name="Play_Serpent_UI_Sounds_Hover" DurationType="OneShot" DurationMin="1.3029166" DurationMax="1.3029166">
+					<MediaRefs>
+						<MediaRef Id="274882924"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2449954062" Name="Play_Serpent_UI_Sounds_Select" DurationType="OneShot" DurationMin="1.3029166" DurationMax="1.3029166">
+					<MediaRefs>
+						<MediaRef Id="409018971"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2818024140" Name="Play_Stage_1" DurationType="Infinite">
 					<SwitchContainers>
 						<SwitchContainer>
@@ -116,7 +333,19 @@
 						<SwitchContainer>
 							<SwitchValue GroupType="State" GroupId="89505537" Id="779278001"/>
 							<MediaRefs>
-								<MediaRef Id="682576048"/>
+								<MediaRef Id="652589882"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="72790338"/>
+							<MediaRefs>
+								<MediaRef Id="92583617"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="89505537" Id="3808459912"/>
+							<MediaRefs>
+								<MediaRef Id="900095094"/>
 							</MediaRefs>
 						</SwitchContainer>
 						<SwitchContainer>
@@ -132,7 +361,11 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="890527358" Name="Stop_MainMenu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
+			<GameParameters>
+				<GameParameter Id="1850949742" Name="EnemyProximity"/>
+			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="89505537" Name="Gameplay">
 					<States>
@@ -143,10 +376,11 @@
 						<State Id="1160234136" Name="Normal"/>
 						<State Id="2764240573" Name="Combat"/>
 						<State Id="3438683684" Name="Approach_Enemy"/>
+						<State Id="3808459912" Name="Final_Stage"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{742A6F6D-5590-B79D-E375-E96652900C65}</FileHash>
+	<FileHash>{B44CC88B-FDBB-6F3A-83F8-2D31A5CAA7F2}</FileHash>
 </SoundBanksInfo>
