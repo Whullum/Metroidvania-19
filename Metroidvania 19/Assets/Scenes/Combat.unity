@@ -224,6 +224,10 @@ PrefabInstance:
       value: Lever
       objectReference: {fileID: 0}
     - target: {fileID: 4625566623953017303, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017303, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
       propertyPath: m_TagString
       value: Finish
       objectReference: {fileID: 0}
@@ -507,8 +511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d630e00182b3664b8b9a75ea8692c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDistance: 150.8
-  targetPull: 0.65
+  breakDistance: 50
+  targetPull: 0.14
   playerPull: 2
   appendageSize: 50
   appendageWidth: 0.13
@@ -1142,7 +1146,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1530,7 +1534,7 @@ MonoBehaviour:
   breakDistance: 20
   targetPull: 2
   playerPull: 2
-  appendageSize: 10
+  appendageSize: 12
   appendageWidth: 1
   segmentSize: 3
 --- !u!1 &1928022383

@@ -8,9 +8,10 @@ public class GetTarget : MonoBehaviour
     bool objectClose = false;
     List<Transform> targets = new List<Transform>();
     public Transform objectTransform;
-    
-    
+    Rigidbody2D objectRig;
+    int direct = 1;
     bool caught = false;
+    string tempTag = null;
 
     private void Start()
     {
@@ -19,10 +20,26 @@ public class GetTarget : MonoBehaviour
 
     private void Update()
     {
+        
         if (targets.Count == 0 && caught == false) { objectClose = false; }
-        //objectTransform = GetNearestTarget();
-        Debug.Log(targets.Count);
-        Debug.Log("Is caught: " + caught);
+        
+        //Debug.Log(targets.Count);
+        //Debug.Log("Is caught: " + caught);
+
+        if(objectTransform!= null && caught && Input.GetKeyDown(KeyCode.F)) {
+            //objectTransform.GetComponent<Rigidbody2D>().gravityScale = 0;
+            
+            
+
+            objectTransform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            objectTransform.GetComponent<Rigidbody2D>().angularVelocity = 0;
+            
+            Debug.Log("Thrashing");
+            
+            direct *= -1;
+            objectTransform.GetComponent<Rigidbody2D>().AddForce((new Vector3(objectTransform.position.x, objectTransform.position.y + (20*direct)) - objectTransform.position).normalized * 4000);
+            
+        }
         
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,6 +92,8 @@ public class GetTarget : MonoBehaviour
 
     public void CheckObjects(Collider2D col =null)
     {
+        if (objectTransform.tag == null)
+            objectTransform.tag = tempTag;
         //remove last caught object
         if(col!=null) {
             if (col.gameObject.transform == objectTransform && targets.Count > 0 && caught == false)
