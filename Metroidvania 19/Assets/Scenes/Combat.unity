@@ -212,6 +212,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &391378395
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4625566623953017303, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_Name
+      value: Lever
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017303, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_TagString
+      value: Finish
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017305, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: interactableObject
+      value: 
+      objectReference: {fileID: 715243172}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.04667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7376947
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625566623953017307, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
 --- !u!1 &701365329
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,9 +507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d630e00182b3664b8b9a75ea8692c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDistance: 20
-  targetPull: 4
-  appendageSize: 10
+  breakDistance: 150.8
+  targetPull: 0.65
+  playerPull: 2
+  appendageSize: 50
   appendageWidth: 0.13
   segmentSize: 0.24
 --- !u!212 &711114196
@@ -499,20 +565,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!64 &711114197
-MeshCollider:
+--- !u!50 &711114197
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711114192}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &715243172 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4625566623953017305, guid: f4f2d9622c72e9342a4deb2b4b0fce80, type: 3}
+  m_PrefabInstance: {fileID: 391378395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f2d9176bd12a54d92d399b95e82370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &817185321
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +631,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &817185323
 MonoBehaviour:
@@ -778,7 +862,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &854673940
 BoxCollider2D:
@@ -930,7 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5287db3fad87aee41baec5c121d20d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPos: {fileID: 0}
+  objectTransform: {fileID: 0}
 --- !u!1 &901893948
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +1029,7 @@ GameObject:
   - component: {fileID: 901893952}
   m_Layer: 0
   m_Name: PunchingBag
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1015,7 +1099,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &901893951
 BoxCollider2D:
@@ -1134,6 +1218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e9b247260d5584d9412d45ecc472eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityScale: 0.3
+  drag: 2
+  decoupleForce: 300
+  torqueForce: 15
+  despawnTime: 20
 --- !u!114 &1415870880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,18 +1235,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cd78411e3cacf4d9b0064ee0be8ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: 0
-  sineWaveScale: 40
-  sineWaveSpeed: 10
   accelerationSpeed: 1
   decelerationSpeed: 2
   maxSpeed: 30
-  rotationSpeed: 3
-  bodySize: 3
-  bodySegment: {fileID: 7302917351678238606, guid: 6f947032ec3176548bede7f1bcf01f15, type: 3}
-  tailSegment: {fileID: 3397249260772081202, guid: 312ff4ecc4706f845a2e898e294a098f, type: 3}
+  mouseRotationSpeed: 3
+  keyboardRotationSpeed: 200
   segmentSeparation: -0.4
-  keyboardInput: 0
+  sineWaveScale: 40
+  sineWaveSpeed: 10
+  inputType: 0
 --- !u!70 &1415870881
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1264,7 +1350,7 @@ Transform:
   - {fileID: 103827443}
   - {fileID: 878783592}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1415870885
 MonoBehaviour:
@@ -1443,6 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakDistance: 20
   targetPull: 2
+  playerPull: 2
   appendageSize: 10
   appendageWidth: 1
   segmentSize: 3
@@ -1459,11 +1546,11 @@ GameObject:
   - component: {fileID: 1928022384}
   m_Layer: 0
   m_Name: PunchingBag (1)
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1928022384
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1555,5 +1642,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
