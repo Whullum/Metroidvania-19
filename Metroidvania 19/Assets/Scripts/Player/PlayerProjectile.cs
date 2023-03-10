@@ -8,6 +8,7 @@ public class PlayerProjectile : MonoBehaviour
 {
     public Transform bulletSpawnPoint;
     public GameObject bulletObject;
+    private AbilitiesShader shader;
 
     [Tooltip("Speed of bullet")]
     [SerializeField] float bulletSpeed = 20;
@@ -23,24 +24,27 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] float spreadAngle = 15f;
 
     [Tooltip("Length of cooldown")]
-    public float timeInactive = 0f;
+    public float timeInactive = 2f;
 
     [Tooltip("Number of bullets that can be fired before cooldown")]
     [SerializeField] int bulletLimit = 5;
 
     [Tooltip("The time between eachshot fired in seconds")]
-    [SerializeField] float fireRate = 1f;
+    [SerializeField] float fireRate = 2f;
 
 
     float cooldown = 0f;
     int bulletCount = 0;
     bool firingEnabled = true;
-    
 
+    void Awake() {
+        shader = FindObjectOfType<AbilitiesShader>();
+    }
+    
     void Update()
     {
         //if(Input.GetMouseButton(1))
-        if(Input.GetKeyDown(KeyCode.X) && bulletCount < bulletLimit )
+        if(Input.GetKeyDown(KeyCode.E) && bulletCount < bulletLimit )
         {
             if(firingEnabled)
                 StartCoroutine("Fire");
@@ -60,6 +64,13 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
+    private void OnEnable() {
+        if (shader.enabled) { StartCoroutine(shader.toggleAnim(1, true)); }
+    }
+
+    private void OnDisable() {
+        if (shader.enabled) { StartCoroutine(shader.toggleAnim(1, false)); }
+    }
 
     /// <summary>
     /// <header>Couroutine for firing bullets </header>
@@ -74,8 +85,7 @@ public class PlayerProjectile : MonoBehaviour
         bulletCount++;
         Debug.Log("Bullet num: " + bulletCount);
         bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnPoint.localRotation.x, bulletSpawnPoint.localRotation.y, Random.Range(-90f - spreadAngle, -90f + spreadAngle));
-
-        
+        StartCoroutine(shader.ProjectileCooldown((int)timeInactive));
         
         var bulletInstance = Instantiate(bulletObject, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         bulletInstance.GetComponent<Bullet>().BulletLifeTime = lifeTime;

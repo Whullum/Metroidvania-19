@@ -9,8 +9,8 @@ public class AbilitiesManager : MonoBehaviour
     private PlayerProjectile projectile;
     private PlayerDash dash;
 
-    [SerializeField] private bool Projectile = false;
     [SerializeField] private bool Melee = false;
+    [SerializeField] private bool Projectile = false;
     [SerializeField] private bool Dash = false;
 
     private void Awake()
