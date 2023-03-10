@@ -178,10 +178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy - Melee Slow
       objectReference: {fileID: 0}
-    - target: {fileID: 4510918106036156616, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
 --- !u!1 &178235735
@@ -416,10 +412,6 @@ PrefabInstance:
     - target: {fileID: 4510918106036156616, guid: 7ab6ff90955e4cf49a95ced7eb182329, type: 3}
       propertyPath: m_Name
       value: Enemy - Melee Fast
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510918106036156616, guid: 7ab6ff90955e4cf49a95ced7eb182329, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ab6ff90955e4cf49a95ced7eb182329, type: 3}
@@ -672,18 +664,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4510918105942456947, guid: 9a2ad5406eb69c3468bca03dd2288b98, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510918105942456947, guid: 9a2ad5406eb69c3468bca03dd2288b98, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510918105942456947, guid: 9a2ad5406eb69c3468bca03dd2288b98, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4510918106036156615, guid: 9a2ad5406eb69c3468bca03dd2288b98, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -731,10 +711,6 @@ PrefabInstance:
     - target: {fileID: 4510918106036156616, guid: 9a2ad5406eb69c3468bca03dd2288b98, type: 3}
       propertyPath: m_Name
       value: Enemy - Spiked
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510918106036156616, guid: 9a2ad5406eb69c3468bca03dd2288b98, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a2ad5406eb69c3468bca03dd2288b98, type: 3}
@@ -1169,10 +1145,6 @@ PrefabInstance:
     - target: {fileID: 4510918106036156616, guid: 3d8997017bfc0d64c8f0606f393d4127, type: 3}
       propertyPath: m_Name
       value: Enemy - Ranged
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510918106036156616, guid: 3d8997017bfc0d64c8f0606f393d4127, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d8997017bfc0d64c8f0606f393d4127, type: 3}
