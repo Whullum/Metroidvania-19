@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4510918105802665002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4510918105942456951}
   - component: {fileID: 1765388447}
   - component: {fileID: 1765388446}
+  - component: {fileID: 214543431}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -83,13 +84,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: Melee
   health: 5
-  detectDistance: 0
-  patrolSpeed: 0
-  attackSpeed: 0
+  detectDistance: 15
+  patrolSpeed: 2
+  attackSpeed: 4
+  kickbackStrength: 3
+  recoveryDelay: 3
   patrolPositions:
   - {fileID: 4510918106309711910}
   - {fileID: 4510918105802665001}
-  enemyAnimator: {fileID: 1835514905463726883}
+  enemyAnimator: {fileID: 338796056}
 --- !u!114 &4510918105942456949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +146,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   autoRepath:
     mode: 2
     interval: 0.5
@@ -187,7 +190,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17881072, y: 0.06364447}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -198,7 +201,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4788487, y: 0.87271106}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1765388446
 MonoBehaviour:
@@ -221,6 +224,27 @@ MonoBehaviour:
   dropPrefabMass: 1
   dropPrefabGravityScale: 0.2
   dropPrefabDrag: 2
+--- !u!50 &214543431
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510918105942456952}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &4510918106036156616
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4510918106036156615}
   m_Layer: 0
-  m_Name: Melee_Fast
+  m_Name: Enemy - Melee Slow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -279,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4510918106309711911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.13, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -296,7 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4510918107351543182}
   - component: {fileID: 4510918107351543183}
-  - component: {fileID: 1835514905463726883}
+  - component: {fileID: 338796056}
   m_Layer: 0
   m_Name: Enemy Sprite
   m_TagString: Untagged
@@ -312,7 +336,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4510918107351543185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.25, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -360,7 +384,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -738085378, guid: 3b2914bb5ad06d841b78c7ca0fa01ad9, type: 3}
+  m_Sprite: {fileID: -1091369123, guid: dc301fd12956fd54396b8cf3af95a10b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -371,7 +395,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1835514905463726883
+--- !u!95 &338796056
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -381,7 +405,7 @@ Animator:
   m_GameObject: {fileID: 4510918107351543185}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a929457f85af2b54fa0aa3013123e67d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 463dc19ad3044814bb2ce29d2cc52698, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee_Armored
       objectReference: {fileID: 0}
+    - target: {fileID: 4510918106036156616, guid: 2f79f913d7e0cee4c940484e7d85ebad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f79f913d7e0cee4c940484e7d85ebad, type: 3}
 --- !u!4 &10810050 stripped
@@ -13602,21 +13606,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1870746170}
     m_Modifications:
-    - target: {fileID: 679250249378058352, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510918105942456948, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
-      propertyPath: enemyAnimator
-      value: 
-      objectReference: {fileID: 338796056}
     - target: {fileID: 4510918106036156615, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4510918106036156615, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 9.49
       objectReference: {fileID: 0}
     - target: {fileID: 4510918106036156615, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13656,40 +13652,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4510918106036156616, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
       propertyPath: m_Name
-      value: Melee_Slow
+      value: Slow Melee Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 4510918106036156616, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 679250249378058352, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
---- !u!1 &338796055 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4510918107351543185, guid: 8193d0c0e18cb4b4883ac9154620a5cf, type: 3}
-  m_PrefabInstance: {fileID: 338796054}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &338796056
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338796055}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 463dc19ad3044814bb2ce29d2cc52698, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -13844,6 +13810,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1870746170}
     m_Modifications:
+    - target: {fileID: 4510918105942456950, guid: df17059cd9edc1243980a0110f62529b, type: 3}
+      propertyPath: enableRotation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4510918106036156615, guid: df17059cd9edc1243980a0110f62529b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -13892,6 +13862,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Ranged
       objectReference: {fileID: 0}
+    - target: {fileID: 4510918106036156616, guid: df17059cd9edc1243980a0110f62529b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df17059cd9edc1243980a0110f62529b, type: 3}
 --- !u!4 &920267018 stripped
@@ -13911,6 +13885,7 @@ GameObject:
   - component: {fileID: 1234788026}
   - component: {fileID: 1234788025}
   - component: {fileID: 1234788028}
+  - component: {fileID: 1234788029}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -14015,6 +13990,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &1234788029
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234788024}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1275734435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14022,6 +14018,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1870746170}
     m_Modifications:
+    - target: {fileID: 4510918105942456952, guid: a4c79e815e3f3d94abaddc42320bd498, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4510918106036156615, guid: a4c79e815e3f3d94abaddc42320bd498, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -14069,6 +14069,10 @@ PrefabInstance:
     - target: {fileID: 4510918106036156616, guid: a4c79e815e3f3d94abaddc42320bd498, type: 3}
       propertyPath: m_Name
       value: Enemy_Spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510918106036156616, guid: a4c79e815e3f3d94abaddc42320bd498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c79e815e3f3d94abaddc42320bd498, type: 3}
