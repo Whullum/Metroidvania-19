@@ -13,7 +13,16 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_BITE = 1810912708U;
+        static const AkUniqueID PLAY_DASH = 2211787386U;
+        static const AkUniqueID PLAY_MAINMENU = 3738780720U;
+        static const AkUniqueID PLAY_PROJECTILE = 880148599U;
+        static const AkUniqueID PLAY_SERPENT_UI_SOUNDS_CANCEL = 3636396448U;
+        static const AkUniqueID PLAY_SERPENT_UI_SOUNDS_CONFIRM = 2233317182U;
+        static const AkUniqueID PLAY_SERPENT_UI_SOUNDS_HOVER = 1879942652U;
+        static const AkUniqueID PLAY_SERPENT_UI_SOUNDS_SELECT = 2449954062U;
         static const AkUniqueID PLAY_STAGE_1 = 2818024140U;
+        static const AkUniqueID STOP_MAINMENU = 890527358U;
     } // namespace EVENTS
 
     namespace STATES
@@ -28,6 +37,7 @@ namespace AK
                 static const AkUniqueID COMBAT = 2764240573U;
                 static const AkUniqueID DEATH = 779278001U;
                 static const AkUniqueID DEFEAT_ENEMY = 144681581U;
+                static const AkUniqueID FINAL_STAGE = 3808459912U;
                 static const AkUniqueID LOW_HEALTH = 72790338U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID NORMAL = 1160234136U;
@@ -35,6 +45,14 @@ namespace AK
         } // namespace GAMEPLAY
 
     } // namespace STATES
+
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID ENEMYPROXIMITY = 1850949742U;
+        static const AkUniqueID MASTERVOLUME = 2918011349U;
+        static const AkUniqueID MUSICVOLUME = 2346531308U;
+        static const AkUniqueID SFXVOLUME = 988953028U;
+    } // namespace GAME_PARAMETERS
 
     namespace BANKS
     {
@@ -45,6 +63,8 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID MUSICBUS = 2886307548U;
+        static const AkUniqueID SFXBUS = 3803850708U;
     } // namespace BUSSES
 
     namespace AUDIO_DEVICES

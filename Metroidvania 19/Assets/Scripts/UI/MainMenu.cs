@@ -62,4 +62,9 @@ public class MainMenu : MonoBehaviour
         creditsCanvasGroup.SetActive(false);
         mainCanvasGroup.SetActive(true);
     }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
 }
