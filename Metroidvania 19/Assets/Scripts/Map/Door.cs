@@ -21,6 +21,7 @@ public class Door : InteractableObject
     [SerializeField] private DoorDirection playerSpawnDirection;
     [SerializeField] private const int playerSpawnDistance = 5;
 
+    public static Action LevelLoaded;
     public int DoorNumber { get => doorNumber; set => doorNumber = value; }
 
     private void Start()
@@ -71,6 +72,9 @@ public class Door : InteractableObject
                 // Spawn the player in front of the door with the matching doorNumber in the connected level/node
                 Door connectingDoor = connectingNode.GetConnectingDoorNumber(this.doorNumber);
                 collision.gameObject.transform.position = connectingDoor.transform.position + startingDisplacement;
+
+                LevelLoaded?.Invoke();
+
                 Destroy(this.parentMapNode.gameObject);
             }
             else
