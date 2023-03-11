@@ -13,6 +13,8 @@ public class GetTarget : MonoBehaviour
     bool caught = false;
     string tempTag = null;
 
+    [SerializeField] int thrashForce = 4000;
+
     private void Start()
     {
         
@@ -37,7 +39,7 @@ public class GetTarget : MonoBehaviour
             Debug.Log("Thrashing");
             
             direct *= -1;
-            objectTransform.GetComponent<Rigidbody2D>().AddForce((new Vector3(objectTransform.position.x, objectTransform.position.y + (20*direct)) - objectTransform.position).normalized * 4000);
+            objectTransform.GetComponent<Rigidbody2D>().AddForce((new Vector3(objectTransform.position.x, objectTransform.position.y + (20*direct)) - objectTransform.position).normalized * thrashForce);
             
         }
         
