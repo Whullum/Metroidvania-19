@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerMelee : MonoBehaviour
 {
-
     private LayerMask playerLayer;
     private bool isAttacking;
     private AbilitiesShader shader;
@@ -25,25 +24,9 @@ public class PlayerMelee : MonoBehaviour
     
     private void GetInput()
     {
-        if(Input.GetKeyDown(KeyCode.Q)) {
-            StartCoroutine(shader.MeleeCooldown((int)timeInactive));
-            cooldown = Time.time + timeInactive;
-            HurtBox.SetActive(true);
-        }
-        else if(Time.time > cooldown)
-
-    private void GetInput()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking)
-            StartCoroutine(Attack());
-    }
-    
-    private void GetInput()
-    {
         if(Input.GetKeyDown(KeyCode.Q) && !isAttacking) {
-            StartCoroutine(shader.MeleeCooldown((int)timeInactive));
+            StartCoroutine(shader.MeleeCooldown((int)attackCooldown));
             StartCoroutine(Attack());
-            cooldown = Time.time + timeInactive;
         }
     }
 
