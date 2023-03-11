@@ -41,7 +41,7 @@ Material:
     - _ColorEnds: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Roation: 0.956017
+    - _Roation: 1
     - _Rotation: 0
     m_Colors:
     - _Color1: {r: 0, g: 0.878356, b: 1, a: 0}
