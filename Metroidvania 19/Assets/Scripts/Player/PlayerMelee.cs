@@ -1,24 +1,50 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMelee : MonoBehaviour
 {
-    private GameObject HurtBox;
-    private AbilitiesShader shader;
-    
-    [Tooltip("Length of cooldown")]
-    public float timeInactive = 2f;
 
-    float cooldown = 0;
-    void Awake()
-    {
-        HurtBox = transform.GetChild(0).gameObject;
+    private LayerMask playerLayer;
+    private bool isAttacking;
+    private AbilitiesShader shader;
+
+    [Header("Attack Properties")]
+    [SerializeField] private int attackDamage;
+    [SerializeField] private float attackRadius = .7f;
+    [SerializeField] private float attackCooldown;
+    [SerializeField] private Transform attackPosition;
+    [Header("Debug Info")]
+    [SerializeField] private bool debugInfo;
+
+    private void Awake() {
+        playerLayer = LayerMask.GetMask("Player", "PlayerSegment");
         shader = FindObjectOfType<AbilitiesShader>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update() => GetInput();
+    
+    private void GetInput()
     {
-        GetInput();
+        if(Input.GetKeyDown(KeyCode.Q)) {
+            StartCoroutine(shader.MeleeCooldown((int)timeInactive));
+            cooldown = Time.time + timeInactive;
+            HurtBox.SetActive(true);
+        }
+        else if(Time.time > cooldown)
+
+    private void GetInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking)
+            StartCoroutine(Attack());
+    }
+    
+    private void GetInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Q) && !isAttacking) {
+            StartCoroutine(shader.MeleeCooldown((int)timeInactive));
+            StartCoroutine(Attack());
+            cooldown = Time.time + timeInactive;
+        }
     }
 
     private void OnEnable() {
@@ -28,18 +54,34 @@ public class PlayerMelee : MonoBehaviour
     private void OnDisable() {
         if (shader.enabled) { StartCoroutine(shader.toggleAnim(0, false)); }
     }
-
-    private void GetInput()
+        
+    private IEnumerator Attack()
     {
-        if(Input.GetKeyDown(KeyCode.Q)) {
-            StartCoroutine(shader.MeleeCooldown((int)timeInactive));
-            cooldown = Time.time + timeInactive;
-            HurtBox.SetActive(true);
-        }
-        else if(Time.time > cooldown)
+        isAttacking = true;
+
+        // ** MELEE ATTACK SOUND ** 
+
+        Collider2D[] damagedEntities = Physics2D.OverlapCircleAll(attackPosition.position, attackRadius, ~playerLayer);
+
+        if (damagedEntities.Length > 0)
         {
-            HurtBox.SetActive(false);
-            
+            for (int i = 0; i < damagedEntities.Length; i++)
+            {
+                if (damagedEntities[i].TryGetComponent(out IDamageable damageable))
+                    if (damageable.Damage(attackDamage))
+                        damageable.Death();
+            }
         }
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        isAttacking = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!debugInfo) return;
+
+        Gizmos.DrawWireSphere(attackPosition.position, attackRadius);
     }
 }
