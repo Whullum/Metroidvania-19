@@ -1,21 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
     [Tooltip("Length of cooldown")]
-    public float timeInactive = 5f;
-
+    public float timeInactive = 2f;
     private AbilitiesShader shader;
+    private TrailRenderer trailEffect;
 
-    [SerializeField] float dashSpeed = 0f;
-    [SerializeField] float dashDuration = 10f;
+    [SerializeField] float dashSpeed = 3000f;
+    [SerializeField] float dashDuration = 1f;
+
 
     float cooldown = 0f;
     float dashTime = 0f;
     float previousSpeed;
+    float previousMaxSpeed;
     bool isDashing = false;
     PlayerMovement playerMovement;
 
@@ -25,21 +24,23 @@ public class PlayerDash : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         if (shader.enabled) { StartCoroutine(shader.toggleAnim(2, true)); }
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         if (shader.enabled) { StartCoroutine(shader.toggleAnim(2, false)); }
     }
-    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && Time.time > cooldown && isDashing == false)
         {
-            
+
             SetDashSpeed(true);
-            isDashing= true;
+            isDashing = true;
 
         }
         else if (dashTime <= Time.time && cooldown == 0f && isDashing)
@@ -52,7 +53,7 @@ public class PlayerDash : MonoBehaviour
         {
             Debug.Log("Reloaded");
             cooldown = 0f;
-            dashTime= 0f;
+            dashTime = 0f;
         }
     }
 
@@ -61,25 +62,32 @@ public class PlayerDash : MonoBehaviour
     /// If isDashing is false: Sets player's current speed to previousSpeed. Also sets the cooldown timer for the period when the dash is inactive.
     /// </summary>
     /// <param name="isDashing"></param>
-    void SetDashSpeed(bool isDashing) 
+    void SetDashSpeed(bool isDashing)
     {
-        if(isDashing)
+        if (trailEffect == null) trailEffect = GetComponentInChildren<TrailRenderer>();
+
+        if (isDashing)
         {
-            
             previousSpeed = playerMovement.GetSpeed();
-            playerMovement.SetSpeed(dashSpeed);
+            previousMaxSpeed = playerMovement.GetMaxSpeed();
+            playerMovement.SetSpeed(dashSpeed, previousMaxSpeed);
+            playerMovement.SetSineWaveMovement(false);
             dashTime = Time.time + dashDuration;
             Debug.Log("Dashing at speed: " + playerMovement.GetSpeed());
+
+            trailEffect.emitting = true;
         }
         else
         {
             Debug.Log("Speed reset to " + previousSpeed);
-            
-            playerMovement.SetSpeed(previousSpeed);
+
+            playerMovement.SetSpeed(previousSpeed, previousMaxSpeed);
+            playerMovement.SetSineWaveMovement(true);
             Debug.Log(Time.time);
             cooldown = Time.time + timeInactive;
             Debug.Log(cooldown);
 
+            trailEffect.emitting = false;
         }
     }
 }
