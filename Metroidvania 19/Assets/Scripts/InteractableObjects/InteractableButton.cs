@@ -7,6 +7,10 @@ public class InteractableButton : InteractableObject
     private bool isPressed;
     private bool canActivate = true; // Prevents multiple activations on the same hit
 
+    [SerializeField] private SpriteRenderer buttonSprite;
+    [SerializeField] private Color activatedColor;
+    [SerializeField] private Color deactivatedColor;
+
     [Header("Button Properties")]
     [Tooltip("Transform used to calculated button traveled distance.")]
     [SerializeField] private Transform groundUnion;
@@ -83,6 +87,7 @@ public class InteractableButton : InteractableObject
         interactableObject.OnActivation();
         isActivated = true;
         canActivate = false;
+        buttonSprite.color = activatedColor;
 
         Invoke("ResetActivation", 1f);
     }
@@ -94,6 +99,7 @@ public class InteractableButton : InteractableObject
         interactableObject.OnDeactivation();
         isActivated = false;
         canActivate = false;
+        buttonSprite.color = deactivatedColor;
 
         Invoke("ResetActivation", 1f);
     }

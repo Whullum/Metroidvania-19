@@ -13,6 +13,10 @@ public class AbilitiesManager : MonoBehaviour
     [SerializeField] private bool Projectile = false;
     [SerializeField] private bool Dash = false;
 
+    public bool MeleeAbility { get => Melee; set => Melee = value; }
+    public bool ProjectileAbility { get => Projectile; set => Projectile = value; }
+    public bool DashAbility { get => Dash; set => Dash = value; }
+
     private void Awake()
     {
         melee = GetComponent<PlayerMelee>();
