@@ -209,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumBodySize: 3
   maximumBodySize: 10
+  startingBodySize: 3
   segmentHealth: 2
   bodySegment: {fileID: 7302917351678238606, guid: 6f947032ec3176548bede7f1bcf01f15, type: 3}
   baseBodySegment: {fileID: 6445724751498467908, guid: 6c9e18337af5dea46aff39f664f5b3e9, type: 3}
@@ -227,14 +228,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cd78411e3cacf4d9b0064ee0be8ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationSpeed: 1
-  decelerationSpeed: 2
+  accelerationSpeed: 2
+  decelerationSpeed: 5
   maxSpeed: 30
-  mouseRotationSpeed: 3
+  mouseRotationSpeed: 30
   keyboardRotationSpeed: 200
   segmentSeparation: -0.1
-  sineWaveScale: 40
-  sineWaveSpeed: 10
+  sineWaveScale: 20
+  sineWaveSpeed: 13
   inputType: 0
 --- !u!114 &4916553186024403387
 MonoBehaviour:
@@ -265,8 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac2198808b28e64ea52977be225af44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: 1
   Melee: 1
+  Projectile: 1
   Dash: 1
 --- !u!114 &734556327
 MonoBehaviour:

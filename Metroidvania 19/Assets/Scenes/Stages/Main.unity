@@ -34133,6 +34133,14 @@ PrefabInstance:
       propertyPath: attackCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4916553186024403384, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
+      propertyPath: sineWaveScale
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916553186024403384, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
+      propertyPath: sineWaveSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4916553186024403388, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
       propertyPath: m_Name
       value: Player

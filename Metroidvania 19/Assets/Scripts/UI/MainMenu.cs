@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
          menuCanvasForeground.SetActive(true);
         LeanTween.alpha(menuCanvasForeground.GetComponent<RectTransform>(), 1f, 3f);
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Stage1_Containment");
+        SceneManager.LoadScene("Main");
     }
 
     public void ShowSettings() {

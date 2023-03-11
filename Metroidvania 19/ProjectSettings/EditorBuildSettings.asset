@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Start Menu.unity
     guid: 6962822351bc0934cb11af20417739d5
   - enabled: 1
-    path: Assets/Scenes/Stages/Stage1_Containment.unity
-    guid: 60f9a145b7abc16439ab267f14f65c18
-  - enabled: 1
-    path: Assets/Scenes/Stages/Stage2_Laboratory.unity
-    guid: 7afb8e0cb515ea844a41284f7300e2a4
+    path: Assets/Scenes/Stages/Main.unity
+    guid: 00dc2176b246f2e4fa0ab9a177337ac0
   m_configObjects: {}
