@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShaderHealthBar : MonoBehaviour
+public class HealthShader : MonoBehaviour
 {
     [SerializeField] Image[] _bodys;
     [SerializeField] Image _head;

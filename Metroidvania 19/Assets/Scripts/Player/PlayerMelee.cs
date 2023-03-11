@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class PlayerMelee : MonoBehaviour
 {
+
     private LayerMask playerLayer;
     private bool isAttacking;
+    private AbilitiesShader shader;
 
     [Header("Attack Properties")]
     [SerializeField] private int attackDamage;
@@ -14,16 +16,45 @@ public class PlayerMelee : MonoBehaviour
     [Header("Debug Info")]
     [SerializeField] private bool debugInfo;
 
-    private void Awake() => playerLayer = LayerMask.GetMask("Player", "PlayerSegment");
+    private void Awake() {
+        playerLayer = LayerMask.GetMask("Player", "PlayerSegment");
+        shader = FindObjectOfType<AbilitiesShader>();
+    }
 
     private void Update() => GetInput();
+    
+    private void GetInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Q)) {
+            StartCoroutine(shader.MeleeCooldown((int)timeInactive));
+            cooldown = Time.time + timeInactive;
+            HurtBox.SetActive(true);
+        }
+        else if(Time.time > cooldown)
 
     private void GetInput()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking)
             StartCoroutine(Attack());
     }
+    
+    private void GetInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Q) && !isAttacking) {
+            StartCoroutine(shader.MeleeCooldown((int)timeInactive));
+            StartCoroutine(Attack());
+            cooldown = Time.time + timeInactive;
+        }
+    }
 
+    private void OnEnable() {
+        if (shader.enabled) { StartCoroutine(shader.toggleAnim(0, true)); }
+    }
+
+    private void OnDisable() {
+        if (shader.enabled) { StartCoroutine(shader.toggleAnim(0, false)); }
+    }
+        
     private IEnumerator Attack()
     {
         isAttacking = true;
