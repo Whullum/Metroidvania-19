@@ -1,5 +1,14 @@
 Event	ID	Name			Wwise Object Path	Notes
+	880148599	Play_Projectile			\Default Work Unit\Play_Projectile	
+	890527358	Stop_MainMenu			\Default Work Unit\UI Events\Stop_MainMenu	
+	1810912708	Play_Bite			\Default Work Unit\Play_Bite	
+	1879942652	Play_Serpent_UI_Sounds_Hover			\Default Work Unit\UI Events\Play_Serpent_UI_Sounds_Hover	
+	2211787386	Play_Dash			\Default Work Unit\Play_Dash	
+	2233317182	Play_Serpent_UI_Sounds_Confirm			\Default Work Unit\UI Events\Play_Serpent_UI_Sounds_Confirm	
+	2449954062	Play_Serpent_UI_Sounds_Select			\Default Work Unit\UI Events\Play_Serpent_UI_Sounds_Select	
 	2818024140	Play_Stage_1			\Default Work Unit\Play_Stage_1	
+	3636396448	Play_Serpent_UI_Sounds_Cancel			\Default Work Unit\UI Events\Play_Serpent_UI_Sounds_Cancel	
+	3738780720	Play_MainMenu			\Default Work Unit\UI Events\Play_MainMenu	
 
 State Group	ID	Name			Wwise Object Path	Notes
 	89505537	Gameplay			\Default Work Unit\Gameplay	
@@ -12,16 +21,45 @@ State	ID	Name	State Group			Notes
 	1160234136	Normal	Gameplay			
 	2764240573	Combat	Gameplay			
 	3438683684	Approach_Enemy	Gameplay			
+	3808459912	Final_Stage	Gameplay			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1850949742	EnemyProximity			\Default Work Unit\EnemyProximity	
+
+Effect plug-ins	ID	Name	Type				Notes
+	418265525	Gentle_Program_Compressor_Minus_14dB_RMS	Wwise Compressor			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1769791	serpent-combat-track-no-viola-screech	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\serpent-combat-track-no-viola-screech_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Combat\combat-1-with-intro\serpent-combat-track-no-viola-screech		6317424
+	6248674	SFX_Player_Ability_Bite_05	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Bite_B6D7FE85.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Bite\SFX_Player_Ability_Bite_05		170044
+	37041311	SFX_Player_Ability_Bite_04	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Bite_BEDA350A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Bite\SFX_Player_Ability_Bite_04		101744
+	60042754	SFX_Player_Ability_Projectile_03	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Projectile_E84BB5F2.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Projectile\SFX_Player_Ability_Projectile_03		136948
+	64386608	SFX_Player_Ability_Dash_02	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Dash_FFE05E29.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Dash\SFX_Player_Ability_Dash_02		170344
+	92583617	serpent-low-health-theme_3-1-23	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\serpent-low-health-theme_3-1-23_DBAED6A3.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Low-Health\serpent-low-health-theme_3-1-23\serpent-low-health-theme_3-1-23		10584096
+	164842256	Serpent_UI_Sounds Cancel	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\Serpent_UI_Sounds Cancel_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Serpent_UI_Sounds Cancel		250256
+	274882924	Serpent_UI_Sounds Hover	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\Serpent_UI_Sounds Hover_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Serpent_UI_Sounds Hover		250256
+	294707591	SFX_Player_Ability_Dash_04	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Dash_698B75CB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Dash\SFX_Player_Ability_Dash_04		156932
+	335044009	SFX_Player_Ability_Projectile_01	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Projectile_AD7F87FF.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Projectile\SFX_Player_Ability_Projectile_01		101136
+	361366896	SFX_Player_Ability_Bite_01	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Bite_CEDCFC0F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Bite\SFX_Player_Ability_Bite_01		147804
+	403974749	Serpent_UI_Sounds Confirm	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\Serpent_UI_Sounds Confirm_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Serpent_UI_Sounds Confirm		250256
+	409018971	Serpent_UI_Sounds Select	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\Serpent_UI_Sounds Select_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Serpent_UI_Sounds Select		250256
+	443146525	SFX_Player_Ability_Bite_03	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Bite_9AD757DC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Bite\SFX_Player_Ability_Bite_03		101748
 	468232282	serpent-combat-2-22-23-full	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\serpent-combat-2-22-23-full_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Combat\combat-2-screeching\serpent-combat-2-22-23-full		6317424
+	527192411	SFX_Player_Ability_Dash_05	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Dash_CA0FBAD7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Dash\SFX_Player_Ability_Dash_05		120820
+	568651304	SFX_Player_Ability_Projectile_05	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Projectile_3CF9B8C4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Projectile\SFX_Player_Ability_Projectile_05		161248
+	586078574	SFX_Player_Ability_Projectile_04	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Projectile_02DFDABD.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Projectile\SFX_Player_Ability_Projectile_04		120316
+	652589882	serpent-death-stinger	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\serpent-death-stinger_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Death-Stinger\serpent-death-stinger\serpent-death-stinger		4035248
 	666427947	stage-1-beat-no-arp-no-pulse	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\stage-1-beat-no-arp-no-pulse_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Stage-1-Main\stage-1-beat-melody\stage-1-beat-no-arp-no-pulse		7805796
 	667552379	stage-1-bass-eighth-note-pulse	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\stage-1-bass-eighth-note-pulse_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Stage-1-Main\stage-1-bass-eighth-note-pulse\stage-1-bass-eighth-note-pulse		6548948
 	682576048	serpent-enemy-defeat-stinger-2-25-23	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\serpent-enemy-defeat-stinger-2-25-23_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Enemy-Defeat-Stinger\serpent-enemy-defeat-stinger-2-25-23\serpent-enemy-defeat-stinger-2-25-23		2778396
 	705393609	serpent-approaching	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\serpent-approaching_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Approaching-Enemy\serpent-approaching\serpent-approaching		8632672
+	764234410	SFX_Player_Ability_Dash_01	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Dash_16341782.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Dash\SFX_Player_Ability_Dash_01		172408
 	801245890	stage-1-bass-whole-notes	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\stage-1-bass-whole-notes_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Stage-1-Main\stage-1-bass-whole-notes-with-hit\stage-1-bass-whole-notes		6548948
 	803851251	stage-1-transition-hit	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\stage-1-transition-hit_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Stage-1-Main\stage-1-bass-whole-notes-with-hit\stage-1-transition-hit		6548948
 	804177259	stage-1-beat	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\stage-1-beat_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Stage-1-Main\stage-1-beat-melody-arp\stage-1-beat		7805796
+	811387639	SFX_Player_Ability_Bite_02	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Bite_E58BB581.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Bite\SFX_Player_Ability_Bite_02		136688
 	895425634	stage-1-bridge-variation	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\stage-1-bridge-variation_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Stage-1-Main\stage-1-bridge-variation\stage-1-bridge-variation		6548948
+	900095094	serpent-final-stage-3-6-23	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\serpent-final-stage-3-6-23_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stage-1\Final-stage\serpent-final-stage-3-6-23\serpent-final-stage-3-6-23		24607896
+	906963111	SFX_Player_Ability_Projectile_02	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Projectile_53D82A68.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Projectile\SFX_Player_Ability_Projectile_02		111368
+	1024829567	SFX_Player_Ability_Dash_03	D:\Projects\Metroidvania 19\Wwise Repo\Metroidvania-19-Wwise-Project\Metroidvania 19_WwiseProject\.cache\Windows\SFX\SFX_Player_Ability_Dash_35119819.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Abilities\Dash\SFX_Player_Ability_Dash_03		181696
 

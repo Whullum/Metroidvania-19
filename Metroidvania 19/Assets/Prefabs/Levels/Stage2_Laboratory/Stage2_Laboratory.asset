@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13063b8792b32eb48a7c8b4475f63ea6, type: 3}
+  m_Name: Stage2_Laboratory
+  m_EditorClassIdentifier: 
+  mapLevels:
+    m_keys:
+    - Room_2
+    - Room_3
+    - Room_4
+    - Room_5
+    - Room_6
+    - Room_7
+    - Room_8
+    - Room_9
+    - Room_10
+    - Room_11
+    m_values:
+    - {fileID: 3271295850092198802, guid: 212a9130463613f479967630261d83fc, type: 3}
+    - {fileID: 3271295850092198802, guid: 17f3c67366752cb4b9a22211408bc6b1, type: 3}
+    - {fileID: 3271295850092198802, guid: 2a086297823ce5942b691ce97ba6a920, type: 3}
+    - {fileID: 3271295850092198802, guid: 1996dc376187c934db3cfcd6837df57c, type: 3}
+    - {fileID: 3271295850092198802, guid: 9f0124823be0ac24da8c757986943529, type: 3}
+    - {fileID: 3271295850092198802, guid: ee5e0588e708c7d418e9d0d28e3dd5cd, type: 3}
+    - {fileID: 3271295850092198802, guid: c6d18d6881ad30e4fa72164f1b2ba2ab, type: 3}
+    - {fileID: 3271295850092198802, guid: cd07bcc275ee9884ebca1b5458135dc8, type: 3}
+    - {fileID: 3271295850092198802, guid: 8b10a88ce2ca1734abe8ce3099f978a0, type: 3}
+    - {fileID: 3271295850092198802, guid: 26faa53658d2ef24ca497276a581374d, type: 3}
+  mapMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 38264e979beceed4c9377a51ca0c6bcc, type: 2}
