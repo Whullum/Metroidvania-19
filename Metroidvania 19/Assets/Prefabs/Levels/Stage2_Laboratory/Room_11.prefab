@@ -27701,7 +27701,7 @@ PrefabInstance:
       objectReference: {fileID: 3271295850092198802}
     - target: {fileID: 7794422402809239988, guid: 1c7b045d233dd25498dd93fb84e05abf, type: 3}
       propertyPath: connectingMapName
-      value: Room_10
+      value: Room_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c7b045d233dd25498dd93fb84e05abf, type: 3}

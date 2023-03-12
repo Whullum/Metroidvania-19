@@ -17,7 +17,7 @@ public class InteractableButton : InteractableObject
     [Tooltip("Use for modifying rigidbody constraints. If button is facing vertically, this should be set to true.")]
     [SerializeField] private bool isVertical = true;
     [Tooltip("Initial state of this button.")]
-    [SerializeField] private bool isActivated;
+    [SerializeField] protected bool isActivated;
     [Header("Interactable Object")]
     [SerializeField] private InteractableObject interactableObject;
 
