@@ -30,6 +30,7 @@ public class ElectricField : InteractableObject
     private void Start()
     {
         Invoke("Electrocute", damageTick);
+        OnActivation();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

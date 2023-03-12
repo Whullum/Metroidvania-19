@@ -31,10 +31,10 @@ public class AbilityPickup : MonoBehaviour
                     abilityManager.MeleeAbility = true;
                     break;
                 case AbilityUnlock.PROJECTILE:
-                    abilityManager.MeleeAbility = true;
+                    abilityManager.ProjectileAbility = true;
                     break;
                 case AbilityUnlock.DASH:
-                    abilityManager.MeleeAbility = true;
+                    abilityManager.DashAbility = true;
                     break;
             }
 
