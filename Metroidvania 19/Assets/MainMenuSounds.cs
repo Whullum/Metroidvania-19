@@ -49,4 +49,9 @@ public class MainMenuSounds : MonoBehaviour
     {
         stopMenuMusic.Post(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        stopMenuMusic.Post(gameObject);
+    }
 }
