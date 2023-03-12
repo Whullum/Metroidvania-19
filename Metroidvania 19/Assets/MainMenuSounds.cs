@@ -9,6 +9,7 @@ public class MainMenuSounds : MonoBehaviour
     public AK.Wwise.Event uiConfirm;
     public AK.Wwise.Event uiSliderChange;
     public AK.Wwise.Event uiCancel;
+    public AK.Wwise.Event uiStartGame;
 
     [Header("Music Events")]
     public AK.Wwise.Event menuMusic;
@@ -37,6 +38,11 @@ public class MainMenuSounds : MonoBehaviour
     public void PlayCancelSound()
     {
         uiCancel.Post(gameObject);
+    }
+
+    public void PlayStartGameSound()
+    {
+        uiStartGame.Post(gameObject);
     }
 
     public void StopMenuMusic()

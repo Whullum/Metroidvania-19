@@ -75,6 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134050dd4ba8fc64d8bf773d475f62e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activationSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 90fd93f28442a674abb9c17ae4c445e3, type: 2}
   damage: 1
   damageTick: 1
   collisionLayers:

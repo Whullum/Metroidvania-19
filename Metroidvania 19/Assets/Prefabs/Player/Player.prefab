@@ -317,6 +317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd2e72cd73fb90488ed7d1f63e7d3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  biteSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 66c1d7c79c170f1439584c36dc0e1255, type: 2}
   attackDamage: 5
   attackRadius: 0.7
   attackCooldown: 0.1

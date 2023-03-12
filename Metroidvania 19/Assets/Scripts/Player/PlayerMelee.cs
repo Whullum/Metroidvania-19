@@ -7,6 +7,8 @@ public class PlayerMelee : MonoBehaviour
     private bool isAttacking;
     private AbilitiesShader shader;
 
+    [SerializeField] AK.Wwise.Event biteSound;
+
     [Header("Attack Properties")]
     [SerializeField] private int attackDamage;
     [SerializeField] private float attackRadius = .7f;
@@ -27,6 +29,7 @@ public class PlayerMelee : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q) && !isAttacking) {
             StartCoroutine(shader.MeleeCooldown((int)attackCooldown));
             StartCoroutine(Attack());
+            biteSound.Post(gameObject);
         }
     }
 

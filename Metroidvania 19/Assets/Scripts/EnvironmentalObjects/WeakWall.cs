@@ -6,6 +6,7 @@ public class WeakWall : MonoBehaviour, IDamageable
 
     [SerializeField] private int health = 10;
     [SerializeField] private ParticleSystem wallDestroyedEffect;
+    [SerializeField] private AK.Wwise.Event wallBreakingSound;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class WeakWall : MonoBehaviour, IDamageable
     public void Death()
     {
         Instantiate(wallDestroyedEffect, transform.position, Quaternion.identity);
-
+        wallBreakingSound.Post(gameObject);
         Destroy(gameObject);
     }
 }

@@ -88,6 +88,7 @@ public class InteractableButton : InteractableObject
         isActivated = true;
         canActivate = false;
         buttonSprite.color = activatedColor;
+        activationSound.Post(gameObject);
 
         Invoke("ResetActivation", 1f);
     }
