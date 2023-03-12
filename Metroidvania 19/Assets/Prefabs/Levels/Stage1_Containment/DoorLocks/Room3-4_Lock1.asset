@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Room3-4_Lock1
   m_EditorClassIdentifier: 
   isAbility: 0
-  isLocked: 0
+  isLocked: 1
