@@ -78,7 +78,7 @@ public class PlayerAppendage : MonoBehaviour
 
                 target.IsCaught(true);
 
-                //gameObject.transform.localScale.Set(Vector3.Distance(appendage.GetPosition(1), appendage.GetPosition(0)),appendage.startWidth,0);
+                //Adds a pulling or pushing force to the player or grappled object respectively 
                 if (target.objectTransform.tag == "Enemy")
                 {
                     
