@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,14 +19,21 @@ public class PlayerAppendage : MonoBehaviour
     private List<AppendageSegment> appendageSegments = new List<AppendageSegment>();
     int segmentCounter = 0;
     Vector3 copyGrapplePoint;
+    
+
     [SerializeField] float breakDistance = 20f;
     public float targetPull = 2.0f;
+    
+
+
     [SerializeField] float playerPull = 2.0f;
     [SerializeField] int appendageSize = 12;
     [SerializeField] float appendageWidth = 1.0f;
     [SerializeField] float segmentSize = 3f;
-    //[SerializeField] float playerSpeed = 5f;
-    // Start is called before the first frame update
+    
+
+
+
     void Start()
     {
         target = transform.parent.parent.transform.GetChild(3).GetComponent<GetTarget>();
@@ -48,60 +56,63 @@ public class PlayerAppendage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetMouseButton(1) == true)
+        {
+            caught = true;
+            
+            
+        }
+        else
+        {
+            caught= false;
+            
+        }
         
-        if (Input.GetMouseButton(1) && (target.IsObjectClose() || caught)) {
+        if (Input.GetMouseButton(1) == true && target.isCaught()) {
             if (target.objectTransform != null)
             {
                 objectPos = target.objectTransform.position;
 
                 appendage.enabled = true;
                 DrawAppendage();
-                //appendage.SetPosition(0, grapplePoint.position);
 
-                /*
-                if(segmentCounter < appendageSize || appendageSegments[(int)appendageSize-1].curPos != objectPos) {
-
-                    appendageSegments.Add(new AppendageSegment(grapplePoint.position));
-                    segmentCounter++; 
-                }*/
-                //appendage.SetPosition(appendage.positionCount - 1, objectPos);
-
-                //SimulatePhysics();
-
-
+                target.IsCaught(true);
 
                 //gameObject.transform.localScale.Set(Vector3.Distance(appendage.GetPosition(1), appendage.GetPosition(0)),appendage.startWidth,0);
-                if (target.objectTransform.tag == "Respawn")
+                if (target.objectTransform.tag == "Enemy")
                 {
+                    
                     gameObject.transform.parent.parent.GetComponent<Rigidbody2D>().AddForce((objectPos - transform.parent.parent.position).normalized * targetPull);
                 }
-                else if (target.objectTransform.tag == "Finish")
+                else if (target.objectTransform.tag == "Lever")
                     target.objectTransform.GetComponent<Rigidbody2D>().AddForce((transform.parent.parent.position - objectPos).normalized * playerPull);
 
-                caught = true;
-                target.IsCaught(true);
+                
             }
-            else { appendage.enabled = false; }
+            
         }
-        
-        if (Vector3.Distance(transform.parent.parent.position, objectPos) > breakDistance || Input.GetMouseButton(1) == false)
+        else { appendage.enabled = false; }
+
+        if ((Vector3.Distance(transform.parent.parent.position, objectPos) > breakDistance) || Input.GetMouseButton(1) == false)
         {
             caught= false;
-            
+            target.IsCaught(false);
         }
 
-        if (caught == false)
+        if (caught == false )
         {
             appendage.enabled = false;
+            appendage.SetPosition(0, Vector3.zero);
+            appendage.SetPosition(appendage.positionCount - 1, Vector3.zero);
             target.IsCaught(false);
-            
 
-            //appendage.SetPosition(0, Vector3.zero);
-            //appendage.SetPosition(appendage.positionCount-1, Vector3.zero); 
+
+
+
         }
 
 
+        
     }
 
     
