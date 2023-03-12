@@ -21,7 +21,7 @@ public class AbilityPickup : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "PlayerHead")
+        if (collision.gameObject.tag == "Player")
         {
             AbilitiesManager abilityManager = collision.gameObject.GetComponent<AbilitiesManager>();
 

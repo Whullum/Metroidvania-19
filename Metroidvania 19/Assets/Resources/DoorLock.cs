@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DoorLock", menuName = "ScriptableObjects/DoorLock", order = 2)]
 public class DoorLock : ScriptableObject
 {
-    public bool isLocked;
+    public bool isLocked = true;
 
     public void ToggleDoor()
     {
