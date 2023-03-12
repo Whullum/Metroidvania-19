@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private int minimumBodySize = 2;
     [Range(2, 50)]
     [SerializeField] private int maximumBodySize = 10;
+    [Range(2, 10)]
+    [SerializeField] private int startingBodySize = 3;
     [Header("Body Segments")]
     [Range(1, 100)]
     [Tooltip("Amount of health each body segment has.")]
@@ -62,7 +64,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         bodyParts.Add(GetComponent<BodySegment>());
 
-        for (int i = 1; i < minimumBodySize; i++)
+        for (int i = 1; i < startingBodySize; i++)
         {
             AddBodySegment();
         }

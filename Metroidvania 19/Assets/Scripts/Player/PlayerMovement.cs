@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rBdoy;
     private SpriteRenderer spriteRenderer;
     private Vector3 mousePos;
+    private bool sineWaveMotion = true;
     private float currentSpeed;
     private float horizontalTurn;
     private int movementInput;
@@ -54,7 +55,8 @@ public class PlayerMovement : MonoBehaviour
         Rotate();
         Move();
         MoveSegments();
-        SineWaveMotion();
+        if (sineWaveMotion)
+            SineWaveMotion();
     }
 
     /// <summary>
@@ -165,8 +167,16 @@ public class PlayerMovement : MonoBehaviour
         return currentSpeed;
     }
 
-    public void SetSpeed(float speed)
+    public float GetMaxSpeed()
+    {
+        return maxSpeed;
+    }
+
+    public void SetSpeed(float speed, float maxSpeed)
     {
         currentSpeed = speed;
+        this.maxSpeed = maxSpeed;
     }
+
+    public void SetSineWaveMovement(bool active) => sineWaveMotion = active;
 }

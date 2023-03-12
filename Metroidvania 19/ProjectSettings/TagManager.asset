@@ -7,6 +7,7 @@ TagManager:
   - PlayerSegment
   - Enemy
   - Lever
+  - PlayerHead
   layers:
   - Default
   - TransparentFX
@@ -15,11 +16,11 @@ TagManager:
   - Water
   - UI
   - Obstacle
+  - DistortionEffect
+  - Background
+  - PlayerProjectile
   - 
-  - 
-  - 
-  - 
-  - 
+  - Confiner
   - 
   - 
   - 
@@ -41,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1109275569
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -49,4 +53,10 @@ TagManager:
     locked: 0
   - name: InteractableObject
     uniqueID: 3482457761
+    locked: 0
+  - name: DistortionLayer
+    uniqueID: 1861892421
+    locked: 0
+  - name: UI
+    uniqueID: 3442363037
     locked: 0

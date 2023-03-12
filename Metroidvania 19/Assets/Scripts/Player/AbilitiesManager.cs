@@ -9,9 +9,13 @@ public class AbilitiesManager : MonoBehaviour
     private PlayerProjectile projectile;
     private PlayerDash dash;
 
-    [SerializeField] private bool Projectile = false;
     [SerializeField] private bool Melee = false;
+    [SerializeField] private bool Projectile = false;
     [SerializeField] private bool Dash = false;
+
+    public bool MeleeAbility { get => Melee; set => Melee = value; }
+    public bool ProjectileAbility { get => Projectile; set => Projectile = value; }
+    public bool DashAbility { get => Dash; set => Dash = value; }
 
     private void Awake()
     {
