@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.layer == 3)
+        if (collision.gameObject.tag == "Player" || collision.gameObject.layer == 3 || collision.gameObject.tag == "PlayerHead")
             return;
 
         if (collision.collider.TryGetComponent(out IDamageable damageable))

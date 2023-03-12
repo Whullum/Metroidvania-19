@@ -8,9 +8,12 @@ public class StageTransitionDoor : Door
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("OldMap: " + mapManager.CurrentMap);
-        mapManager.CurrentMap = newMapData;
-        Debug.Log("NewMap: " + mapManager.CurrentMap);
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("OldMap: " + mapManager.CurrentMap);
+            mapManager.CurrentMap = newMapData;
+            Debug.Log("NewMap: " + mapManager.CurrentMap);
+        }
 
         base.OnCollisionEnter2D(collision);
     }
