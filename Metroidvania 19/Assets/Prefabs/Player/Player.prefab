@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544650866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.707, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847440610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 1.113, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -142,8 +142,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1099184, y: 0.010000004}
-  m_Size: {x: 0.48150313, y: 0.4777912}
+  m_Offset: {x: 0.35, y: 0}
+  m_Size: {x: 0.7, y: 0.5}
   m_Direction: 1
 --- !u!114 &4916553186024403380
 MonoBehaviour:
@@ -181,9 +181,9 @@ MonoBehaviour:
   accelerationSpeed: 2
   decelerationSpeed: 5
   maxSpeed: 30
-  mouseRotationSpeed: 30
+  mouseRotationSpeed: 4
   keyboardRotationSpeed: 200
-  segmentSeparation: -0.1
+  segmentSeparation: 0
   sineWaveScale: 20
   sineWaveSpeed: 13
   inputType: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: 66c1d7c79c170f1439584c36dc0e1255, type: 2}
   attackDamage: 5
   attackRadius: 0.7
-  attackCooldown: 0.1
+  attackCooldown: 1
   attackPosition: {fileID: 1847440611}
   debugInfo: 1
 --- !u!212 &8868203442492067254
