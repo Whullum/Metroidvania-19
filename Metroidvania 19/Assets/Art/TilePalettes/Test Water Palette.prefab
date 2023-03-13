@@ -96,6 +96,26 @@ Tilemap:
   m_GameObject: {fileID: 6824709002224312171}
   m_Enabled: 1
   m_Tiles:
+  - first: {x: -1, y: -11, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 8
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 0
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741826
+  - first: {x: 1, y: -11, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 9
+      m_TileSpriteIndex: 9
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 0
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741826
   - first: {x: -1, y: -9, z: 0}
     second:
       serializedVersion: 2
@@ -194,6 +214,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a6b3b39c53e661a48b72089bf6d0dcc1, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 45f6d7464a1a16a43934a43ab7df4416, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: eac26f1616d8f5c47b36b87e6c55130e, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: db96bb61fa64ba24992e98d3e0592643, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 9879d23113fc1c540b1e9490b5c5952a, type: 3}
@@ -211,8 +235,12 @@ Tilemap:
     m_Data: {fileID: 1938308116, guid: c1841fb50a76f2840b765ca5ad1f51f8, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1782871001, guid: c1841fb50a76f2840b765ca5ad1f51f8, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 2086485128, guid: 367a28b8c5b683b44bbac6aa5d1e4b77, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -1850010947, guid: 367a28b8c5b683b44bbac6aa5d1e4b77, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 8
+  - m_RefCount: 10
     m_Data:
       e00: 1
       e01: 0
@@ -231,13 +259,15 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 8
+  - m_RefCount: 10
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  m_TileObjectToInstantiateArray: []
+  m_TileObjectToInstantiateArray:
+  - m_RefCount: 2
+    m_Data: {fileID: 71140318892812993, guid: 4f154e6d083b3244cadf8ec055405d87, type: 3}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -1, y: -9, z: 0}
-  m_Size: {x: 3, y: 9, z: 1}
+  m_Origin: {x: -1, y: -11, z: 0}
+  m_Size: {x: 3, y: 11, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -388,12 +418,20 @@ PrefabInstance:
       value: WeakWall
       objectReference: {fileID: 0}
     - target: {fileID: 4258993751657226112, guid: 4f154e6d083b3244cadf8ec055405d87, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258993751657226112, guid: 4f154e6d083b3244cadf8ec055405d87, type: 3}
       propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4258993751657226112, guid: 4f154e6d083b3244cadf8ec055405d87, type: 3}
       propertyPath: m_LightProbeUsage
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992176433939095091, guid: 4f154e6d083b3244cadf8ec055405d87, type: 3}
+      propertyPath: wallBreakingSound.WwiseObjectReference
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7610501337208241006, guid: 4f154e6d083b3244cadf8ec055405d87, type: 3}
       propertyPath: m_RootOrder
@@ -976,7 +1014,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4526496853583979740, guid: 1c7b045d233dd25498dd93fb84e05abf, type: 3}
   m_PrefabInstance: {fileID: 9051938884693559067}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5707479182060050681
+--- !u!114 &7814261026335009739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

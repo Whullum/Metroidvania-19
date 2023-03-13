@@ -44,7 +44,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{CCBE8869-0C57-A3DD-C200-A002E7784D65}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{6D1EF131-9EBB-62FB-CC9B-628A42A8EEC7}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -74,15 +74,15 @@
 				</File>
 				<File Id="120123425" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Interactables_Wall Destruction.wav</ShortName>
-					<CachePath>SFX/Interactables_Wall Destruction_2A26AC3C.wem</CachePath>
+					<CachePath>SFX/Interactables_Wall Destruction_F8A635CB.wem</CachePath>
 				</File>
 				<File Id="137025540" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Flesh_0522796D.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Flesh_69148D3D.wem</CachePath>
 				</File>
 				<File Id="139289587" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Metal.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Metal_DBBF883D.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Metal_F8C0A53A.wem</CachePath>
 				</File>
 				<File Id="164842256" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Serpent_UI_Sounds Cancel.wav</ShortName>
@@ -90,7 +90,7 @@
 				</File>
 				<File Id="254382516" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Flesh_69D2440C.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Flesh_D7808FE8.wem</CachePath>
 				</File>
 				<File Id="274882924" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Serpent_UI_Sounds Hover.wav</ShortName>
@@ -102,7 +102,7 @@
 				</File>
 				<File Id="317765135" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Metal.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Metal_39960E72.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Metal_6A18DF2B.wem</CachePath>
 				</File>
 				<File Id="335044009" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
@@ -142,7 +142,7 @@
 				</File>
 				<File Id="616721861" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Metal.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Metal_D6D3D960.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Metal_4EC34212.wem</CachePath>
 				</File>
 				<File Id="652589882" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>serpent-death-stinger.wav</ShortName>
@@ -150,7 +150,7 @@
 				</File>
 				<File Id="665916766" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Interactables_Object_Activation.wav</ShortName>
-					<CachePath>SFX/Interactables_Object_Activation_ECBB2B3F.wem</CachePath>
+					<CachePath>SFX/Interactables_Object_Activation_05A4153F.wem</CachePath>
 				</File>
 				<File Id="666427947" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-beat-no-arp-no-pulse.wav</ShortName>
@@ -162,7 +162,7 @@
 				</File>
 				<File Id="669365698" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Interactables_Button-Lever.wav</ShortName>
-					<CachePath>SFX/Interactables_Button-Lever_211631AB.wem</CachePath>
+					<CachePath>SFX/Interactables_Button-Lever_CCC0F7ED.wem</CachePath>
 				</File>
 				<File Id="682576048" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>serpent-enemy-defeat-stinger-2-25-23.wav</ShortName>
@@ -174,7 +174,7 @@
 				</File>
 				<File Id="763531730" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Flesh_1E646F5A.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Flesh_A2D73668.wem</CachePath>
 				</File>
 				<File Id="764234410" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
@@ -198,11 +198,11 @@
 				</File>
 				<File Id="815875945" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Metal.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Metal_D1F3F4C5.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Metal_734245C9.wem</CachePath>
 				</File>
 				<File Id="889840922" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Flesh_33E67D2C.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Flesh_C8CAA2B6.wem</CachePath>
 				</File>
 				<File Id="895425634" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-bridge-variation.wav</ShortName>
@@ -218,7 +218,7 @@
 				</File>
 				<File Id="966828519" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Metal.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Metal_F3608165.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Metal_F5CF44F4.wem</CachePath>
 				</File>
 				<File Id="971149466" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_StartGame_Confrimation.wav</ShortName>
@@ -230,7 +230,7 @@
 				</File>
 				<File Id="1035954141" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
-					<CachePath>SFX/EnemyDamaged_Flesh_434CE647.wem</CachePath>
+					<CachePath>SFX/EnemyDamaged_Flesh_320B6191.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -466,5 +466,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F936BF23-97A8-5AA6-EFFB-82CB8AA5AA0A}</FileHash>
+	<FileHash>{636E9ABD-EE1F-8BC8-EFD4-69ADA569592F}</FileHash>
 </SoundBanksInfo>
