@@ -179,9 +179,9 @@ MonoBehaviour:
   accelerationSpeed: 2
   decelerationSpeed: 5
   maxSpeed: 30
-  mouseRotationSpeed: 30
+  mouseRotationSpeed: 4
   keyboardRotationSpeed: 200
-  segmentSeparation: -0.1
+  segmentSeparation: 0
   sineWaveScale: 20
   sineWaveSpeed: 13
   inputType: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: 66c1d7c79c170f1439584c36dc0e1255, type: 2}
   attackDamage: 5
   attackRadius: 0.7
-  attackCooldown: 0.1
+  attackCooldown: 1
   attackPosition: {fileID: 1847440611}
   debugInfo: 1
 --- !u!212 &8868203442492067254
