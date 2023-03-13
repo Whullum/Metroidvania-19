@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,17 +13,12 @@ public class GetTarget : MonoBehaviour
     int direct = 1;
     bool caught = false;
     string tempTag = null;
-    float cooldown = 0f;
-    float grappleTime = 0f;
-    bool canGrappling = false;
-    float timeInactive = 0f;
-    float timeActive = 0f;
+    
     bool wasCaught = false;
 
     [SerializeField] int thrashForce = 4000;
+    [SerializeField] int attackDamage = 1;
     
-    [SerializeField] float grappleCooldownLever = 3f;
-    [SerializeField] float grappleCooldownEnemy = 5f;
 
 
     private void Start()
@@ -32,10 +28,11 @@ public class GetTarget : MonoBehaviour
 
     private void Update()
     {
-        if (targets.Count == 0 && caught == false) { objectClose = false; }
-        
+        //if (targets.Count == 0 && caught == false) { objectClose = false; }
 
-        if (caught == true)
+        //Debug.Log("Targets: " + targets.Count);
+        //Debug.Log("Can Grapple " + canGrappling);
+        /*if (caught == true)
         {
             wasCaught = true;
             if(objectTransform)
@@ -51,38 +48,52 @@ public class GetTarget : MonoBehaviour
             }
             
 
-        }else if (wasCaught == true && caught == false && timeInactive != 0)
+        }else if (wasCaught == true && caught == false)
         {
             DeactivateGrapple();
             wasCaught= false;
         }else if(Time.time > cooldown)
         {
+            
             canGrappling=true;
             cooldown = 0;
             timeInactive = 0;
             objectTransform = GetNearestTarget();
-        }
+        }*/
 
-        if (canGrappling)
+        if (caught)
         {
 
             if (objectTransform != null && caught && Input.GetKeyDown(KeyCode.F))
             {
-                
-                
+           
+                if(objectTransform.GetComponent<Enemy>()) { 
+                    if (objectTransform.TryGetComponent(out IDamageable damageable))
+                    {
+                        //Halts grappled object
+                        
+                        
+                        //StartCoroutine(SetAIPath());
+                        Debug.Log("Thrashing " + objectTransform.gameObject.name);
+                        objectTransform.GetComponent<AIPath>().enabled = false;
+                        direct *= -1;
+                        objectTransform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                        objectTransform.GetComponent<Rigidbody2D>().angularVelocity = 0;
+                        objectTransform.GetComponent<Rigidbody2D>().AddForce((new Vector3(objectTransform.position.x , objectTransform.position.y + (20 * direct)) - objectTransform.position).normalized * thrashForce);
+                        //Add force to bottom or top of a grappled object. "direct" alternates the direction.
+                        var vec = (new Vector3(objectTransform.position.x, objectTransform.position.y + (20 * direct)));
+                        Debug.Log(vec);
+                        
+                        if (damageable.Damage(attackDamage))
+                            damageable.Death();
+                            targets.Remove(objectTransform);
 
-                //Halts grappled object
-                objectTransform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                objectTransform.GetComponent<Rigidbody2D>().angularVelocity = 0;
-
-                //Debug.Log("Thrashing");
-
-                //Add force to bottom or top of a grappled object. "direct" alternates the direction.
-                direct *= -1;
-                objectTransform.GetComponent<Rigidbody2D>().AddForce((new Vector3(objectTransform.position.x, objectTransform.position.y + (20 * direct)) - objectTransform.position).normalized * thrashForce);
-                
+                        
+                    }
+                }
             }
-        }else if(wasCaught == true && caught == false)
+            //StartCoroutine(SetAIPath());
+        }/*else if(wasCaught == true && caught == false)
         {
             DeactivateGrapple();
             wasCaught = true;
@@ -92,9 +103,27 @@ public class GetTarget : MonoBehaviour
             //Debug.Log("No Grappling");
             canGrappling =false;
             
-        }
+        }*/
+
         
+    }
+
+
+    private IEnumerator SetAIPath()
+    {
+        yield return new WaitForEndOfFrame();
+        objectTransform.GetComponent<AIPath>().enabled = true;
+        yield return new WaitForSeconds(4);
+        /*objectTransform.GetComponent<Rigidbody2D>().
+        objectTransform.GetComponent<Rigidbody2D>().AddForce((new Vector3(.5f,.5f,0)), ForceMode2D.Impulse);
         
+        yield return new WaitForSeconds(1);
+        objectTransform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        objectTransform.GetComponent<Rigidbody2D>().angularVelocity = 0;
+        yield return new WaitForSeconds(0.5f);
+        objectTransform.GetComponent<Rigidbody2D>().AddForce((new Vector3(-.5f, -.5f, 0)), ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1);
+        objectTransform.GetComponent<AIPath>().enabled = true;*/
     }
     ///<summary> 
     ///When an object enters the collider, that object's tag is checked to determine if it is one of the targets or if it has the required tag to become a target.
@@ -102,15 +131,15 @@ public class GetTarget : MonoBehaviour
     ///<param name="collision"/> collision that has entered this object's collider</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!targets.Contains(collision.transform) && (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Lever")) {
-            if(canGrappling) {
-                objectClose = true;
+        if(!targets.Contains(collision.transform) && (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Lever") && !caught) {
+            
+            objectClose = true;
 
-                targets.Add(collision.transform);
+            targets.Add(collision.transform);
 
-                //Debug.Log("Got Object");
-                objectTransform = GetNearestTarget();
-            }
+            //Debug.Log("Got Object");
+            objectTransform = GetNearestTarget();
+            
 
             
             
@@ -151,7 +180,7 @@ public class GetTarget : MonoBehaviour
                 }
             }
             
-            caught = true;
+            
             return nearestTarget;
         }
         return null;
@@ -163,30 +192,18 @@ public class GetTarget : MonoBehaviour
     /// <param name="col"> collider to be removed</param>
     public void CheckObjects(Collider2D col =null)
     {
-        if (objectTransform.tag == null)
-            objectTransform.tag = tempTag;
+        
         //remove last caught object
-        if(col!=null) {
-            if (col.gameObject.transform == objectTransform && targets.Count > 0 && caught == false)
-            {
-                targets.Remove(col.transform);
-                
-            }
-            else if(col.gameObject.transform != objectTransform && targets.Count > 0 && caught == false)
-            {
-                targets.Remove(col.transform);
-            }
-            else if (col.gameObject.transform != objectTransform && targets.Count > 0 && caught == true)
-            {
-                targets.Remove(col.transform);
-            }
-            else if (col.gameObject.transform == objectTransform && targets.Count > 0 && caught == true)
-            {
-                targets.Remove(col.transform);
-            }
+        if(col.transform != objectTransform) {
 
-            
+            targets.Remove(col.transform);
 
+
+        }
+        else if((col.transform == objectTransform && caught == false))
+        {
+            targets.Remove(col.transform);
+            objectTransform = null;
         }
         
     }
@@ -200,7 +217,10 @@ public class GetTarget : MonoBehaviour
     public bool isCaught() {
         return caught;
     }
-    public void IsCaught(bool isCaught) { caught = isCaught;  }
+    public void IsCaught(bool isCaught) { 
+        caught = isCaught; 
+        
+    }
 
     /// <summary>
     /// Sets cooldown timer for grappling.
@@ -211,8 +231,8 @@ public class GetTarget : MonoBehaviour
         //Debug.Log("caught " + caught);
         //Debug.Log("was caught " + wasCaught);
         //Debug.Log("can g " + canGrappling);
-        canGrappling = false;
-        cooldown = Time.time + timeInactive;
+        //canGrappling = false;
+        //cooldown = Time.time + timeInactive;
         //Debug.Log("No Grappling for: " + timeInactive);
     }
 }

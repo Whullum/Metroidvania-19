@@ -19,7 +19,11 @@ public class PlayerAppendage : MonoBehaviour
     private List<AppendageSegment> appendageSegments = new List<AppendageSegment>();
     int segmentCounter = 0;
     Vector3 copyGrapplePoint;
-    
+    float cooldown = 0f;
+    float grappleTime = 0f;
+    bool wasGrappling = false;
+    float timeInactive = 0f;
+    float timeActive = 0f;
 
     [SerializeField] float breakDistance = 20f;
     public float targetPull = 2.0f;
@@ -30,22 +34,25 @@ public class PlayerAppendage : MonoBehaviour
     [SerializeField] int appendageSize = 12;
     [SerializeField] float appendageWidth = 1.0f;
     [SerializeField] float segmentSize = 3f;
-    
+    [SerializeField] float grappleCooldownLever = 3f;
+    [SerializeField] float grappleCooldownEnemy = 5f;
 
 
 
     void Start()
     {
+        Debug.Log("AppendageHere");
         target = transform.parent.parent.transform.GetChild(3).GetComponent<GetTarget>();
-        grapplePoint = gameObject.transform.parent.parent.GetChild(2).transform;
+        grapplePoint = gameObject.transform.parent.transform;
         copyGrapplePoint = grapplePoint.position;
         appendage = GetComponent<LineRenderer>();
         cam = Camera.main;
         playerMove = GetComponent<PlayerMovement>();
         for (int x = 0; x < appendageSize; x++)
         {
+
             appendageSegments.Add(new AppendageSegment(grapplePoint.position));
-            //grapplePoint.position = new Vector3(0, 0, 90);
+            
             copyGrapplePoint -= new Vector3(0, segmentSize);
 
 
@@ -56,38 +63,37 @@ public class PlayerAppendage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(1) == true)
-        {
-            caught = true;
-            
-            
-        }
-        else
-        {
-            caught= false;
-            
-        }
+
         
-        if (Input.GetMouseButton(1) == true && target.isCaught()) {
+        if (Input.GetMouseButton(1) && (target.IsObjectClose() || target.isCaught()) && cooldown < Time.time) {
+            
             if (target.objectTransform != null)
             {
                 objectPos = target.objectTransform.position;
-
+                caught = true;
+                wasGrappling = true;
+                target.IsCaught(true);
                 appendage.enabled = true;
                 DrawAppendage();
 
-                target.IsCaught(true);
+                //target.IsCaught(true);
 
                 //Adds a pulling or pushing force to the player or grappled object respectively 
                 if (target.objectTransform.tag == "Enemy")
                 {
                     
                     gameObject.transform.parent.parent.GetComponent<Rigidbody2D>().AddForce((objectPos - transform.parent.parent.position).normalized * targetPull);
+                    timeInactive = grappleCooldownEnemy;
+                    Debug.Log(timeInactive);
                 }
-                else if (target.objectTransform.tag == "Lever")
+                else if (target.objectTransform.tag == "Lever") {
                     target.objectTransform.GetComponent<Rigidbody2D>().AddForce((transform.parent.parent.position - objectPos).normalized * playerPull);
+                    timeInactive = grappleCooldownLever;
+                    Debug.Log(timeInactive);
+                }
+                    
 
-                
+
             }
             
         }
@@ -96,22 +102,31 @@ public class PlayerAppendage : MonoBehaviour
         if ((Vector3.Distance(transform.parent.parent.position, objectPos) > breakDistance) || Input.GetMouseButton(1) == false)
         {
             caught= false;
-            target.IsCaught(false);
+            
         }
-
+        
         if (caught == false )
         {
             appendage.enabled = false;
-            appendage.SetPosition(0, Vector3.zero);
-            appendage.SetPosition(appendage.positionCount - 1, Vector3.zero);
+            //appendage.SetPosition(0, Vector3.zero);
+            //appendage.SetPosition(appendage.positionCount - 1, Vector3.zero);
             target.IsCaught(false);
-
-
+            //Debug.Log("Detached Time: " + timeInactive);
+            if(wasGrappling && cooldown == 0) {
+                Debug.Log("Timer Start ");
+                cooldown = Time.time + timeInactive; 
+            }
 
 
         }
 
-
+        if(cooldown < Time.time && wasGrappling && cooldown != 0)
+        {
+            Debug.Log("Timer Done");
+            cooldown = 0;
+            timeInactive = 0;
+            wasGrappling= false;
+        }
         
     }
 
@@ -119,7 +134,7 @@ public class PlayerAppendage : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(1) && (target.IsObjectClose() || caught))
+        if (Input.GetMouseButton(1) && (target.IsObjectClose() || target.isCaught()))
             SimulatePhysics();
     }
 
@@ -164,7 +179,7 @@ public class PlayerAppendage : MonoBehaviour
             appendageSegments[x] = firstSeg;
         }
         
-        for(int x =0; x < 50; x++)
+        for(int x =0; x < 500; x++)
         {
             Constraints();
         }

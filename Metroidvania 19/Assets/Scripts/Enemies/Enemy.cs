@@ -260,4 +260,6 @@ public class Enemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(recoveryDelay);
         aiPath.enabled = true;
     }
+
+    
 }
