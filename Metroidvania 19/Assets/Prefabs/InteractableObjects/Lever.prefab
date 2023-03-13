@@ -172,8 +172,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f2d9176bd12a54d92d399b95e82370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableObject: {fileID: 0}
+  activationSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ea36bbd9621164044b216fa662ecdad7, type: 2}
+  isActivated: 0
   triggerSensibility: 5
+  interactableObject: {fileID: 0}
 --- !u!1 &4625566624500833044
 GameObject:
   m_ObjectHideFlags: 0
