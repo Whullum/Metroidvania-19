@@ -323,6 +323,10 @@ MonoBehaviour:
   isVertical: 1
   isActivated: 0
   interactableObject: {fileID: 0}
+  activationSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ea36bbd9621164044b216fa662ecdad7, type: 2}
 --- !u!1 &189616455667093786
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{8131DC9A-933F-50E4-244E-94068E23F701}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{80D18AED-1EF1-73DD-6906-51093CC08590}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -44,7 +44,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{9387027F-EBD1-A691-55F5-78FFCD5FDCFA}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{6D1EF131-9EBB-62FB-CC9B-628A42A8EEC7}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -72,9 +72,25 @@
 					<ShortName>serpent-low-health-theme_3-1-23.wav</ShortName>
 					<CachePath>SFX/serpent-low-health-theme_3-1-23_DBAED6A3.wem</CachePath>
 				</File>
+				<File Id="120123425" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Interactables_Wall Destruction.wav</ShortName>
+					<CachePath>SFX/Interactables_Wall Destruction_F8A635CB.wem</CachePath>
+				</File>
+				<File Id="137025540" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Flesh_69148D3D.wem</CachePath>
+				</File>
+				<File Id="139289587" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Metal.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Metal_F8C0A53A.wem</CachePath>
+				</File>
 				<File Id="164842256" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Serpent_UI_Sounds Cancel.wav</ShortName>
 					<CachePath>SFX/Serpent_UI_Sounds Cancel_10C4C929.wem</CachePath>
+				</File>
+				<File Id="254382516" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Flesh_D7808FE8.wem</CachePath>
 				</File>
 				<File Id="274882924" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Serpent_UI_Sounds Hover.wav</ShortName>
@@ -83,6 +99,10 @@
 				<File Id="294707591" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Dash_698B75CB.wem</CachePath>
+				</File>
+				<File Id="317765135" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Metal.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Metal_6A18DF2B.wem</CachePath>
 				</File>
 				<File Id="335044009" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
@@ -120,9 +140,17 @@
 					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Projectile_02DFDABD.wem</CachePath>
 				</File>
+				<File Id="616721861" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Metal.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Metal_4EC34212.wem</CachePath>
+				</File>
 				<File Id="652589882" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>serpent-death-stinger.wav</ShortName>
 					<CachePath>SFX/serpent-death-stinger_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="665916766" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Interactables_Object_Activation.wav</ShortName>
+					<CachePath>SFX/Interactables_Object_Activation_05A4153F.wem</CachePath>
 				</File>
 				<File Id="666427947" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-beat-no-arp-no-pulse.wav</ShortName>
@@ -132,6 +160,10 @@
 					<ShortName>stage-1-bass-eighth-note-pulse.wav</ShortName>
 					<CachePath>SFX/stage-1-bass-eighth-note-pulse_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="669365698" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Interactables_Button-Lever.wav</ShortName>
+					<CachePath>SFX/Interactables_Button-Lever_CCC0F7ED.wem</CachePath>
+				</File>
 				<File Id="682576048" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>serpent-enemy-defeat-stinger-2-25-23.wav</ShortName>
 					<CachePath>SFX/serpent-enemy-defeat-stinger-2-25-23_D79FB2B7.wem</CachePath>
@@ -139,6 +171,10 @@
 				<File Id="705393609" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>serpent-approaching.wav</ShortName>
 					<CachePath>SFX/serpent-approaching_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="763531730" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Flesh_A2D73668.wem</CachePath>
 				</File>
 				<File Id="764234410" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
@@ -160,6 +196,14 @@
 					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Bite_E58BB581.wem</CachePath>
 				</File>
+				<File Id="815875945" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Metal.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Metal_734245C9.wem</CachePath>
+				</File>
+				<File Id="889840922" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Flesh_C8CAA2B6.wem</CachePath>
+				</File>
 				<File Id="895425634" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-bridge-variation.wav</ShortName>
 					<CachePath>SFX/stage-1-bridge-variation_D79FB2B7.wem</CachePath>
@@ -172,16 +216,23 @@
 					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Projectile_53D82A68.wem</CachePath>
 				</File>
+				<File Id="966828519" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Metal.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Metal_F5CF44F4.wem</CachePath>
+				</File>
+				<File Id="971149466" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_StartGame_Confrimation.wav</ShortName>
+					<CachePath>SFX/UI_StartGame_Confrimation_10C4C929.wem</CachePath>
+				</File>
 				<File Id="1024829567" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Dash_35119819.wem</CachePath>
 				</File>
+				<File Id="1035954141" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
+					<CachePath>SFX/EnemyDamaged_Flesh_320B6191.wem</CachePath>
+				</File>
 			</Media>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="418265525" Name="Gentle_Program_Compressor_Minus_14dB_RMS" LibName="Wwise Compressor" LibId="7077891"/>
-				</ShareSets>
-			</Plugins>
 			<Events>
 				<Event Id="1810912708" Name="Play_Bite" DurationType="OneShot" DurationMin="0.5762495" DurationMax="0.96341705">
 					<MediaRefs>
@@ -192,13 +243,46 @@
 						<MediaRef Id="811387639"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2211787386" Name="Play_Dash" DurationType="OneShot" DurationMin="0.6843655" DurationMax="1.029473">
+				<Event Id="2211787386" Name="Play_Dash" DurationType="OneShot" DurationMin="0.6572461" DurationMax="0.9886779">
 					<MediaRefs>
 						<MediaRef Id="64386608"/>
 						<MediaRef Id="294707591"/>
 						<MediaRef Id="527192411"/>
 						<MediaRef Id="764234410"/>
 						<MediaRef Id="1024829567"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1068219881" Name="Play_EnemyDamaged_Fauna" DurationType="OneShot" DurationMin="0.71143323" DurationMax="1.0916821">
+					<MediaRefs>
+						<MediaRef Id="137025540"/>
+						<MediaRef Id="254382516"/>
+						<MediaRef Id="763531730"/>
+						<MediaRef Id="889840922"/>
+						<MediaRef Id="1035954141"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3777519379" Name="Play_EnemyDamaged_Metal" DurationType="OneShot" DurationMin="1.2511412" DurationMax="1.7908492">
+					<MediaRefs>
+						<MediaRef Id="139289587"/>
+						<MediaRef Id="317765135"/>
+						<MediaRef Id="616721861"/>
+						<MediaRef Id="815875945"/>
+						<MediaRef Id="966828519"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1689955131" Name="Play_Interactables_Button_Lever" DurationType="OneShot" DurationMin="0.66712683" DurationMax="0.66712683">
+					<MediaRefs>
+						<MediaRef Id="669365698"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4209986982" Name="Play_Interactables_Object_Activation" DurationType="OneShot" DurationMin="0.33411384" DurationMax="0.33411384">
+					<MediaRefs>
+						<MediaRef Id="665916766"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="694036599" Name="Play_Interactables_Wall_Destruction" DurationType="OneShot" DurationMin="4.2277193" DurationMax="5.0276337">
+					<MediaRefs>
+						<MediaRef Id="120123425"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3738780720" Name="Play_MainMenu" DurationType="Infinite">
@@ -282,11 +366,6 @@
 					<MediaRefs>
 						<MediaRef Id="403974749"/>
 					</MediaRefs>
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="418265525"/>
-						</ShareSets>
-					</PluginRefs>
 				</Event>
 				<Event Id="1879942652" Name="Play_Serpent_UI_Sounds_Hover" DurationType="OneShot" DurationMin="1.3029166" DurationMax="1.3029166">
 					<MediaRefs>
@@ -361,6 +440,11 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="1509184699" Name="Play_UI_StartGame_Confrimation" DurationType="OneShot" DurationMin="2.47525" DurationMax="2.47525">
+					<MediaRefs>
+						<MediaRef Id="971149466"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="890527358" Name="Stop_MainMenu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<GameParameters>
@@ -382,5 +466,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B44CC88B-FDBB-6F3A-83F8-2D31A5CAA7F2}</FileHash>
+	<FileHash>{636E9ABD-EE1F-8BC8-EFD4-69ADA569592F}</FileHash>
 </SoundBanksInfo>

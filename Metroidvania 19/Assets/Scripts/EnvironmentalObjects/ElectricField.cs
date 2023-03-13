@@ -89,6 +89,8 @@ public class ElectricField : InteractableObject
 
         for (int i = 0; i < effects.Length; i++)
             effects[i].Play();
+
+        activationSound.Post(gameObject);
     }
 
     public override void OnDeactivation()
@@ -101,5 +103,7 @@ public class ElectricField : InteractableObject
 
         for (int i = 0; i < effects.Length; i++)
             effects[i].Stop();
+
+        activationSound.Post(gameObject);
     }
 }

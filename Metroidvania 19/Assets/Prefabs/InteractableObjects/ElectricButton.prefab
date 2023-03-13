@@ -232,12 +232,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9fdf0034e9eac4ca4fa290c781ce89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activationSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ea36bbd9621164044b216fa662ecdad7, type: 2}
   buttonSprite: {fileID: 7877782038419152775}
   activatedColor: {r: 0.019607844, g: 0.07450981, b: 0.62352943, a: 1}
   deactivatedColor: {r: 0, g: 0.735849, b: 0.10239227, a: 1}
   groundUnion: {fileID: 0}
   isVertical: 0
-  isActivated: 0
+  isActivated: 1
   interactableObject: {fileID: 0}
 --- !u!1 &1569636054581059840
 GameObject:

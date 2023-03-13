@@ -70,7 +70,7 @@ public class Door : InteractableObject
                 }
 
                 // Recenter the minimap to the correct location
-                mapManager.RecenterMinimap(playerSpawnDirection);
+                //mapManager.RecenterMinimap(playerSpawnDirection);
 
                 // Spawn the player in front of the door with the matching doorNumber in the connected level/node
                 Door connectingDoor = connectingNode.GetConnectingDoorNumber(this.doorNumber);
