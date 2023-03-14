@@ -19050,6 +19050,10 @@ PrefabInstance:
       propertyPath: playerSpawnDirection
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5670177257591814084, guid: 4452edc5824880640bf26047b883bb23, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4452edc5824880640bf26047b883bb23, type: 3}
 --- !u!114 &2635646766309618262 stripped
