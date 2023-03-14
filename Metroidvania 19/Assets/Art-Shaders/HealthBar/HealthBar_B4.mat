@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HealthBar_Tail
+  m_Name: HealthBar_B4
   m_Shader: {fileID: -6465566751694194690, guid: 6b3096d5b666daa4bb34e210576019f1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,7 +41,7 @@ Material:
     - _Health: 100
     - _HealthRange: 54.7
     - _NoiseScale: 1
-    - _NoiseSpeed: 2
+    - _NoiseSpeed: 3
     - _NoiseYPosition: 2
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -50,7 +50,7 @@ Material:
     - _Color_EmptyLife: {r: 0.3225969, g: 1, b: 0, a: 0}
     - _Color_FullLife: {r: 0.41073632, g: 1, b: 0, a: 1}
     - _Color_LowLife: {r: 1, g: 0, b: 0, a: 1}
-    - _NoiseTiling: {r: 2, g: 5, b: 0, a: 0}
+    - _NoiseTiling: {r: 2, g: 10, b: 0, a: 0}
     - _Noise_SecondColor: {r: 0.07075472, g: 0.2830189, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4401308669179349662

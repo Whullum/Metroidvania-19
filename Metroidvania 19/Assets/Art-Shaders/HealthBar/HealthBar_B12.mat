@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HealthBar_Body 2
+  m_Name: HealthBar_B12
   m_Shader: {fileID: -6465566751694194690, guid: 6b3096d5b666daa4bb34e210576019f1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -48,10 +48,10 @@ Material:
     m_Colors:
     - _Color: {r: 0.2791319, g: 1, b: 0, a: 0}
     - _Color_EmptyLife: {r: 0.3225969, g: 1, b: 0, a: 0}
-    - _Color_FullLife: {r: 1.4980392, g: 0.05490196, b: 0, a: 0}
-    - _Color_LowLife: {r: 0, g: 0.15686275, b: 4, a: 0}
+    - _Color_FullLife: {r: 0.41073632, g: 1, b: 0, a: 1}
+    - _Color_LowLife: {r: 1, g: 0, b: 0, a: 1}
     - _NoiseTiling: {r: 2, g: 10, b: 0, a: 0}
-    - _Noise_SecondColor: {r: 0.5471698, g: 0, b: 0.02124232, a: 0}
+    - _Noise_SecondColor: {r: 0.07075472, g: 0.2830189, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4401308669179349662
 MonoBehaviour:
