@@ -10,19 +10,7 @@ public class EndGame : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            FadeOut();
+            SceneManager.LoadScene("Start Menu");
         }
-    }
-
-    public void FadeOut()
-    {
-        StartCoroutine(FadeOutAnim());
-    }
-
-    private IEnumerator FadeOutAnim()
-    {
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Start Menu");
     }
 }
