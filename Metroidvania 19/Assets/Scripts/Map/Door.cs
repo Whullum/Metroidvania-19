@@ -22,6 +22,8 @@ public class Door : InteractableObject
     [SerializeField] private const int playerSpawnDistance = 5;
 
     public static Action LevelLoaded;
+
+    public static Action<DoorDirection> PlayerTraveled;
     
     public int DoorNumber { get => doorNumber; set => doorNumber = value; }
 
@@ -47,6 +49,7 @@ public class Door : InteractableObject
             if (mapManager.CurrentMap.mapLevels[connectingMapName] != null)
             {
                 connectingNode = mapManager.CurrentMap.mapLevels[connectingMapName];
+                MinimapMovement.instance.RecenterMinimap(connectingMapName);
 
                 Instantiate(connectingNode.gameObject);
 
@@ -85,11 +88,6 @@ public class Door : InteractableObject
                 Debug.LogError("Warning: No map level with the name of " + connectingMapName + " located in mapLevels dictionary.");
             }
         }
-    }
-
-    public void SpawnPlayer()
-    {
-
     }
 
     private bool CheckDoorLockStatus()

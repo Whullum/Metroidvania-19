@@ -320,7 +320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &307860802
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1092,6 +1092,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestLevel_1
       objectReference: {fileID: 0}
+    - target: {fileID: 3271295850092198813, guid: 24d88ad0b47d6854199fe29c38d9884c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3271295850630822191, guid: 24d88ad0b47d6854199fe29c38d9884c, type: 3}
       propertyPath: m_Size.x
       value: 31
@@ -1107,6 +1111,10 @@ PrefabInstance:
     - target: {fileID: 3271295850630822191, guid: 24d88ad0b47d6854199fe29c38d9884c, type: 3}
       propertyPath: m_Origin.y
       value: -14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027452869049014532, guid: 24d88ad0b47d6854199fe29c38d9884c, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6027452869049014532, guid: 24d88ad0b47d6854199fe29c38d9884c, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -1714,3 +1722,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d88ad0b47d6854199fe29c38d9884c, type: 3}
+--- !u!1001 &7459082645090557787
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5421112574922565538, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: doors.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565539, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421112574922565549, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
+      propertyPath: m_Name
+      value: Containment_Minimap
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}

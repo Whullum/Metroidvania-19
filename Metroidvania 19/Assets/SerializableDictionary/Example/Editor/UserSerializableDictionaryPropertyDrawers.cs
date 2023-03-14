@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomPropertyDrawer(typeof(StringMapNodeDictionary))]
+[CustomPropertyDrawer(typeof(StringTransformDictionary))]
 [CustomPropertyDrawer(typeof(StringStringDictionary))]
 [CustomPropertyDrawer(typeof(StringIntDictionary))]
 [CustomPropertyDrawer(typeof(ObjectColorDictionary))]
