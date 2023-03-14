@@ -10,10 +10,10 @@ public class GetTarget : MonoBehaviour
     List<Transform> targets = new List<Transform>();
     public Transform objectTransform;
     Rigidbody2D objectRig;
-    int direct = 1;
+    int direct = -1;
     bool caught = false;
     string tempTag = null;
-    
+    bool isYLocked = false;
     bool wasCaught = false;
 
     [SerializeField] int thrashForce = 4000;
@@ -76,6 +76,15 @@ public class GetTarget : MonoBehaviour
                         //StartCoroutine(SetAIPath());
                         Debug.Log("Thrashing " + objectTransform.gameObject.name);
                         objectTransform.GetComponent<AIPath>().enabled = false;
+                        Debug.Log(objectTransform.GetComponent<Rigidbody2D>().constraints);
+                        objectTransform.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                        /*if(objectTransform.GetComponent<Rigidbody2D>().constraints.con)
+                        {
+                            Debug.Log("Unlocked Y Position");
+                            isYLocked= true;
+                            
+                        }*/
+
                         direct *= -1;
                         objectTransform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                         objectTransform.GetComponent<Rigidbody2D>().angularVelocity = 0;
@@ -92,7 +101,7 @@ public class GetTarget : MonoBehaviour
                     }
                 }
             }
-            //StartCoroutine(SetAIPath());
+            StartCoroutine(SetAIPath());
         }/*else if(wasCaught == true && caught == false)
         {
             DeactivateGrapple();
@@ -112,8 +121,11 @@ public class GetTarget : MonoBehaviour
     private IEnumerator SetAIPath()
     {
         yield return new WaitForEndOfFrame();
-        objectTransform.GetComponent<AIPath>().enabled = true;
         yield return new WaitForSeconds(4);
+        //objectTransform.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+        if(objectTransform != null)
+            objectTransform.GetComponent<AIPath>().enabled = true;
+        
         /*objectTransform.GetComponent<Rigidbody2D>().
         objectTransform.GetComponent<Rigidbody2D>().AddForce((new Vector3(.5f,.5f,0)), ForceMode2D.Impulse);
         
