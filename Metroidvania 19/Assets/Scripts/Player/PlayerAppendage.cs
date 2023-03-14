@@ -41,7 +41,7 @@ public class PlayerAppendage : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("AppendageHere");
+        //Debug.Log("AppendageHere");
         target = transform.parent.parent.transform.GetChild(3).GetComponent<GetTarget>();
         grapplePoint = gameObject.transform.parent.transform;
         copyGrapplePoint = grapplePoint.position;
@@ -84,12 +84,12 @@ public class PlayerAppendage : MonoBehaviour
                     
                     gameObject.transform.parent.parent.GetComponent<Rigidbody2D>().AddForce((objectPos - transform.parent.parent.position).normalized * targetPull);
                     timeInactive = grappleCooldownEnemy;
-                    Debug.Log(timeInactive);
+                    //Debug.Log(timeInactive);
                 }
                 else if (target.objectTransform.tag == "Lever") {
                     target.objectTransform.GetComponent<Rigidbody2D>().AddForce((transform.parent.parent.position - objectPos).normalized * playerPull);
                     timeInactive = grappleCooldownLever;
-                    Debug.Log(timeInactive);
+                    //Debug.Log(timeInactive);
                 }
                     
 
