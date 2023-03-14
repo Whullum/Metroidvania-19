@@ -224,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: Melee
   health: 15
+  damagePower: 3
   detectDistance: 20
   patrolSpeed: 5
   attackSpeed: 7

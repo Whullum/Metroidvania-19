@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: Ranged
   health: 5
+  damagePower: 2
   detectDistance: 10
   patrolSpeed: 3
   attackSpeed: 0
