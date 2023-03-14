@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13063b8792b32eb48a7c8b4475f63ea6, type: 3}
   m_Name: Stage1_Containment_Map
   m_EditorClassIdentifier: 
+  minimapObject: {fileID: 5671920859194002544, guid: 20bbb9d75a863da4d8ee3d0946864602, type: 3}
   mapLevels:
     m_keys:
     - Room_1
@@ -39,6 +40,7 @@ MonoBehaviour:
     - {fileID: 3271295850092198802, guid: 22f9a251d71212f4bb2dbe3deddc679d, type: 3}
     - {fileID: 3271295850092198802, guid: 2419c733e0eb3f141803f517c911932e, type: 3}
     - {fileID: 3271295850092198802, guid: 25bfc0f223ea474478f865c48b0945d0, type: 3}
+  mapDoors: []
   mapMusic:
     idInternal: 0
     valueGuidInternal: 

@@ -48,10 +48,10 @@ Material:
     m_Colors:
     - _Color: {r: 0.2791319, g: 1, b: 0, a: 0}
     - _Color_EmptyLife: {r: 0.3225969, g: 1, b: 0, a: 0}
-    - _Color_FullLife: {r: 2, g: 0.7267139, b: 0, a: 0}
-    - _Color_LowLife: {r: 0.08376963, g: 0, b: 3.9999995, a: 0}
+    - _Color_FullLife: {r: 0.41073632, g: 1, b: 0, a: 1}
+    - _Color_LowLife: {r: 1, g: 0, b: 0, a: 1}
     - _NoiseTiling: {r: 2, g: 5, b: 0, a: 0}
-    - _Noise_SecondColor: {r: 0.54901963, g: 0, b: 0.019607844, a: 0}
+    - _Noise_SecondColor: {r: 0.07075472, g: 0.2830189, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4401308669179349662
 MonoBehaviour:

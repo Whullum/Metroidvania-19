@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Lever
   - PlayerHead
+  - Minimap
+  - WallTiles
+  - MiniMapCamera
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - PlayerProjectile
   - 
   - Confiner
-  - 
+  - Minimap
   - 
   - 
   - 

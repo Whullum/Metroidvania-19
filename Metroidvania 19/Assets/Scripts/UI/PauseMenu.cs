@@ -19,9 +19,10 @@ public class PauseMenu : MonoBehaviour
 
     private IEnumerator FadeInAnim() {
         yield return new WaitForEndOfFrame();
-        LeanTween.alpha(pauseCanvasForeground.GetComponent<RectTransform>(), 0f, 1f);
-        yield return new WaitForSeconds(1f);
+        LeanTween.alpha(pauseCanvasForeground.GetComponent<RectTransform>(), 0f, 2f).setEaseInExpo();
+        yield return new WaitForSeconds(2f);
         pauseCanvasForeground.SetActive(false);
+        LeanTween.scale(gameHUDCanvasGroup, new Vector3(1.2f, 1.2f, 1.2f), 1f).setEaseOutQuad();
     }
     
     private void Update() {

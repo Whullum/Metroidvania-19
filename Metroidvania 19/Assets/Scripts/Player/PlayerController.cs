@@ -14,30 +14,36 @@ public class PlayerController : MonoBehaviour, IDamageable
     /// Invoked when the player recovers/adds a new segment to the body.
     /// </summary>
     public static Action SegmentAdded;
+
     /// <summary>
     /// Invoked when the player losses a segment from the body.
     /// </summary>
     public static Action SegmentRemoved;
+
     public static List<BodySegment> BodyParts { get { return bodyParts; } }
     public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
+    public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
+    public int SegmentHealth { get { return segmentHealth; } set { segmentHealth = value; } }
+    public int StartingBodySize { get { return startingBodySize; } set { startingBodySize = value; } }
 
     private static List<BodySegment> bodyParts = new List<BodySegment>();
-    private int currentHealth;
-    private int totalHealth;
+    private HealthShader shader;
+    private int minimumBodySize = 2;
+    public int currentHealth;
     private int maxHealth;
 
-    [Header("Player Body")]
-    [Range(2, 10)]
-    [Tooltip("The minimum amount of segments the player will have at any time.")]
-    [SerializeField] private int minimumBodySize = 2;
-    [Range(2, 50)]
-    [SerializeField] private int maximumBodySize = 10;
-    [Range(2, 10)]
-    [SerializeField] private int startingBodySize = 3;
+    [Header("Player Stats")]
+
+    [Tooltip("Amount of body segments the player starts with.")]
+    [Range(2, 15)] [SerializeField] private int startingBodySize;
+
     [Header("Body Segments")]
-    [Range(1, 100)]
+
     [Tooltip("Amount of health each body segment has.")]
-    [SerializeField] private int segmentHealth = 2;
+    [Range(1, 100)] [SerializeField] private int segmentHealth;
+
+    [Header("Body Segments")]
+
     [Tooltip("Default body segment used to extend the player body.")]
     [SerializeField] private GameObject bodySegment;
     [Tooltip("Base body segment, created after the head when the body is > than 2 segments.")]
@@ -53,8 +59,20 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        maxHealth = maximumBodySize * segmentHealth;
+        shader = FindObjectOfType<HealthShader>();
         CreateInitialBody();
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Alpha8)) {
+            Damage(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9)) {
+            RestoreHealth(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0)) {
+            AddBodySegment();
+        }
     }
 
     /// <summary>
@@ -68,8 +86,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             AddBodySegment();
         }
-        totalHealth = segmentHealth * bodyParts.Count;
-        currentHealth = totalHealth;
+        maxHealth = segmentHealth * bodyParts.Count;
+        currentHealth = maxHealth;
     }
 
     /// <summary>
@@ -87,19 +105,25 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             segmentPrefab = tailSegment;
             bodyIndex = bodyParts.Count;
+        } else {
+            Debug.LogError("POOP");
+            shader.ToggleSegment(bodyIndex - 1, true);
         }
         // If the head and the tail are present, we create the base body segment
-        else if (bodyParts.Count == 2)
+        if (bodyParts.Count == 2) 
+        {
             segmentPrefab = baseBodySegment;
+        }
 
         // Creates a new body segment depending on the actual body size. If the body size is large enough, the default body segment will be created
         BodySegment newSegment = Instantiate(segmentPrefab, bodyParts[bodyParts.Count - 1].transform.position, bodyParts[bodyParts.Count - 1].transform.rotation, transform).GetComponent<BodySegment>();
         newSegment.Player = this;
         bodyParts.Insert(bodyIndex, newSegment);
+        
 
         // Calculate the new maxHealth with the new body size
-        CalculateTotalHealth();
-        currentHealth = totalHealth;
+        CalculateMaxHealth();
+        currentHealth = maxHealth;
 
         // Effect for adding a new body part
         Instantiate(segmentAddedEffect, newSegment.transform.position, Quaternion.identity, newSegment.transform);
@@ -127,22 +151,20 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         BodySegment segmentToRemove = bodyParts[bodyIndex];
         bodyParts.RemoveAt(bodyIndex);
+        shader.ToggleSegment(bodyIndex - 1, false);
 
         CalculateSortingOrder();
 
         Instantiate(segmentDecoupledEffect, segmentToRemove.transform.position, Quaternion.identity, segmentToRemove.transform);
         segmentToRemove.Decouple();
 
-        CalculateTotalHealth();
+        CalculateMaxHealth();
         SegmentRemoved?.Invoke();
     }
 
-    private void CalculateTotalHealth()
+    private void CalculateMaxHealth()
     {
-        totalHealth = segmentHealth * bodyParts.Count;
-
-        if (totalHealth > maxHealth)
-            totalHealth = maxHealth;
+        maxHealth = segmentHealth * bodyParts.Count;
     }
 
     /// <summary>
@@ -153,14 +175,22 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         currentHealth += amount;
 
-        if (currentHealth > totalHealth)
-            currentHealth = totalHealth;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        float remainingSegmentHealth = (currentHealth % segmentHealth) * (100/segmentHealth);
+
+        if (currentHealth > segmentHealth * minimumBodySize) {
+            remainingSegmentHealth = (remainingSegmentHealth <= 0) ? 100 : remainingSegmentHealth;
+            shader.DepleteSegment(bodyParts.Count - minimumBodySize, remainingSegmentHealth);
+        } else {
+            shader.DepleteHeadAndTail((currentHealth * 100f / segmentHealth));
+        }
     }
 
     public void GrowBody()
     {
-        if (totalHealth < maxHealth)
-            AddBodySegment();
+        AddBodySegment();
     }
 
     public bool Damage(int amount)
@@ -170,9 +200,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         CameraController.ShakeCamera?.Invoke();
 
         // If the player has no health, they die
-        if (currentHealth <= 0)
+        if (currentHealth <= 0) {
+            shader.DepleteHeadAndTail(0);
             return true;
-
+        }
+            
         // Calculate the amount of segments to destroy
         float segmentsLeft = (float)currentHealth / (float)segmentHealth;
         float segmentsToDestroy = Mathf.FloorToInt(bodyParts.Count - segmentsLeft);
@@ -182,11 +214,21 @@ public class PlayerController : MonoBehaviour, IDamageable
             for (int i = 0; i < segmentsToDestroy; i++)
             {
                 // If the amount of segments to destroy is more than the actual minimum size of the body, we can't destroy those
-                if (bodyParts.Count == minimumBodySize)
-                    return false;
-                RemoveBodySegment(bodyParts.Count - 2);
+                if (bodyParts.Count > minimumBodySize)
+                    RemoveBodySegment(bodyParts.Count - minimumBodySize);
+                
             }
+        } 
+
+        float remainingSegmentHealth = (currentHealth % segmentHealth) * (100/segmentHealth);
+
+        if (currentHealth > segmentHealth * minimumBodySize) {
+            remainingSegmentHealth = (remainingSegmentHealth <= 0) ? 100 : remainingSegmentHealth;
+            shader.DepleteSegment(bodyParts.Count - minimumBodySize, remainingSegmentHealth);
+        } else {
+            shader.DepleteHeadAndTail((currentHealth * 100f / segmentHealth));
         }
+
         return false;
     }
 
