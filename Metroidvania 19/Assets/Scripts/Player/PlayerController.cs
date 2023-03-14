@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public int SegmentHealth { get { return segmentHealth; } set { segmentHealth = value; } }
     public int StartingBodySize { get { return startingBodySize; } set { startingBodySize = value; } }
 
-    private static List<BodySegment> bodyParts = new List<BodySegment>();
+    private static List<BodySegment> bodyParts;
     private HealthShader shader;
     private int minimumBodySize = 2;
     public int currentHealth;
@@ -59,31 +59,21 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        bodyParts = new List<BodySegment>();
         shader = FindObjectOfType<HealthShader>();
         CreateInitialBody();
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Alpha8)) {
-            Damage(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9)) {
-            RestoreHealth(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            AddBodySegment();
-        }
     }
 
     /// <summary>
     /// Initializes the body with the minimum shape it will have: HEAD - BASE BODY - BODY SEGMENT - TAIL.
     /// </summary>
-    private void CreateInitialBody()
+    public void CreateInitialBody()
     {
         bodyParts.Add(GetComponent<BodySegment>());
 
         for (int i = 1; i < startingBodySize; i++)
         {
+            Debug.LogError("Bing bing " + i);
             AddBodySegment();
         }
         maxHealth = segmentHealth * bodyParts.Count;
@@ -243,5 +233,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         Rigidbody2D body = GetComponent<Rigidbody2D>();
         body.gravityScale = .2f;
         body.AddTorque(transform.up.x * body.velocity.magnitude);
+        StartCoroutine(FindObjectOfType<PauseMenu>().FadeOutAnim());
     }
 }
