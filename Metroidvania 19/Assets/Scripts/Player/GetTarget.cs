@@ -10,7 +10,7 @@ public class GetTarget : MonoBehaviour
     List<Transform> targets = new List<Transform>();
     public Transform objectTransform;
     Rigidbody2D objectRig;
-    int direct = 1;
+    int direct = -1;
     bool caught = false;
     string tempTag = null;
     bool isYLocked = false;
