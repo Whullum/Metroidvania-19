@@ -9,13 +9,19 @@ public class WeakWall : MonoBehaviour, IDamageable
     [SerializeField] private ParticleSystem wallDestroyedEffect;
     [SerializeField] private AK.Wwise.Event wallBreakingSound;
 
-    Tilemap tilemap;
+    [SerializeField]
+    private Tilemap tilemap;
+
+    private void Awake()
+    {
+        
+    }
 
     private void Start()
     {
         health = (health == 0) ? 10 : health;
 
-        tilemap = GameObject.FindGameObjectWithTag("WallTiles").GetComponent<Tilemap>();
+        tilemap = GetComponentInParent<Tilemap>();
     }
 
     public bool Damage(int amount)
@@ -35,6 +41,7 @@ public class WeakWall : MonoBehaviour, IDamageable
     {
         Instantiate(wallDestroyedEffect, transform.position, Quaternion.identity);
         wallBreakingSound.Post(gameObject);
+
         Destroy(gameObject);
         tilemap.SetTile(tilemap.WorldToCell(this.gameObject.transform.position), null);
     }

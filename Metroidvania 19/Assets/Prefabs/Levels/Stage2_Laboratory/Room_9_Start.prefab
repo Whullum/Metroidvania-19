@@ -39560,7 +39560,7 @@ PrefabInstance:
       objectReference: {fileID: 3271295850092198802}
     - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
       propertyPath: connectingMapName
-      value: Room_10
+      value: Room_11
       objectReference: {fileID: 0}
     - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
       propertyPath: playerSpawnDirection

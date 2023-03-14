@@ -30,6 +30,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void FadeOut() {
+        GetComponent<MainMenuSounds>().StopMenuMusic();
         StartCoroutine(FadeOutAnim());
     }
 

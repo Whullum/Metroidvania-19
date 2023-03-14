@@ -1772,15 +1772,15 @@ MonoBehaviour:
   uiStartGame:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 8a6a3777b9a49334da5779e718e6f9db, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 8f94c8509105244489e00baae7428c2b, type: 2}
   menuMusic:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: b49b239439bb00d47ba5c59751b0edda, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 36586110779f250468ca13ada68e0981, type: 2}
   stopMenuMusic:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: ba69e55d8013e6e43be662305ab9df2c, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 72311c422e82259448b42cf755248c8b, type: 2}
 --- !u!1 &2065564299 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1385484301797636684, guid: d7bc2fd8665670c4cbf2778bdb77b3e6, type: 3}

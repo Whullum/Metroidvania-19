@@ -313,7 +313,7 @@ MonoBehaviour:
     - {fileID: 400007631233551384}
   startingTransform: {fileID: 8297519150624019095}
   startingRoomName: Room_9
-  minimapCameraGameObject: {fileID: 0}
+  minimapCameraGameObject: {fileID: 400007631233551385}
   playerPositionMarker: {fileID: 8389159708950819066}
 --- !u!1 &6148154811538442765
 GameObject:

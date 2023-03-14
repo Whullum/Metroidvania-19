@@ -17092,6 +17092,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 7282256469201711277, guid: 1c7b045d233dd25498dd93fb84e05abf, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7794422402809239988, guid: 1c7b045d233dd25498dd93fb84e05abf, type: 3}
       propertyPath: doorNumber
       value: 1
