@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -23,6 +24,16 @@ public class PauseMenu : MonoBehaviour
         yield return new WaitForSeconds(2f);
         pauseCanvasForeground.SetActive(false);
         LeanTween.scale(gameHUDCanvasGroup, new Vector3(1.2f, 1.2f, 1.2f), 1f).setEaseOutQuad();
+    }
+
+    public IEnumerator FadeOutAnim() {
+        yield return new WaitForEndOfFrame();
+        PlayerController player = FindObjectOfType<PlayerController>();
+        pauseCanvasForeground.SetActive(true);
+        LeanTween.alpha(pauseCanvasForeground.GetComponent<RectTransform>(), 1f, 3f);
+        LeanTween.scale(gameHUDCanvasGroup, new Vector3(2f, 2f, 2f), 3f).setEaseOutQuad();
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
     private void Update() {
