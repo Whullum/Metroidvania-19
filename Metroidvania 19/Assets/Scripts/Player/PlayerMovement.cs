@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Input type for controlling the player.")]
     [SerializeField] private InputType inputType = InputType.Mouse;
 
+    public Rigidbody2D RBdoy { get => rBdoy;}
 
     private void Awake()
     {

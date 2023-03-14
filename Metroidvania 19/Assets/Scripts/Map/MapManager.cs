@@ -8,40 +8,45 @@ public class MapManager : MonoBehaviour
     private Map currentMap;
     public Map CurrentMap { get => currentMap; set => currentMap = value; }
 
-    public GameObject fullMapImage;
-    public GameObject miniMapImage;
-    public GameObject maskImage;
+    public Camera mapCamera;
+    public GameObject minimapCenter;
+    private bool cameraIsZoomed = true;
+    public string cameraCeneteredName;
+    private int cameraZoomNear = 3;
+    private int cameraZoomFar = 10;
 
-    private const float miniMapXIncrement = 100f;
-    private const float miniMapYIncrement = 50f;
+    public GameObject fullmapImage;
+    public GameObject miniMapImage;
+
+    private void Start()
+    {
+        Instantiate(CurrentMap.minimapObject,gameObject.transform);
+    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            fullMapImage.SetActive(!fullMapImage.activeSelf);
-            miniMapImage.SetActive(!miniMapImage.activeSelf);
-        }
-    }
+            cameraIsZoomed = !cameraIsZoomed;
 
-    public void RecenterMinimap(DoorDirection direction)
-    {
-        RectTransform maskImageRect = maskImage.GetComponent<RectTransform>();
+            if (cameraIsZoomed)
+            {
+                mapCamera.orthographicSize = cameraZoomNear;
+                mapCamera.gameObject.transform.position = MinimapMovement.instance.minimapPoints[cameraCeneteredName].transform.position;
+                minimapCenter.SetActive(true);
 
-        switch (direction)
-        {
-            case DoorDirection.NORTH:
-                maskImageRect.position = new Vector3(maskImage.transform.position.x, maskImage.transform.position.y + miniMapYIncrement, 0);                
-                break;
-            case DoorDirection.SOUTH:
-                maskImageRect.position = new Vector3(maskImage.transform.position.x, maskImage.transform.position.y - miniMapYIncrement, 0);
-                break;
-            case DoorDirection.EAST:
-                maskImageRect.position = new Vector3(maskImage.transform.position.x + miniMapXIncrement, maskImage.transform.position.y, 0);
-                break;
-            case DoorDirection.WEST:
-                maskImageRect.position = new Vector3(maskImage.transform.position.x - miniMapXIncrement, maskImage.transform.position.y, 0);
-                break;
+                fullmapImage.SetActive(false);
+                miniMapImage.SetActive(true);
+            }
+            else
+            {
+                mapCamera.orthographicSize = cameraZoomFar;
+                mapCamera.gameObject.transform.position = MinimapMovement.instance.minimapPoints["Center"].transform.position;
+                minimapCenter.SetActive(false);
+
+                fullmapImage.SetActive(true);
+                miniMapImage.SetActive(false);
+            }
         }
     }
 }

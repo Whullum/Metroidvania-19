@@ -128,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 7c09fb960ce3bb48b66a8b53e7e942ec
     GuidInternal: 
-    m_lastTime: -8585229452788721516
+    m_lastTime: -8585228674618377235
     List:
     - name: Enemy
       guid: c9da83df96f538468cdfcb2fa4a9abac
@@ -161,6 +161,23 @@ MonoBehaviour:
         ObjectType: 4
         guid: baf61d4882f4f04692d2511bc7b82cc2
       Path: Events\Default Work Unit\Interactables
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Item_Pickup_Stinger
+      guid: c5ec292b88c27049a81c15ca501c6011
+      id: 1592628004
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Item_Pickup_Stinger
+        ObjectType: 3
+        guid: c5ec292b88c27049a81c15ca501c6011
+      Path: Events\Default Work Unit\Item_Pickup_Stinger
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -321,6 +338,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 91ea2a02560fd74bb0bd546a26f235c2
       Path: Events\Default Work Unit\UI Events\Play_MainMenu
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Menu
+      guid: 1e20971b5381004491d8bfb2f2185b1d
+      id: 1278378707
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Menu
+        ObjectType: 3
+        guid: 1e20971b5381004491d8bfb2f2185b1d
+      Path: Events\Default Work Unit\Play_Menu
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -498,6 +532,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Stop_Menu
+      guid: 203bfdbc8710c44394c4143f0a44a511
+      id: 2914981333
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Stop_Menu
+        ObjectType: 3
+        guid: 203bfdbc8710c44394c4143f0a44a511
+      Path: Events\Default Work Unit\Stop_Menu
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: UI Events
       guid: 1ef12c450b772e4697b586cf602d7a04
       id: 3598925022
@@ -597,7 +648,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: b069793efb8e01418c211b9c5f1aab60
     GuidInternal: 
-    m_lastTime: -8585234374118586962
+    m_lastTime: -8585228674617136090
     List:
     - name: Gameplay
       guid: 596586587b4cfb44aa83529eb257bfa1
@@ -742,6 +793,56 @@ MonoBehaviour:
         - ElementName: Normal
           ObjectType: 8
           guid: 9ed4e2c0ba4ea448b988841722622597
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Pause
+      guid: 41331615c0ecf643bd1c23abb1aafcc8
+      id: 3092587493
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b069793efb8e01418c211b9c5f1aab60
+      - ElementName: Pause
+        ObjectType: 9
+        guid: 41331615c0ecf643bd1c23abb1aafcc8
+      Path: States\Default Work Unit\Pause
+      values:
+      - name: None
+        guid: 5a83c854ed53e9468645e1cd0cb19086
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: b069793efb8e01418c211b9c5f1aab60
+        - ElementName: Pause
+          ObjectType: 9
+          guid: 41331615c0ecf643bd1c23abb1aafcc8
+        - ElementName: None
+          ObjectType: 8
+          guid: 5a83c854ed53e9468645e1cd0cb19086
+      - name: Pause
+        guid: 165dba8fe36ce9468d2f9af01a1590ad
+        id: 3092587493
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: b069793efb8e01418c211b9c5f1aab60
+        - ElementName: Pause
+          ObjectType: 9
+          guid: 41331615c0ecf643bd1c23abb1aafcc8
+        - ElementName: Pause
+          ObjectType: 8
+          guid: 165dba8fe36ce9468d2f9af01a1590ad
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
