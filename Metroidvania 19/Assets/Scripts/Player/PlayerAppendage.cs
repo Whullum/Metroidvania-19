@@ -19,9 +19,9 @@ public class PlayerAppendage : MonoBehaviour
     int segmentCounter = 0;
     Vector3 copyGrapplePoint;
     [SerializeField] float breakDistance = 20f;
-    [SerializeField] float targetPull = 2.0f;
+    public float targetPull = 2.0f;
     [SerializeField] float playerPull = 2.0f;
-    [SerializeField] float appendageSize = 12f;
+    [SerializeField] int appendageSize = 12;
     [SerializeField] float appendageWidth = 1.0f;
     [SerializeField] float segmentSize = 3f;
     //[SerializeField] float playerSpeed = 5f;
@@ -104,6 +104,7 @@ public class PlayerAppendage : MonoBehaviour
 
     }
 
+    
 
     private void FixedUpdate()
     {

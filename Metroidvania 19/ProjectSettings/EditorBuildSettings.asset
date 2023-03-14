@@ -5,25 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/MinimapTesting.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Start Menu.unity
     guid: 6962822351bc0934cb11af20417739d5
   - enabled: 1
-    path: Assets/Scenes/Stages/Mock Stage1_Containment.unity
-    guid: 60f9a145b7abc16439ab267f14f65c18
-  - enabled: 1
-    path: Assets/Scenes/Stage2_Laboratory.unity
-    guid: 7afb8e0cb515ea844a41284f7300e2a4
-  - enabled: 1
-    path: Assets/Scenes/Dialogue.unity
-    guid: 98a622b17b188304bb0510e0c0370d58
-  - enabled: 1
-    path: Assets/Scenes/Stages/Mock Stage1_Containment.unity
-    guid: 60f9a145b7abc16439ab267f14f65c18
-  - enabled: 1
-    path: Assets/Scenes/Stages/Stage2_Laboratory.unity
-    guid: 7afb8e0cb515ea844a41284f7300e2a4
+    path: Assets/Scenes/Main.unity
+    guid: 00dc2176b246f2e4fa0ab9a177337ac0
   m_configObjects: {}

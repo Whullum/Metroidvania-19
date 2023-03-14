@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d66e2be5f5c2fe4d9c1bf6d4e7b2d28, type: 3}
   m_Name: Door8-10_Lock1
   m_EditorClassIdentifier: 
-  isLocked: 0
+  isLocked: 1

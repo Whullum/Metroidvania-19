@@ -7,13 +7,17 @@ public class InteractableButton : InteractableObject
     private bool isPressed;
     private bool canActivate = true; // Prevents multiple activations on the same hit
 
+    [SerializeField] private SpriteRenderer buttonSprite;
+    [SerializeField] private Color activatedColor;
+    [SerializeField] private Color deactivatedColor;
+
     [Header("Button Properties")]
     [Tooltip("Transform used to calculated button traveled distance.")]
     [SerializeField] private Transform groundUnion;
     [Tooltip("Use for modifying rigidbody constraints. If button is facing vertically, this should be set to true.")]
     [SerializeField] private bool isVertical = true;
     [Tooltip("Initial state of this button.")]
-    [SerializeField] private bool isActivated;
+    [SerializeField] protected bool isActivated;
     [Header("Interactable Object")]
     [SerializeField] private InteractableObject interactableObject;
 
@@ -83,6 +87,8 @@ public class InteractableButton : InteractableObject
         interactableObject.OnActivation();
         isActivated = true;
         canActivate = false;
+        buttonSprite.color = activatedColor;
+        activationSound.Post(gameObject);
 
         Invoke("ResetActivation", 1f);
     }
@@ -94,6 +100,7 @@ public class InteractableButton : InteractableObject
         interactableObject.OnDeactivation();
         isActivated = false;
         canActivate = false;
+        buttonSprite.color = deactivatedColor;
 
         Invoke("ResetActivation", 1f);
     }

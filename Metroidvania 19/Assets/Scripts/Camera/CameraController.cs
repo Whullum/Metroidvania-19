@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Cinemachine;
 using System;
+using UnityEngine.Tilemaps;
 
 public class CameraController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public static Action ShakeCamera;
 
+    private GameObject confiner;
     private CinemachineVirtualCamera cmCam;
     private CinemachineBasicMultiChannelPerlin cmNoise;
     private Coroutine lensSizeCoroutine;
@@ -46,12 +48,15 @@ public class CameraController : MonoBehaviour
     {
         currentLensSize = cmCam.m_Lens.OrthographicSize;
         SetCameraSize(currentLensSize);
+
+        CreateConfinerCollider();
     }
 
     private void OnEnable()
     {
         PlayerController.SegmentAdded += IncreaseLensSize;
         PlayerController.SegmentRemoved += DecreaseLensSize;
+        Door.LevelLoaded += CreateConfinerCollider;
         ShakeCamera += StartShake;
     }
 
@@ -59,6 +64,7 @@ public class CameraController : MonoBehaviour
     {
         PlayerController.SegmentAdded -= IncreaseLensSize;
         PlayerController.SegmentRemoved -= DecreaseLensSize;
+        Door.LevelLoaded -= CreateConfinerCollider;
         ShakeCamera -= StartShake;
     }
 
@@ -141,5 +147,34 @@ public class CameraController : MonoBehaviour
         cmNoise.m_AmplitudeGain = previousAmplitude;
         cmNoise.m_FrequencyGain = previousFrequency;
         isShaking = false;
+    }
+
+    private void CreateConfinerCollider()
+    {
+        if (confiner == null)
+        {
+            confiner = new GameObject("Confiner");
+            confiner.AddComponent<PolygonCollider2D>();
+            confiner.layer = LayerMask.NameToLayer("Confiner");
+        }
+
+        PolygonCollider2D boundary = confiner.GetComponent<PolygonCollider2D>();
+        Tilemap tileMap = FindObjectOfType<Tilemap>();
+        tileMap.CompressBounds();
+
+        Vector2[] path = new Vector2[4];
+
+        path[0] = new Vector2(tileMap.cellBounds.xMin, tileMap.cellBounds.yMax);
+        path[1] = new Vector2(tileMap.cellBounds.xMin, tileMap.cellBounds.yMin);
+        path[2] = new Vector2(tileMap.cellBounds.xMax, tileMap.cellBounds.yMin);
+        path[3] = new Vector2(tileMap.cellBounds.xMax, tileMap.cellBounds.yMax);
+        boundary.pathCount = 1;
+        boundary.SetPath(0, path);
+        boundary.isTrigger = true;
+
+        CinemachineConfiner2D cinemachineConfiner = cmCam.GetComponent<CinemachineConfiner2D>();
+
+        cinemachineConfiner.m_BoundingShape2D = boundary;
+        cinemachineConfiner.InvalidateCache();
     }
 }

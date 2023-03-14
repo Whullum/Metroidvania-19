@@ -15,6 +15,11 @@ namespace AK
     {
         static const AkUniqueID PLAY_BITE = 1810912708U;
         static const AkUniqueID PLAY_DASH = 2211787386U;
+        static const AkUniqueID PLAY_ENEMYDAMAGED_FAUNA = 1068219881U;
+        static const AkUniqueID PLAY_ENEMYDAMAGED_METAL = 3777519379U;
+        static const AkUniqueID PLAY_INTERACTABLES_BUTTON_LEVER = 1689955131U;
+        static const AkUniqueID PLAY_INTERACTABLES_OBJECT_ACTIVATION = 4209986982U;
+        static const AkUniqueID PLAY_INTERACTABLES_WALL_DESTRUCTION = 694036599U;
         static const AkUniqueID PLAY_MAINMENU = 3738780720U;
         static const AkUniqueID PLAY_PROJECTILE = 880148599U;
         static const AkUniqueID PLAY_SERPENT_UI_SOUNDS_CANCEL = 3636396448U;
@@ -22,6 +27,7 @@ namespace AK
         static const AkUniqueID PLAY_SERPENT_UI_SOUNDS_HOVER = 1879942652U;
         static const AkUniqueID PLAY_SERPENT_UI_SOUNDS_SELECT = 2449954062U;
         static const AkUniqueID PLAY_STAGE_1 = 2818024140U;
+        static const AkUniqueID PLAY_UI_STARTGAME_CONFRIMATION = 1509184699U;
         static const AkUniqueID STOP_MAINMENU = 890527358U;
     } // namespace EVENTS
 

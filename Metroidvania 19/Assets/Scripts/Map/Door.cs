@@ -16,12 +16,18 @@ public class Door : InteractableObject
     [SerializeField] private int doorNumber;
     [SerializeField] private string connectingMapName;
     [SerializeField] private MapNode parentMapNode;
-    [SerializeField] private MapManager mapManager;
+    [SerializeField] protected MapManager mapManager;
     [SerializeField] private DoorLock doorLock;
     [SerializeField] private DoorDirection playerSpawnDirection;
     [SerializeField] private const int playerSpawnDistance = 5;
 
+    public static Action LevelLoaded;
+    
     public int DoorNumber { get => doorNumber; set => doorNumber = value; }
+
+    public DoorDirection PlayerSpawnDirection { get => playerSpawnDirection; set => playerSpawnDirection = value; }
+
+    public static int PlayerSpawnDistance => playerSpawnDistance;
 
     private void Start()
     {
@@ -29,11 +35,9 @@ public class Door : InteractableObject
 
         if (parentMapNode == null)
             parentMapNode = GetComponentInParent<MapNode>();
-
-
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && CheckDoorLockStatus())
         {
@@ -66,11 +70,14 @@ public class Door : InteractableObject
                 }
 
                 // Recenter the minimap to the correct location
-                mapManager.RecenterMinimap(playerSpawnDirection);
+                //mapManager.RecenterMinimap(playerSpawnDirection);
 
                 // Spawn the player in front of the door with the matching doorNumber in the connected level/node
                 Door connectingDoor = connectingNode.GetConnectingDoorNumber(this.doorNumber);
                 collision.gameObject.transform.position = connectingDoor.transform.position + startingDisplacement;
+
+                LevelLoaded?.Invoke();
+
                 Destroy(this.parentMapNode.gameObject);
             }
             else
@@ -78,6 +85,11 @@ public class Door : InteractableObject
                 Debug.LogError("Warning: No map level with the name of " + connectingMapName + " located in mapLevels dictionary.");
             }
         }
+    }
+
+    public void SpawnPlayer()
+    {
+
     }
 
     private bool CheckDoorLockStatus()

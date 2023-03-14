@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8306386238919218591}
   - component: {fileID: 644320428534656809}
   - component: {fileID: 2495433068011191845}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986a396b097886445ab51ff7cef5fb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLifeTime: 3
+  bulletDamage: 5
 --- !u!50 &644320428534656809
 Rigidbody2D:
   serializedVersion: 4
