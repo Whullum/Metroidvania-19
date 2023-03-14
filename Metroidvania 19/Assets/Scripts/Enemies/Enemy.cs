@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, IDamageable
     // Public variables
     public string enemyType;
     public int health;
+    public int damagePower;
     public float detectDistance;
     public float patrolSpeed;
     public float attackSpeed;
@@ -245,6 +246,9 @@ public class Enemy : MonoBehaviour, IDamageable
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.collider.tag == "Player" || other.collider.tag == "PlayerSegment") {
             StartCoroutine(contactAnim(other));
+            if (other.gameObject.GetComponent<IDamageable>().Damage(damagePower)) {
+                other.gameObject.GetComponent<IDamageable>().Death();
+            }
         } else if (other.collider.tag == "Respawn") {
             Damage(1);
         }
