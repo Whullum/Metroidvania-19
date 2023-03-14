@@ -20,16 +20,17 @@ public class MinimapMovement : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-            Destroy(this);
-        else
+        //if (instance != null)
+        //    Destroy(this);
+        //else
             instance = this;
+        minimapCameraGameObject = GameObject.FindGameObjectWithTag("MiniMapCamera");
     }
 
     private void Start()
     {
         GetComponentInParent<MapManager>().cameraCeneteredName = startingRoomName;
-        minimapCameraGameObject = GameObject.FindGameObjectWithTag("MiniMapCamera");
+
         minimapCameraGameObject.gameObject.transform.position = startingTransform.position;
         playerPositionMarker.transform.position = new Vector3(startingTransform.position.x, startingTransform.position.y);
     }
@@ -37,6 +38,7 @@ public class MinimapMovement : MonoBehaviour
     public void RecenterMinimap(string mapName)
     {
         GetComponentInParent<MapManager>().cameraCeneteredName = mapName;
+        Debug.Log(minimapPoints[mapName].position);
         minimapCameraGameObject.transform.position = minimapPoints[mapName].position;
         playerPositionMarker.transform.position = new Vector3(minimapPoints[mapName].position.x, minimapPoints[mapName].position.y);
     }
