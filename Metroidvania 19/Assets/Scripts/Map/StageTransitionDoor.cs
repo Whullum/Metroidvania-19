@@ -10,9 +10,13 @@ public class StageTransitionDoor : Door
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("OldMap: " + mapManager.CurrentMap);
+            Destroy(MinimapMovement.instance.gameObject);
+
             mapManager.CurrentMap = newMapData;
-            Debug.Log("NewMap: " + mapManager.CurrentMap);
+
+            Instantiate(mapManager.CurrentMap.minimapObject, mapManager.gameObject.transform);
+
+            MinimapMovement.instance.RecenterMinimap(newMapData.minimapObject.GetComponent<MinimapMovement>().startingRoomName);
         }
 
         base.OnCollisionEnter2D(collision);
