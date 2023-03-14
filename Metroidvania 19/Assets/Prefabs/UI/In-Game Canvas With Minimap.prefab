@@ -144,8 +144,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: E
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 538471ae964f4344fbd2aac57aba127b, type: 2}
-  m_sharedMaterial: {fileID: -1854378251495898994, guid: 538471ae964f4344fbd2aac57aba127b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c8f833a6c4c4f384cb6f76b0278a1942, type: 2}
+  m_sharedMaterial: {fileID: -8633449987296328338, guid: c8f833a6c4c4f384cb6f76b0278a1942, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -355,8 +355,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: F
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 538471ae964f4344fbd2aac57aba127b, type: 2}
-  m_sharedMaterial: {fileID: -1854378251495898994, guid: 538471ae964f4344fbd2aac57aba127b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c8f833a6c4c4f384cb6f76b0278a1942, type: 2}
+  m_sharedMaterial: {fileID: -8633449987296328338, guid: c8f833a6c4c4f384cb6f76b0278a1942, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -380,8 +380,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -849,7 +849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 500, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3621248532371683727
@@ -2005,8 +2005,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Q
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 538471ae964f4344fbd2aac57aba127b, type: 2}
-  m_sharedMaterial: {fileID: -1854378251495898994, guid: 538471ae964f4344fbd2aac57aba127b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c8f833a6c4c4f384cb6f76b0278a1942, type: 2}
+  m_sharedMaterial: {fileID: -8633449987296328338, guid: c8f833a6c4c4f384cb6f76b0278a1942, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2030,8 +2030,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3799,6 +3799,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3621248533593090700}
     m_Modifications:
+    - target: {fileID: 1614926558393165521, guid: e5160721840b11e4db87b0141d18fff9, type: 3}
+      propertyPath: m_fontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614926558393165521, guid: e5160721840b11e4db87b0141d18fff9, type: 3}
+      propertyPath: m_margin.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614926558393165521, guid: e5160721840b11e4db87b0141d18fff9, type: 3}
+      propertyPath: m_margin.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614926558393165521, guid: e5160721840b11e4db87b0141d18fff9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c8f833a6c4c4f384cb6f76b0278a1942, type: 2}
+    - target: {fileID: 1614926558393165521, guid: e5160721840b11e4db87b0141d18fff9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614926558393165521, guid: e5160721840b11e4db87b0141d18fff9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8633449987296328338, guid: c8f833a6c4c4f384cb6f76b0278a1942, type: 2}
     - target: {fileID: 6646295051215952915, guid: e5160721840b11e4db87b0141d18fff9, type: 3}
       propertyPath: m_Name
       value: Key_M
