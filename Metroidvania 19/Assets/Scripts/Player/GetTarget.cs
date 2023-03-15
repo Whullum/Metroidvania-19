@@ -11,7 +11,7 @@ public class GetTarget : MonoBehaviour
     public Transform objectTransform;
     Rigidbody2D objectRig;
     int direct = -1;
-    bool caught = false;
+    public bool caught = false;
     string tempTag = null;
     bool isYLocked = false;
     bool wasCaught = false;
@@ -114,7 +114,12 @@ public class GetTarget : MonoBehaviour
             
         }*/
 
-        
+        //// Turns off the enemy collider if caught. May not be needed.
+        // if (caught && objectTransform != null && objectTransform.GetComponent<Collider2D>() != null) {
+        //     objectTransform.GetComponent<Collider2D>().enabled = false;
+        // } else if (!caught && objectTransform != null && objectTransform.GetComponent<Collider2D>() != null) {
+        //     objectTransform.GetComponent<Collider2D>().enabled = true;
+        // }
     }
 
 

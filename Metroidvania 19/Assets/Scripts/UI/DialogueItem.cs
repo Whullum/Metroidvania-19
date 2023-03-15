@@ -9,6 +9,7 @@ public class DialogueItem : MonoBehaviour
     private GameObject player;
     private bool nearby;
     private bool inDialogue;
+    private bool transitioning;
 
     public GameObject buttonPrompt;
     public GameObject dialogueBar;
@@ -20,6 +21,7 @@ public class DialogueItem : MonoBehaviour
     {
         nearby = false;
         inDialogue = false;
+        transitioning = false;
         player = GameObject.FindGameObjectWithTag("Player");
         dialogueBar = GameObject.Find("DialogueBar");
         wipeDialogue();
@@ -41,23 +43,33 @@ public class DialogueItem : MonoBehaviour
             LeanTween.moveLocalY(buttonPrompt, 0f, 0.5f).setEaseOutQuad();
         }
 
-        if (nearby && !inDialogue && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))) {
-            showDialogue();
-        } else if (inDialogue && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))) {
-            hideDialogue();
+        if (!transitioning) {
+            if (nearby && !inDialogue && (Input.GetMouseButtonDown(0))) {
+                StartCoroutine(showDialogue());
+            } else if (inDialogue && ((Input.GetMouseButtonDown(0)) || !nearby)) {
+                StartCoroutine(hideDialogue());
+            }
         }
     }
 
-    public void showDialogue() {
-        inDialogue = true;
+    public IEnumerator showDialogue() {
+        yield return new WaitForEndOfFrame();
+        transitioning = true;
         wipeDialogue();
         addDialogue();
-        LeanTween.alphaCanvas(dialogueBar.GetComponent<CanvasGroup>(), 1f, 1f).setEaseInOutQuad();
+        LeanTween.alphaCanvas(dialogueBar.GetComponent<CanvasGroup>(), 1f, 0.5f).setEaseInOutQuad();
+        yield return new WaitForSeconds(0.5f);
+        inDialogue = true;
+        transitioning = false;
     }
 
-    public void hideDialogue() {
-        inDialogue = false;
+    public IEnumerator hideDialogue() {
+        yield return new WaitForEndOfFrame();
+        transitioning = true;
         LeanTween.alphaCanvas(dialogueBar.GetComponent<CanvasGroup>(), 0f, 0.5f).setEaseInOutQuad();
+        yield return new WaitForSeconds(0.5f);
+        inDialogue = false;
+        transitioning = false;
     }
 
     public void wipeDialogue() {

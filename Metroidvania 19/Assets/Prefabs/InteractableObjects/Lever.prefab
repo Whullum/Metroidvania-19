@@ -177,7 +177,7 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ea36bbd9621164044b216fa662ecdad7, type: 2}
   isActivated: 0
-  triggerSensibility: 5
+  triggerSensibility: 10
   interactableObject: {fileID: 0}
 --- !u!1 &4625566624500833044
 GameObject:

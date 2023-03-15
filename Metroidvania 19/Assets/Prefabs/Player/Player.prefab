@@ -160,6 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fe257bb1ed2fa4d83ce39841acb588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopMusicEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
   currentHealth: 0
   startingBodySize: 3
   segmentHealth: 5
@@ -389,6 +393,10 @@ PrefabInstance:
     - target: {fileID: 1551873161859444528, guid: 59f5806501539804d8611f02face60d3, type: 3}
       propertyPath: m_Name
       value: GrappleBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551873161859444540, guid: 59f5806501539804d8611f02face60d3, type: 3}
+      propertyPath: thrashForce
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1551873161859444543, guid: 59f5806501539804d8611f02face60d3, type: 3}
       propertyPath: m_RootOrder

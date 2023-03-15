@@ -102,9 +102,9 @@ MonoBehaviour:
   breakDistance: 50
   targetPull: 0.14
   playerPull: 2
-  appendageSize: 50
   appendageWidth: 0.13
-  segmentSize: 0.24
+  grappleCooldownLever: 1
+  grappleCooldownEnemy: 1
 --- !u!120 &4303928472791780244
 LineRenderer:
   m_ObjectHideFlags: 0
