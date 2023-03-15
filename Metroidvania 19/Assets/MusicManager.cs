@@ -13,6 +13,7 @@ public class MusicManager : MonoBehaviour
     public AK.Wwise.State approaching;
     public AK.Wwise.State combat;
     public AK.Wwise.State lowHealth;
+    public AK.Wwise.State death;
 
     private void Awake()
     {

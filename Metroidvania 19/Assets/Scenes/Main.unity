@@ -12853,6 +12853,10 @@ PrefabInstance:
       value: Room_3_Start
       objectReference: {fileID: 0}
     - target: {fileID: 7978647522569110241, guid: b882e6805eba65948ba3743ca977210d, type: 3}
+      propertyPath: death.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: b511e55758019304f8d512c4fb37aa44, type: 2}
+    - target: {fileID: 7978647522569110241, guid: b882e6805eba65948ba3743ca977210d, type: 3}
       propertyPath: stopStageMusic.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 031af0604dc2ebf4caf1ba4d4f905876, type: 2}

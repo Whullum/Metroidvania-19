@@ -239,6 +239,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         body.gravityScale = .2f;
         body.AddTorque(transform.up.x * body.velocity.magnitude);
         StartCoroutine(FindObjectOfType<PauseMenu>().FadeOutAnim());
+        MusicManager.instance.death.SetValue();
         MusicManager.instance.StopMsuic();
     }
 }
