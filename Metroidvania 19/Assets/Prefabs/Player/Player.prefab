@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   startingBodySize: 3
-  segmentHealth: 2
+  segmentHealth: 5
   bodySegment: {fileID: 7302917351678238606, guid: 6f947032ec3176548bede7f1bcf01f15, type: 3}
   baseBodySegment: {fileID: 6445724751498467908, guid: 6c9e18337af5dea46aff39f664f5b3e9, type: 3}
   tailSegment: {fileID: 3397249260772081202, guid: 312ff4ecc4706f845a2e898e294a098f, type: 3}

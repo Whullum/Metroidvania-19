@@ -13,10 +13,29 @@ public class AbilityPickup : MonoBehaviour
 
     [SerializeField] private AbilityUnlock abilityToUnlock;
     [SerializeField] private DoorLock abilityPickupLock;
+    [SerializeField] private Sprite abilitySprite;
 
     private void Start()
     {
         this.gameObject.SetActive(!abilityPickupLock.isLocked);
+        LeanTween.moveLocalY(gameObject, transform.localPosition.y + 1f, 1f).setLoopPingPong().setEaseInOutQuad();
+        if (abilitySprite != null) 
+            GetComponent<SpriteRenderer>().sprite = abilitySprite;
+
+        ParticleSystem.MainModule particles = GetComponent<ParticleSystem>().main;
+
+        switch (abilityToUnlock)
+            {
+                case AbilityUnlock.MELEE:
+                    particles.startColor = Color.red;
+                    break;
+                case AbilityUnlock.PROJECTILE:
+                    particles.startColor = new Color(0f, 255f, 255f, 255f);
+                    break;
+                case AbilityUnlock.DASH:
+                    particles.startColor = Color.yellow;
+                    break;
+            }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

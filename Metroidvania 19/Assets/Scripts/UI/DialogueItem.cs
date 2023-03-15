@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DialogueItem : MonoBehaviour
@@ -11,8 +12,8 @@ public class DialogueItem : MonoBehaviour
 
     public GameObject buttonPrompt;
     public GameObject dialogueBar;
+    public List<GameObject> dialogueContent;
     public float detectDistance;
-    public string dialogueText;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,8 @@ public class DialogueItem : MonoBehaviour
         nearby = false;
         inDialogue = false;
         player = GameObject.FindGameObjectWithTag("Player");
-        dialogueText = (dialogueText == "") ? "This is the default text" : dialogueText;
+        dialogueBar = GameObject.Find("DialogueBar");
+        wipeDialogue();
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class DialogueItem : MonoBehaviour
 
         if (playerDistance < detectDistance && !nearby) {
             nearby = true;
-            LeanTween.moveLocalY(buttonPrompt, 1f, 0.5f).setEaseOutQuad();
+            LeanTween.moveLocalY(buttonPrompt, 1.2f, 0.5f).setEaseOutQuad();
         } else if (playerDistance >= detectDistance && nearby) {
             nearby = false;
             LeanTween.moveLocalY(buttonPrompt, 0f, 0.5f).setEaseOutQuad();
@@ -47,14 +49,30 @@ public class DialogueItem : MonoBehaviour
     }
 
     public void showDialogue() {
-        Debug.Log("TIME STOP");
         inDialogue = true;
-        dialogueBar.GetComponentInChildren<TextMeshProUGUI>().text = dialogueText;
+        wipeDialogue();
+        addDialogue();
         LeanTween.alphaCanvas(dialogueBar.GetComponent<CanvasGroup>(), 1f, 1f).setEaseInOutQuad();
     }
 
     public void hideDialogue() {
         inDialogue = false;
         LeanTween.alphaCanvas(dialogueBar.GetComponent<CanvasGroup>(), 0f, 0.5f).setEaseInOutQuad();
+    }
+
+    public void wipeDialogue() {
+        foreach (Transform child in dialogueBar.GetComponentInChildren<HorizontalLayoutGroup>().gameObject.transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
+
+    public void addDialogue() {
+        foreach (GameObject newChild in dialogueContent) {
+            GameObject g = Instantiate (newChild);
+            
+            g.transform.parent = dialogueBar.GetComponentInChildren<HorizontalLayoutGroup>().gameObject.transform;
+            g.transform.localScale = new Vector3(1,1,1);
+        }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(dialogueBar.GetComponentInChildren<HorizontalLayoutGroup>().GetComponent<RectTransform>());
     }
 }

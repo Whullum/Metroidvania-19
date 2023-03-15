@@ -18961,6 +18961,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5080267083215579110, guid: 76d8ca4c416acc243a02497281c9ab2d, type: 3}
+      propertyPath: abilitySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 63ac3e92c9077d4439bd06ce92d953ed, type: 3}
+    - target: {fileID: 5080267083215579110, guid: 76d8ca4c416acc243a02497281c9ab2d, type: 3}
       propertyPath: abilityToUnlock
       value: 1
       objectReference: {fileID: 0}
