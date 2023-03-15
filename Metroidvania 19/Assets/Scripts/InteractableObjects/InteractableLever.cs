@@ -22,17 +22,24 @@ public class InteractableLever : InteractableObject
     {
         if (isUsed)
             CheckLever();
+
+        if (isActivated)
+            GetComponent<SpriteRenderer>().color = Color.green;
+        else
+            GetComponent<SpriteRenderer>().color = Color.cyan;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
-        {
-            if (checkCoroutine != null)
-                StopCoroutine(checkCoroutine);
+        // if (collision.collider.CompareTag("Player"))
+        // {
+            
+        // }
 
-            checkCoroutine = StartCoroutine(CheckLever());
-        }
+        if (checkCoroutine != null)
+            StopCoroutine(checkCoroutine);
+
+        checkCoroutine = StartCoroutine(CheckLever());
     }
 
     /// <summary>

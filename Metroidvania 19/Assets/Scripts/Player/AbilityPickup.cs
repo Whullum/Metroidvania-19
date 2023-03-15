@@ -17,23 +17,27 @@ public class AbilityPickup : MonoBehaviour
 
     private void Start()
     {
-        this.gameObject.SetActive(!abilityPickupLock.isLocked);
+        //this.gameObject.SetActive(!abilityPickupLock.isLocked); //Old bool for ability visibility.
         LeanTween.moveLocalY(gameObject, transform.localPosition.y + 1f, 1f).setLoopPingPong().setEaseInOutQuad();
         if (abilitySprite != null) 
             GetComponent<SpriteRenderer>().sprite = abilitySprite;
 
         ParticleSystem.MainModule particles = GetComponent<ParticleSystem>().main;
+        AbilitiesManager abManager = GameObject.FindObjectOfType<AbilitiesManager>();
 
         switch (abilityToUnlock)
             {
                 case AbilityUnlock.MELEE:
                     particles.startColor = Color.red;
+                    this.gameObject.SetActive(!abManager.MeleeAbility);
                     break;
                 case AbilityUnlock.PROJECTILE:
                     particles.startColor = new Color(0f, 255f, 255f, 255f);
+                    this.gameObject.SetActive(!abManager.ProjectileAbility);
                     break;
                 case AbilityUnlock.DASH:
                     particles.startColor = Color.yellow;
+                    this.gameObject.SetActive(!abManager.DashAbility);
                     break;
             }
     }
