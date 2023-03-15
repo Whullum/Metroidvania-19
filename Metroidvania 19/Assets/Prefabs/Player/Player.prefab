@@ -81,6 +81,9 @@ GameObject:
   - component: {fileID: 734556328}
   - component: {fileID: 734556329}
   - component: {fileID: 8868203442492067254}
+  - component: {fileID: 3616148376009921600}
+  - component: {fileID: 3271847010701796304}
+  - component: {fileID: 3344625115460522397}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -157,8 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fe257bb1ed2fa4d83ce39841acb588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumBodySize: 3
-  maximumBodySize: 10
+  currentHealth: 0
   startingBodySize: 3
   segmentHealth: 2
   bodySegment: {fileID: 7302917351678238606, guid: 6f947032ec3176548bede7f1bcf01f15, type: 3}
@@ -328,6 +330,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3616148376009921600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916553186024403388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb798d5d47f64242bb534722eea7c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  biteSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 66c1d7c79c170f1439584c36dc0e1255, type: 2}
+--- !u!114 &3271847010701796304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916553186024403388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2b1d2a609755d4383abde35b41909e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 3344625115460522397}
+--- !u!95 &3344625115460522397
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916553186024403388}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d19a31ae97b1bc4f83ee653243fcdb7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &2924654959756544211
 PrefabInstance:
   m_ObjectHideFlags: 0

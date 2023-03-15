@@ -29,7 +29,6 @@ public class PlayerMelee : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q) && !isAttacking) {
             StartCoroutine(shader.MeleeCooldown((int)attackCooldown));
             StartCoroutine(Attack());
-            biteSound.Post(gameObject);
         }
     }
 
@@ -46,6 +45,8 @@ public class PlayerMelee : MonoBehaviour
         isAttacking = true;
 
         // ** MELEE ATTACK SOUND ** 
+        GetComponent<PlayerSounds>().PlayBiteSound();
+        GetComponent<PlayerAnimation>().TriggerBiteAnimaton();
 
         Collider2D[] damagedEntities = Physics2D.OverlapCircleAll(attackPosition.position, attackRadius, ~playerLayer);
 
@@ -61,6 +62,7 @@ public class PlayerMelee : MonoBehaviour
 
         yield return new WaitForSeconds(attackCooldown);
 
+        GetComponent<PlayerAnimation>().ResetTriggerBiteAnimation();
         isAttacking = false;
     }
 

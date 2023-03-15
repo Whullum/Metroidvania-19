@@ -30466,9 +30466,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMap: {fileID: 11400000, guid: 7a9b3985cefb14d4b89d6b915664087e, type: 2}
-  fullMapImage: {fileID: 178235735}
+  mapCamera: {fileID: 0}
+  minimapCenter: {fileID: 0}
+  cameraCeneteredName: 
+  fullmapImage: {fileID: 0}
   miniMapImage: {fileID: 449989917}
-  maskImage: {fileID: 573379858}
 --- !u!4 &1082820120
 Transform:
   m_ObjectHideFlags: 0
@@ -30635,6 +30637,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 734556326, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
+      propertyPath: Melee
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 734556327, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
       propertyPath: dashDuration
       value: 2.03
