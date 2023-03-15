@@ -1,5 +1,6 @@
 State Group	ID	Name			Wwise Object Path	Notes
 	89505537	Gameplay			\Default Work Unit\Gameplay	
+	3092587493	Pause			\Default Work Unit\Pause	
 
 State	ID	Name	State Group			Notes
 	72790338	Low_Health	Gameplay			
@@ -10,6 +11,8 @@ State	ID	Name	State Group			Notes
 	2764240573	Combat	Gameplay			
 	3438683684	Approach_Enemy	Gameplay			
 	3808459912	Final_Stage	Gameplay			
+	748895195	None	Pause			
+	3092587493	Pause	Pause			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	988953028	SFXVolume			\Default Work Unit\SFXVolume	

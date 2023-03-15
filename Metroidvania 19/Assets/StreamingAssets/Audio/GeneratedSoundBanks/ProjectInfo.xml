@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectInfo>
 	<Project Name="Metroidvania 19_WwiseProject" GUID="{2D105AE8-4046-415E-9A03-E0190B887261}" Generator="2022.1.1.8100"/>
-	<CacheRoot>../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/.cache</CacheRoot>
+	<CacheRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/.cache</CacheRoot>
 	<Platforms>
 		<Platform Name="Mac" GUID="{D482CCD8-5CF4-4BF5-B40D-98CFE0484E8F}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="Mac"/>
 		<Platform Name="Windows" GUID="{6FF31FD4-BC85-4C61-AFB0-70437FDEC66C}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="Windows"/>
@@ -9,5 +9,5 @@
 	<Languages>
 		<Language Name="English(US)" Id="684519430" GUID="{AED62C9B-2399-4F1C-9CEA-F017D09F1074}" Default="true" UseAsStandIn="true"/>
 	</Languages>
-	<FileHash>{98D50F93-DCA4-1478-16A9-8D699C18CFE1}</FileHash>
+	<FileHash>{1591239C-ACD0-4200-532D-D21A10AD8540}</FileHash>
 </ProjectInfo>

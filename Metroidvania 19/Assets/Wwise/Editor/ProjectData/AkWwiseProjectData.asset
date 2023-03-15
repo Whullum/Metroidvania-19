@@ -128,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 7c09fb960ce3bb48b66a8b53e7e942ec
     GuidInternal: 
-    m_lastTime: -8585227842563138396
+    m_lastTime: -8585227398935599682
     List:
     - name: Enemy
       guid: c9da83df96f538468cdfcb2fa4a9abac
@@ -549,6 +549,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Stop_StageMusic
+      guid: c31b82a19e02aa4a8249a46124c62766
+      id: 2611482463
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Stop_StageMusic
+        ObjectType: 3
+        guid: c31b82a19e02aa4a8249a46124c62766
+      Path: Events\Default Work Unit\Stop_StageMusic
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: UI Events
       guid: 1ef12c450b772e4697b586cf602d7a04
       id: 3598925022
@@ -875,7 +892,7 @@ MonoBehaviour:
     m_lastTime: -8585240871540076815
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 05000000060000000c0000001300000014000000
+  ExpandedWaapiItemIds: 0500000006000000070000000c0000001300000014000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

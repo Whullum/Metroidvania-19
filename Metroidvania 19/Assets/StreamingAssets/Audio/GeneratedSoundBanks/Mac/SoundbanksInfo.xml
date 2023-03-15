@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
 	<RootPaths>
-		<ProjectRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject</ProjectRoot>
-		<SourceFilesRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/.cache/Mac</SourceFilesRoot>
+		<ProjectRoot>../../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/.cache/Mac</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/GeneratedSoundBanks/Mac</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/GeneratedSoundBanks/Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{AB28DC25-4E42-B628-8381-842AC3B3F593}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{5B7024FC-CB35-FCFC-D8FA-4D9903ABC93C}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -42,9 +42,15 @@
 						<State Id="3808459912" Name="Final_Stage"/>
 					</States>
 				</StateGroup>
+				<StateGroup Id="3092587493" Name="Pause">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="3092587493" Name="Pause"/>
+					</States>
+				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{36D14095-7FF9-7CDF-A0F2-C5C37961A533}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{F3043446-033F-883A-5355-C406823287A7}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -72,6 +78,14 @@
 					<ShortName>serpent-low-health-theme_3-1-23.wav</ShortName>
 					<CachePath>SFX/serpent-low-health-theme_3-1-23_DBAED6A3.wem</CachePath>
 				</File>
+				<File Id="115422184" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-menu-variation-double-bass_a.wav</ShortName>
+					<CachePath>SFX/serpent-menu-variation-double-bass_a_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="120123425" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Interactables_Wall Destruction.wav</ShortName>
+					<CachePath>SFX/Interactables_Wall Destruction_F8A635CB.wem</CachePath>
+				</File>
 				<File Id="137025540" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
 					<CachePath>SFX/EnemyDamaged_Flesh_69148D3D.wem</CachePath>
@@ -79,6 +93,10 @@
 				<File Id="139289587" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Metal.wav</ShortName>
 					<CachePath>SFX/EnemyDamaged_Metal_F8C0A53A.wem</CachePath>
+				</File>
+				<File Id="162741592" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-menu_3-12-23c.wav</ShortName>
+					<CachePath>SFX/serpent-menu_3-12-23c_D79FB2B7.wem</CachePath>
 				</File>
 				<File Id="164842256" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Serpent_UI_Sounds Cancel.wav</ShortName>
@@ -96,6 +114,14 @@
 					<ShortName>SFX_Player_Ability_Dash.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Dash_698B75CB.wem</CachePath>
 				</File>
+				<File Id="312742585" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-stage-1-beat-bass-3-12-23d.wav</ShortName>
+					<CachePath>SFX/serpent-stage-1-beat-bass-3-12-23d_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="313434508" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>item-pickup-stinger.wav</ShortName>
+					<CachePath>SFX/item-pickup-stinger_D79FB2B7.wem</CachePath>
+				</File>
 				<File Id="317765135" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Metal.wav</ShortName>
 					<CachePath>SFX/EnemyDamaged_Metal_6A18DF2B.wem</CachePath>
@@ -108,6 +134,14 @@
 					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Bite_CEDCFC0F.wem</CachePath>
 				</File>
+				<File Id="368461958" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-stage-1-beat-bass-3-12-23.wav</ShortName>
+					<CachePath>SFX/serpent-stage-1-beat-bass-3-12-23_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="376937466" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-to-normal-health-transition.wav</ShortName>
+					<CachePath>SFX/serpent-to-normal-health-transition_D79FB2B7.wem</CachePath>
+				</File>
 				<File Id="403974749" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Serpent_UI_Sounds Confirm.wav</ShortName>
 					<CachePath>SFX/Serpent_UI_Sounds Confirm_10C4C929.wem</CachePath>
@@ -119,6 +153,10 @@
 				<File Id="443146525" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Bite_9AD757DC.wem</CachePath>
+				</File>
+				<File Id="463747111" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-death-hit.wav</ShortName>
+					<CachePath>SFX/serpent-death-hit_D79FB2B7.wem</CachePath>
 				</File>
 				<File Id="468232282" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>serpent-combat-2-22-23-full.wav</ShortName>
@@ -144,6 +182,10 @@
 					<ShortName>serpent-death-stinger.wav</ShortName>
 					<CachePath>SFX/serpent-death-stinger_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="665916766" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Interactables_Object_Activation.wav</ShortName>
+					<CachePath>SFX/Interactables_Object_Activation_05A4153F.wem</CachePath>
+				</File>
 				<File Id="666427947" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-beat-no-arp-no-pulse.wav</ShortName>
 					<CachePath>SFX/stage-1-beat-no-arp-no-pulse_D79FB2B7.wem</CachePath>
@@ -152,13 +194,13 @@
 					<ShortName>stage-1-bass-eighth-note-pulse.wav</ShortName>
 					<CachePath>SFX/stage-1-bass-eighth-note-pulse_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="669365698" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Interactables_Button-Lever.wav</ShortName>
+					<CachePath>SFX/Interactables_Button-Lever_CCC0F7ED.wem</CachePath>
+				</File>
 				<File Id="682576048" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>serpent-enemy-defeat-stinger-2-25-23.wav</ShortName>
 					<CachePath>SFX/serpent-enemy-defeat-stinger-2-25-23_D79FB2B7.wem</CachePath>
-				</File>
-				<File Id="705393609" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>serpent-approaching.wav</ShortName>
-					<CachePath>SFX/serpent-approaching_D79FB2B7.wem</CachePath>
 				</File>
 				<File Id="763531730" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
@@ -175,10 +217,6 @@
 				<File Id="803851251" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>stage-1-transition-hit.wav</ShortName>
 					<CachePath>SFX/stage-1-transition-hit_D79FB2B7.wem</CachePath>
-				</File>
-				<File Id="804177259" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>stage-1-beat.wav</ShortName>
-					<CachePath>SFX/stage-1-beat_D79FB2B7.wem</CachePath>
 				</File>
 				<File Id="811387639" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Ability_Bite.wav</ShortName>
@@ -204,6 +242,10 @@
 					<ShortName>SFX_Player_Ability_Projectile.wav</ShortName>
 					<CachePath>SFX/SFX_Player_Ability_Projectile_53D82A68.wem</CachePath>
 				</File>
+				<File Id="941609776" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-low-health-transition.wav</ShortName>
+					<CachePath>SFX/serpent-low-health-transition_D79FB2B7.wem</CachePath>
+				</File>
 				<File Id="966828519" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDamaged_Metal.wav</ShortName>
 					<CachePath>SFX/EnemyDamaged_Metal_F5CF44F4.wem</CachePath>
@@ -220,15 +262,19 @@
 					<ShortName>EnemyDamaged_Flesh.wav</ShortName>
 					<CachePath>SFX/EnemyDamaged_Flesh_320B6191.wem</CachePath>
 				</File>
+				<File Id="1058970185" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>serpent-approaching_3-12-23.wav</ShortName>
+					<CachePath>SFX/serpent-approaching_3-12-23_D79FB2B7.wem</CachePath>
+				</File>
 			</Media>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="418265525" Name="Gentle_Program_Compressor_Minus_14dB_RMS" LibName="Wwise Compressor" LibId="7077891"/>
-					<Plugin Id="2180422931" Name="One_Tap_Quarter_Second" LibName="Wwise Delay" LibId="6946819"/>
-					<Plugin Id="3036946058" Name="Inside_Your_Head" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
 			<Events>
+				<Event Id="1592628004" Name="Item_Pickup_Stinger" DurationType="OneShot" DurationMin="4.875728" DurationMax="4.875728">
+					<MediaRefs>
+						<MediaRef Id="313434508"/>
+						<MediaRef Id="376937466"/>
+						<MediaRef Id="941609776"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1810912708" Name="Play_Bite" DurationType="OneShot" DurationMin="0.5762495" DurationMax="0.96341705">
 					<MediaRefs>
 						<MediaRef Id="6248674"/>
@@ -246,13 +292,6 @@
 						<MediaRef Id="764234410"/>
 						<MediaRef Id="1024829567"/>
 					</MediaRefs>
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="418265525"/>
-							<PluginRef Id="2180422931"/>
-							<PluginRef Id="3036946058"/>
-						</ShareSets>
-					</PluginRefs>
 				</Event>
 				<Event Id="1068219881" Name="Play_EnemyDamaged_Fauna" DurationType="OneShot" DurationMin="0.71143323" DurationMax="1.0916821">
 					<MediaRefs>
@@ -272,68 +311,136 @@
 						<MediaRef Id="966828519"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1689955131" Name="Play_Interactables_Button_Lever" DurationType="OneShot" DurationMin="0.66712683" DurationMax="0.66712683">
+					<MediaRefs>
+						<MediaRef Id="669365698"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4209986982" Name="Play_Interactables_Object_Activation" DurationType="OneShot" DurationMin="0.33411384" DurationMax="0.33411384">
+					<MediaRefs>
+						<MediaRef Id="665916766"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="694036599" Name="Play_Interactables_Wall_Destruction" DurationType="OneShot" DurationMin="4.2277193" DurationMax="5.0276337">
+					<MediaRefs>
+						<MediaRef Id="120123425"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3738780720" Name="Play_MainMenu" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="376937466"/>
+						<MediaRef Id="941609776"/>
+					</MediaRefs>
 					<SwitchContainers>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="1160234136"/>
-							<MediaRefs>
-								<MediaRef Id="666427947"/>
-								<MediaRef Id="667552379"/>
-								<MediaRef Id="801245890"/>
-								<MediaRef Id="803851251"/>
-								<MediaRef Id="804177259"/>
-								<MediaRef Id="895425634"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="1160234136"/>
+									<MediaRefs>
+										<MediaRef Id="312742585"/>
+										<MediaRef Id="368461958"/>
+										<MediaRef Id="666427947"/>
+										<MediaRef Id="667552379"/>
+										<MediaRef Id="801245890"/>
+										<MediaRef Id="803851251"/>
+										<MediaRef Id="895425634"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="2764240573"/>
-							<MediaRefs>
-								<MediaRef Id="1769791"/>
-								<MediaRef Id="468232282"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="2764240573"/>
+									<MediaRefs>
+										<MediaRef Id="1769791"/>
+										<MediaRef Id="468232282"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="144681581"/>
-							<MediaRefs>
-								<MediaRef Id="682576048"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="144681581"/>
+									<MediaRefs>
+										<MediaRef Id="682576048"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="3438683684"/>
-							<MediaRefs>
-								<MediaRef Id="705393609"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="3438683684"/>
+									<MediaRefs>
+										<MediaRef Id="1058970185"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="779278001"/>
-							<MediaRefs>
-								<MediaRef Id="652589882"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="779278001"/>
+									<MediaRefs>
+										<MediaRef Id="463747111"/>
+										<MediaRef Id="652589882"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="72790338"/>
-							<MediaRefs>
-								<MediaRef Id="92583617"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="72790338"/>
+									<MediaRefs>
+										<MediaRef Id="92583617"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="3808459912"/>
-							<MediaRefs>
-								<MediaRef Id="900095094"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="3808459912"/>
+									<MediaRefs>
+										<MediaRef Id="900095094"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="748895195"/>
-							<MediaRefs>
-								<MediaRef Id="666427947"/>
-								<MediaRef Id="667552379"/>
-								<MediaRef Id="801245890"/>
-								<MediaRef Id="803851251"/>
-								<MediaRef Id="804177259"/>
-								<MediaRef Id="895425634"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="748895195"/>
+									<MediaRefs>
+										<MediaRef Id="312742585"/>
+										<MediaRef Id="368461958"/>
+										<MediaRef Id="666427947"/>
+										<MediaRef Id="667552379"/>
+										<MediaRef Id="801245890"/>
+										<MediaRef Id="803851251"/>
+										<MediaRef Id="895425634"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 					</SwitchContainers>
+				</Event>
+				<Event Id="1278378707" Name="Play_Menu" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="115422184"/>
+						<MediaRef Id="162741592"/>
+					</MediaRefs>
 				</Event>
 				<Event Id="880148599" Name="Play_Projectile" DurationType="OneShot" DurationMin="0.5727782" DurationMax="0.91354495">
 					<MediaRefs>
@@ -353,11 +460,6 @@
 					<MediaRefs>
 						<MediaRef Id="403974749"/>
 					</MediaRefs>
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="418265525"/>
-						</ShareSets>
-					</PluginRefs>
 				</Event>
 				<Event Id="1879942652" Name="Play_Serpent_UI_Sounds_Hover" DurationType="OneShot" DurationMin="1.3029166" DurationMax="1.3029166">
 					<MediaRefs>
@@ -370,65 +472,112 @@
 					</MediaRefs>
 				</Event>
 				<Event Id="2818024140" Name="Play_Stage_1" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="376937466"/>
+						<MediaRef Id="941609776"/>
+					</MediaRefs>
 					<SwitchContainers>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="1160234136"/>
-							<MediaRefs>
-								<MediaRef Id="666427947"/>
-								<MediaRef Id="667552379"/>
-								<MediaRef Id="801245890"/>
-								<MediaRef Id="803851251"/>
-								<MediaRef Id="804177259"/>
-								<MediaRef Id="895425634"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="1160234136"/>
+									<MediaRefs>
+										<MediaRef Id="312742585"/>
+										<MediaRef Id="368461958"/>
+										<MediaRef Id="666427947"/>
+										<MediaRef Id="667552379"/>
+										<MediaRef Id="801245890"/>
+										<MediaRef Id="803851251"/>
+										<MediaRef Id="895425634"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="2764240573"/>
-							<MediaRefs>
-								<MediaRef Id="1769791"/>
-								<MediaRef Id="468232282"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="2764240573"/>
+									<MediaRefs>
+										<MediaRef Id="1769791"/>
+										<MediaRef Id="468232282"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="144681581"/>
-							<MediaRefs>
-								<MediaRef Id="682576048"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="144681581"/>
+									<MediaRefs>
+										<MediaRef Id="682576048"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="3438683684"/>
-							<MediaRefs>
-								<MediaRef Id="705393609"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="3438683684"/>
+									<MediaRefs>
+										<MediaRef Id="1058970185"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="779278001"/>
-							<MediaRefs>
-								<MediaRef Id="652589882"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="779278001"/>
+									<MediaRefs>
+										<MediaRef Id="463747111"/>
+										<MediaRef Id="652589882"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="72790338"/>
-							<MediaRefs>
-								<MediaRef Id="92583617"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="72790338"/>
+									<MediaRefs>
+										<MediaRef Id="92583617"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="3808459912"/>
-							<MediaRefs>
-								<MediaRef Id="900095094"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="3808459912"/>
+									<MediaRefs>
+										<MediaRef Id="900095094"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="89505537" Id="748895195"/>
-							<MediaRefs>
-								<MediaRef Id="666427947"/>
-								<MediaRef Id="667552379"/>
-								<MediaRef Id="801245890"/>
-								<MediaRef Id="803851251"/>
-								<MediaRef Id="804177259"/>
-								<MediaRef Id="895425634"/>
-							</MediaRefs>
+							<SwitchValue GroupType="State" GroupId="3092587493" Id="0"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="89505537" Id="748895195"/>
+									<MediaRefs>
+										<MediaRef Id="312742585"/>
+										<MediaRef Id="368461958"/>
+										<MediaRef Id="666427947"/>
+										<MediaRef Id="667552379"/>
+										<MediaRef Id="801245890"/>
+										<MediaRef Id="803851251"/>
+										<MediaRef Id="895425634"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
@@ -438,6 +587,7 @@
 					</MediaRefs>
 				</Event>
 				<Event Id="890527358" Name="Stop_MainMenu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2914981333" Name="Stop_Menu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<GameParameters>
 				<GameParameter Id="1850949742" Name="EnemyProximity"/>
@@ -455,8 +605,14 @@
 						<State Id="3808459912" Name="Final_Stage"/>
 					</States>
 				</StateGroup>
+				<StateGroup Id="3092587493" Name="Pause">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="3092587493" Name="Pause"/>
+					</States>
+				</StateGroup>
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{3E0AA566-297B-7DAD-3A17-D15648925038}</FileHash>
+	<FileHash>{801FDD84-D177-F5E5-8AB9-D2BB0E5E755B}</FileHash>
 </SoundBanksInfo>

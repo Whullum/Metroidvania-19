@@ -7,6 +7,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance;
 
     public AK.Wwise.Event stageMusic;
+    public AK.Wwise.Event stopStageMusic;
 
     public AK.Wwise.State normal;
     public AK.Wwise.State approaching;
@@ -25,5 +26,10 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         stageMusic.Post(gameObject);
+    }
+
+    public void StopMsuic()
+    {
+        stopStageMusic.Post(gameObject);
     }
 }

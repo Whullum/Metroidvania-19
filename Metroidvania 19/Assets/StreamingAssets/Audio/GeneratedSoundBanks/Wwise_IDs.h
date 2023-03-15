@@ -32,6 +32,7 @@ namespace AK
         static const AkUniqueID PLAY_UI_STARTGAME_CONFRIMATION = 1509184699U;
         static const AkUniqueID STOP_MAINMENU = 890527358U;
         static const AkUniqueID STOP_MENU = 2914981333U;
+        static const AkUniqueID STOP_STAGEMUSIC = 2611482463U;
     } // namespace EVENTS
 
     namespace STATES

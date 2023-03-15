@@ -2,11 +2,11 @@
 <PlatformInfo>
 	<Platform Name="Windows" BasePlatform="Windows" Generator="2022.1.1.8100"/>
 	<RootPaths>
-		<ProjectRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject</ProjectRoot>
-		<SourceFilesRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/.cache/Windows</SourceFilesRoot>
+		<ProjectRoot>../../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/.cache/Windows</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../../../../../../../Wwise Repo/Metroidvania-19-Wwise-Project/Metroidvania 19_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DefaultAlign>16</DefaultAlign>
 	<Settings>
@@ -28,5 +28,5 @@
 		<PrintObjectGuid>false</PrintObjectGuid>
 		<PrintObjectPath>false</PrintObjectPath>
 	</Settings>
-	<FileHash>{41F3572E-5FDB-23F0-DFCC-D7A07FD64E59}</FileHash>
+	<FileHash>{2D96113B-CFA4-8E43-00C8-E4BAB6FC808A}</FileHash>
 </PlatformInfo>
