@@ -7,7 +7,7 @@ using UnityEngine;
 public class GetTarget : MonoBehaviour
 {
     bool objectClose = false;
-    List<Transform> targets = new List<Transform>();
+    public List<Transform> targets = new List<Transform>();
     public Transform objectTransform;
     Rigidbody2D objectRig;
     int direct = -1;
@@ -28,6 +28,11 @@ public class GetTarget : MonoBehaviour
 
     private void Update()
     {
+        bool isMissing = ReferenceEquals(objectTransform, null) ? false : (objectTransform ? false : true);
+
+        if (isMissing) {
+            objectTransform = GetNearestTarget();
+        }
         //if (targets.Count == 0 && caught == false) { objectClose = false; }
 
         //Debug.Log("Targets: " + targets.Count);
@@ -166,11 +171,24 @@ public class GetTarget : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (targets.Contains(collision.transform))
-        {
-            CheckObjects(collision);
-        }
+        // if (targets.Contains(collision.transform))
+        // {
+        //     Debug.LogError("Removing thingey");
+        //     CheckObjects(collision);
+        // }
+
+        if(!targets.Contains(collision.transform) && (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Lever") && !caught) {
             
+
+            targets.Remove(collision.transform);
+
+            //Debug.Log("Got Object");
+            objectTransform = GetNearestTarget();
+            
+
+            
+            
+        }
 
         //targets.Clear();
     }
@@ -184,16 +202,18 @@ public class GetTarget : MonoBehaviour
         //Debug.Log("Getting new target");
         if (targets.Count != 0) {
             Transform nearestTarget = targets[0];
-            float curDistance = Vector3.Distance(transform.parent.position, targets[0].position);
-            foreach (Transform t in targets)
-            {
-
-                if (curDistance > Vector3.Distance(transform.parent.position, t.position))
+            if (nearestTarget != null) {
+                float curDistance = Vector3.Distance(transform.parent.position, targets[0].position);
+                foreach (Transform t in targets)
                 {
-                    
-                    curDistance = Vector3.Distance(transform.parent.position, t.position);
-                    nearestTarget = t;
-                    
+
+                    if (curDistance > Vector3.Distance(transform.parent.position, t.position))
+                    {
+                        
+                        curDistance = Vector3.Distance(transform.parent.position, t.position);
+                        nearestTarget = t;
+                        
+                    }
                 }
             }
             
