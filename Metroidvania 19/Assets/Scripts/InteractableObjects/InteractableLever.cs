@@ -20,8 +20,23 @@ public class InteractableLever : InteractableObject
 
     private void Update()
     {
-        if (isUsed)
-            CheckLever();
+        // if (isUsed)
+        //     CheckLever();
+
+        float activationAngle = Mathf.Abs(joint.jointAngle - joint.limits.min);
+        float deactivationAngle = Mathf.Abs(joint.jointAngle - joint.limits.max);
+
+        // Check if lever has been activated
+        if (!isActivated && activationAngle <= triggerSensibility)
+        {
+            OnActivation();
+        }
+
+        // Check if lever has been deactivated
+        if (isActivated && deactivationAngle <= triggerSensibility)
+        {
+            OnDeactivation();
+        }
 
         if (isActivated)
             GetComponent<SpriteRenderer>().color = Color.green;
