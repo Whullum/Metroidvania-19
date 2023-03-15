@@ -87,7 +87,7 @@ public class PlayerProjectile : MonoBehaviour
         bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnPoint.localRotation.x, bulletSpawnPoint.localRotation.y, Random.Range(-90f - spreadAngle, -90f + spreadAngle));
         StartCoroutine(shader.ProjectileCooldown((int)timeInactive));
         
-        var bulletInstance = Instantiate(bulletObject, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        var bulletInstance = Instantiate(bulletObject, bulletSpawnPoint.position, bulletSpawnPoint.rotation * Quaternion.Euler(0,0,90f));
         bulletInstance.GetComponent<Bullet>().BulletLifeTime = lifeTime;
         bulletInstance.transform.localScale = new Vector3(bulletSize, bulletSize, 0);
 

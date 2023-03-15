@@ -22,10 +22,10 @@ TagManager:
   - DistortionEffect
   - Background
   - PlayerProjectile
-  - 
+  - EnemyProjectile
   - Confiner
   - Minimap
-  - 
+  - Enemy
   - 
   - 
   - 
