@@ -79,4 +79,9 @@ public class PauseMenu : MonoBehaviour
         controlsCanvasGroup.SetActive(false);
         pauseCanvasGroup.SetActive(true);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

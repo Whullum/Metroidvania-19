@@ -64,7 +64,7 @@ public class GetTarget : MonoBehaviour
         if (caught)
         {
 
-            if (objectTransform != null && caught && Input.GetKeyDown(KeyCode.F))
+            if (objectTransform != null && caught && Input.GetKeyDown(KeyCode.Space))
             {
            
                 if(objectTransform.GetComponent<Enemy>()) { 
