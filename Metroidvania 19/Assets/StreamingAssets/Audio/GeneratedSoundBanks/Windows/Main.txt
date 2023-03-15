@@ -13,6 +13,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2233317182	Play_Serpent_UI_Sounds_Confirm			\Default Work Unit\UI Events\Play_Serpent_UI_Sounds_Confirm	
 	2449954062	Play_Serpent_UI_Sounds_Select			\Default Work Unit\UI Events\Play_Serpent_UI_Sounds_Select	
 	2611482463	Stop_StageMusic			\Default Work Unit\Stop_StageMusic	
+	2795916357	Play_Item_pickup_stinger			\Default Work Unit\Play_Item_pickup_stinger	
 	2818024140	Play_Stage_1			\Default Work Unit\Play_Stage_1	
 	2914981333	Stop_Menu			\Default Work Unit\Stop_Menu	
 	3636396448	Play_Serpent_UI_Sounds_Cancel			\Default Work Unit\UI Events\Play_Serpent_UI_Sounds_Cancel	

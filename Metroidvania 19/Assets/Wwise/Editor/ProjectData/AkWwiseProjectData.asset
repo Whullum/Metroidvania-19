@@ -128,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 7c09fb960ce3bb48b66a8b53e7e942ec
     GuidInternal: 
-    m_lastTime: -8585227010107295300
+    m_lastTime: -8585226896268765555
     List:
     - name: Enemy
       guid: c9da83df96f538468cdfcb2fa4a9abac
@@ -318,6 +318,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: a3f47c002c6f24438a6f29448452d8b9
       Path: Events\Default Work Unit\Interactables\Play_Interactables_Wall_Destruction
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Item_pickup_stinger
+      guid: a63a02737e5efa42a7386c0bb7c9a9e8
+      id: 2795916357
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7c09fb960ce3bb48b66a8b53e7e942ec
+      - ElementName: Play_Item_pickup_stinger
+        ObjectType: 3
+        guid: a63a02737e5efa42a7386c0bb7c9a9e8
+      Path: Events\Default Work Unit\Play_Item_pickup_stinger
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1

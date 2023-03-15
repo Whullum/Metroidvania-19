@@ -50,7 +50,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{9111BD36-7AC4-AEC4-C4B9-C9F1A80EAD76}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{63E6EEEA-469B-5FB1-8600-6D8EE75C6A0E}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -324,6 +324,13 @@
 				<Event Id="694036599" Name="Play_Interactables_Wall_Destruction" DurationType="OneShot" DurationMin="4.2277193" DurationMax="5.0276337">
 					<MediaRefs>
 						<MediaRef Id="120123425"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2795916357" Name="Play_Item_pickup_stinger" DurationType="OneShot" DurationMin="4.875728" DurationMax="4.875728">
+					<MediaRefs>
+						<MediaRef Id="313434508"/>
+						<MediaRef Id="376937466"/>
+						<MediaRef Id="941609776"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3738780720" Name="Play_MainMenu" DurationType="Infinite">
@@ -615,5 +622,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{CEF2FF04-DD85-2D47-AFA2-B87BA0B39DF1}</FileHash>
+	<FileHash>{057CE7B5-EB31-AD2C-5205-DC512C5A0E6C}</FileHash>
 </SoundBanksInfo>

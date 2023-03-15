@@ -21,6 +21,7 @@ namespace AK
         static const AkUniqueID PLAY_INTERACTABLES_BUTTON_LEVER = 1689955131U;
         static const AkUniqueID PLAY_INTERACTABLES_OBJECT_ACTIVATION = 4209986982U;
         static const AkUniqueID PLAY_INTERACTABLES_WALL_DESTRUCTION = 694036599U;
+        static const AkUniqueID PLAY_ITEM_PICKUP_STINGER = 2795916357U;
         static const AkUniqueID PLAY_MAINMENU = 3738780720U;
         static const AkUniqueID PLAY_MENU = 1278378707U;
         static const AkUniqueID PLAY_PROJECTILE = 880148599U;

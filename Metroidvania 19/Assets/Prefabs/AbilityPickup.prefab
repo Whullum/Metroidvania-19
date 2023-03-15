@@ -148,6 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe1b0b47be232546ad3328669bc6cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityPickupEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 48e0d781eeed6524a80a32314408e53a, type: 2}
   abilityToUnlock: 0
   abilityPickupLock: {fileID: 11400000, guid: e055dbb223e8c634b88a1c39dd06eb6b, type: 2}
   abilitySprite: {fileID: 0}

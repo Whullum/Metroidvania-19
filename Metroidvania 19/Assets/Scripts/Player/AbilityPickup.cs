@@ -11,6 +11,7 @@ public class AbilityPickup : MonoBehaviour
         DASH
     }
 
+    public AK.Wwise.Event abilityPickupEvent;
     [SerializeField] private AbilityUnlock abilityToUnlock;
     [SerializeField] private DoorLock abilityPickupLock;
     [SerializeField] private Sprite abilitySprite;
@@ -62,6 +63,8 @@ public class AbilityPickup : MonoBehaviour
             }
 
             abilityPickupLock.isLocked = true;
+
+            abilityPickupEvent.Post(gameObject);
 
             Destroy(this.gameObject);
         }
