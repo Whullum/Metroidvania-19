@@ -14,6 +14,10 @@ public class PauseMenu : MonoBehaviour
     public GameObject controlsCanvasGroup;
     public GameObject gameHUDCanvasGroup;
 
+    public AK.Wwise.Event uiHover;
+    public AK.Wwise.Event uiConfirm;
+    public AK.Wwise.Event uiCancel;
+
     private void Start() {
         StartCoroutine(FadeInAnim());
     }
@@ -81,5 +85,20 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void PlayHover()
+    {
+        uiHover.Post(gameObject);
+    }
+
+    public void PlayCancel()
+    {
+        uiCancel.Post(gameObject);
+    }
+
+    public void PlayConfirm()
+    {
+        uiConfirm.Post(gameObject);
     }
 }
