@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ca43b7b5518c348bc1f372ec0cc484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnTime: 15
+  despawnTime: 1000
   meatEatedEffect: {fileID: 7602944438377033606}
 --- !u!1001 &2946313861709553760
 PrefabInstance:

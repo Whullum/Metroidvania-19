@@ -2,13 +2,7 @@ using UnityEngine;
 
 public class PlayerSegmentGrow : MonoBehaviour
 {
-    [SerializeField] private float despawnTime = 15f;
     [SerializeField] private ParticleSystem meatEatedEffect;
-
-    private void Start()
-    {
-        Destroy(gameObject, despawnTime);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
