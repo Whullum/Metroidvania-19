@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 // Direction that the player will be looking in when they are spawned into a new room
@@ -141,6 +142,12 @@ public class Door : InteractableObject
             LevelLoaded?.Invoke();
 
             Destroy(this.parentMapNode.gameObject);
+            foreach (PlayerHealthRestore meat in GameObject.FindObjectsOfType<PlayerHealthRestore>()) {
+                Destroy(meat.gameObject);
+            }
+
+            GetTarget getTarget = GameObject.FindObjectOfType<GetTarget>();
+            getTarget.targets = new List<Transform>();
         }
         else
         {

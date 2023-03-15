@@ -36,8 +36,6 @@ public class PlayerAppendage : MonoBehaviour
     [SerializeField] float grappleCooldownLever = 3f;
     [SerializeField] float grappleCooldownEnemy = 5f;
 
-
-
     void Start()
     {
         //Debug.Log("AppendageHere");
