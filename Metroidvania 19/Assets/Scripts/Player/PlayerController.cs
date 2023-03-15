@@ -8,8 +8,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    public AK.Wwise.Event stopMusicEvent;
-
     #region variables
 
     /// <summary>
@@ -221,6 +219,11 @@ public class PlayerController : MonoBehaviour, IDamageable
             shader.DepleteHeadAndTail((currentHealth * 100f / segmentHealth));
         }
 
+        if (segmentsLeft <= 2)
+        {
+            MusicManager.instance.lowHealth.SetValue();
+        }
+
         return false;
     }
 
@@ -236,6 +239,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         body.gravityScale = .2f;
         body.AddTorque(transform.up.x * body.velocity.magnitude);
         StartCoroutine(FindObjectOfType<PauseMenu>().FadeOutAnim());
-        FindObjectOfType<MusicManager>().StopMsuic();
+        MusicManager.instance.death.SetValue();
+        MusicManager.instance.StopMsuic();
     }
 }

@@ -13,6 +13,7 @@ public class MusicManager : MonoBehaviour
     public AK.Wwise.State approaching;
     public AK.Wwise.State combat;
     public AK.Wwise.State lowHealth;
+    public AK.Wwise.State death;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        normal.SetValue();
         stageMusic.Post(gameObject);
     }
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MeleeAbilityLock
   m_EditorClassIdentifier: 
   isAbility: 1
-  isLocked: 1
+  isLocked: 0
