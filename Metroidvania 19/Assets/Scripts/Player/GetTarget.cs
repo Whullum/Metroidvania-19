@@ -97,11 +97,11 @@ public class GetTarget : MonoBehaviour
                             damageable.Death();
                             targets.Remove(objectTransform);
 
-                        
+                        StartCoroutine(SetAIPath());
                     }
                 }
             }
-            StartCoroutine(SetAIPath());
+            
         }/*else if(wasCaught == true && caught == false)
         {
             DeactivateGrapple();

@@ -24,16 +24,15 @@ public class PlayerAppendage : MonoBehaviour
     bool wasGrappling = false;
     float timeInactive = 0f;
     float timeActive = 0f;
+    bool isGrappling = false;
+    float distance;
+    float appendageSize = 12;
+    float segmentSize = 3f;
 
-    [SerializeField] float breakDistance = 20f;
+    [SerializeField] float breakDistance = 5f;
     public float targetPull = 2.0f;
-    
-
-
     [SerializeField] float playerPull = 2.0f;
-    [SerializeField] int appendageSize = 12;
     [SerializeField] float appendageWidth = 1.0f;
-    [SerializeField] float segmentSize = 3f;
     [SerializeField] float grappleCooldownLever = 3f;
     [SerializeField] float grappleCooldownEnemy = 5f;
 
@@ -69,7 +68,18 @@ public class PlayerAppendage : MonoBehaviour
             
             if (target.objectTransform != null)
             {
+
+
+                
                 objectPos = target.objectTransform.position;
+                if(wasGrappling == false) {
+                    appendageSize = (int)Vector3.Distance(grapplePoint.position, objectPos);
+                    distance = appendageSize+breakDistance;
+                    segmentSize = (float)appendageSize*0.08f;
+                    Debug.Log("Set Grapple Size");
+                }
+                
+                
                 caught = true;
                 wasGrappling = true;
                 target.IsCaught(true);
@@ -81,8 +91,8 @@ public class PlayerAppendage : MonoBehaviour
                 //Adds a pulling or pushing force to the player or grappled object respectively 
                 if (target.objectTransform.tag == "Enemy")
                 {
-                    
-                    gameObject.transform.parent.parent.GetComponent<Rigidbody2D>().AddForce((objectPos - transform.parent.parent.position).normalized * targetPull);
+
+                    target.objectTransform.GetComponent<Rigidbody2D>().AddForce((transform.parent.parent.position - objectPos).normalized * targetPull);
                     timeInactive = grappleCooldownEnemy;
                     //Debug.Log(timeInactive);
                 }
@@ -99,9 +109,10 @@ public class PlayerAppendage : MonoBehaviour
         }
         else { appendage.enabled = false; }
 
-        if ((Vector3.Distance(transform.parent.parent.position, objectPos) > breakDistance) || Input.GetMouseButton(1) == false)
+        if ((Vector3.Distance(transform.parent.parent.position, objectPos) > distance) || Input.GetMouseButton(1) == false)
         {
             caught= false;
+            
             
         }
         
@@ -157,7 +168,7 @@ public class PlayerAppendage : MonoBehaviour
         appendage.endWidth = appendWidth;
 
         Vector3[] appendPos = new Vector3[(int)appendageSize];
-        for (int x = 0; x < appendageSize; x++)
+        for (int x = 0; x < (int)appendageSize; x++)
         {
             appendPos[x] = appendageSegments[x].curPos;
         }
@@ -169,7 +180,7 @@ public class PlayerAppendage : MonoBehaviour
     private void SimulatePhysics()
     {
         Vector3 gravity = new Vector3(0, -1f);
-        for(int x = 1; x < appendageSize-2; x++)
+        for(int x = 1; x < (int)appendageSize -2; x++)
         {
             AppendageSegment firstSeg= appendageSegments[x];
             Vector3 velocity = firstSeg.curPos - firstSeg.prevPos;
@@ -179,7 +190,7 @@ public class PlayerAppendage : MonoBehaviour
             appendageSegments[x] = firstSeg;
         }
         
-        for(int x =0; x < 500; x++)
+        for(int x =0; x < 5000; x++)
         {
             Constraints();
         }
@@ -199,7 +210,7 @@ public class PlayerAppendage : MonoBehaviour
         lastSeg.curPos = objectPos;
         appendageSegments[(int)appendageSize - 1] = lastSeg;
 
-        for (int x = 0; x < appendageSize-1; x++)
+        for (int x = 0; x < (int)appendageSize -1; x++)
         {
             AppendageSegment segOne= appendageSegments[x];
             AppendageSegment segTwo= appendageSegments[x+1];

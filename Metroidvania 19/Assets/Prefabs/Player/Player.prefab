@@ -510,6 +510,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4916553186024403391}
     m_Modifications:
+    - target: {fileID: 4303928472791780245, guid: 8ce2f33a7c78cf54fb3f3b19f0fe62d0, type: 3}
+      propertyPath: playerPull
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303928472791780245, guid: 8ce2f33a7c78cf54fb3f3b19f0fe62d0, type: 3}
+      propertyPath: targetPull
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303928472791780245, guid: 8ce2f33a7c78cf54fb3f3b19f0fe62d0, type: 3}
+      propertyPath: breakDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4303928473122206132, guid: 8ce2f33a7c78cf54fb3f3b19f0fe62d0, type: 3}
       propertyPath: m_Name
       value: GrappleOrigin
@@ -520,7 +532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303928473122206133, guid: 8ce2f33a7c78cf54fb3f3b19f0fe62d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.88
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 4303928473122206133, guid: 8ce2f33a7c78cf54fb3f3b19f0fe62d0, type: 3}
       propertyPath: m_LocalPosition.y
