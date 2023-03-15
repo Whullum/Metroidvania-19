@@ -177,6 +177,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 38264e979beceed4c9377a51ca0c6bcc, type: 2}
+  stopStageMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 031af0604dc2ebf4caf1ba4d4f905876, type: 2}
   normal:
     idInternal: 0
     valueGuidInternal: 
@@ -201,3 +205,9 @@ MonoBehaviour:
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f631383e8665e524aafcb14747346c5e, type: 2}
+  death:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b511e55758019304f8d512c4fb37aa44, type: 2}

@@ -20,9 +20,6 @@ public class InteractableLever : InteractableObject
 
     private void Update()
     {
-        // if (isUsed)
-        //     CheckLever();
-
         float activationAngle = Mathf.Abs(joint.jointAngle - joint.limits.min);
         float deactivationAngle = Mathf.Abs(joint.jointAngle - joint.limits.max);
 
