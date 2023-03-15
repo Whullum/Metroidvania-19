@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4258993751657226112}
   - component: {fileID: 201863111418038162}
   - component: {fileID: 4992176433939095091}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeakWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,3 +130,4 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 633e8f8a36fc6364ba51906236560301, type: 2}
+  tilemap: {fileID: 0}
