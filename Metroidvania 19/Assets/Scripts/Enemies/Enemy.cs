@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public float kickbackStrength;
     public float recoveryDelay;
     public List<Transform> patrolPositions;
+    public GameObject bulletObject;
 
     // Private variables
     private int patrolIndex;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private bool canSwapTarget;
     private bool onPatrol;
     private bool onAttack;
+    private bool readyToFire;
     private float scaleSize;
     private GameObject player;
 
@@ -70,6 +72,7 @@ public class Enemy : MonoBehaviour, IDamageable
         canSwapTarget = true;
         onPatrol = true;
         onAttack = false;
+        readyToFire = true;
         scaleSize = transform.localScale.x;
 
         // Sets up enemy at first patrol position, and sets A* Path target as well
@@ -209,23 +212,26 @@ public class Enemy : MonoBehaviour, IDamageable
         canSwapTarget = true;
     }
 
+    private IEnumerator FireAnim()
+    {
+        readyToFire = false;
+        Fire();
+        yield return new WaitForSeconds(3f);
+        readyToFire = true;
+    }
+
+    private void Fire() {
+        Vector2 playerDirection = player.transform.position - transform.position;
+        GameObject bulletInstance = Instantiate(bulletObject, transform.position, transform.rotation);
+        bulletInstance.GetComponent<Rigidbody2D>().velocity = playerDirection;
+    }
+
     // Function that's constantly called while on attack mode.
     private void Attack()
     {
-        switch (enemyType)
-        {
-            case ("Melee"):
-                aiPath.maxSpeed = attackSpeed;
-                break;
-            case ("Ranged"):
-                aiPath.maxSpeed = attackSpeed;
-                //Debug.Log("pew pew pew");
-                // Fire Bullets
-                break;
-            default:
-                //Debug.Log("idk what to do");
-                // Do Nothing
-                break;
+        aiPath.maxSpeed = attackSpeed;
+        if (enemyType == "Ranged" && readyToFire) {
+            StartCoroutine(FireAnim());
         }
     }
 
@@ -235,6 +241,7 @@ public class Enemy : MonoBehaviour, IDamageable
             return true;
 
         health -= amount;
+        StartCoroutine(damageIndicator());
         return false;
     }
 
@@ -249,8 +256,6 @@ public class Enemy : MonoBehaviour, IDamageable
             if (other.gameObject.GetComponent<IDamageable>().Damage(damagePower)) {
                 other.gameObject.GetComponent<IDamageable>().Death();
             }
-        } else if (other.collider.tag == "Respawn") {
-            Damage(1);
         }
     }
 
@@ -265,5 +270,11 @@ public class Enemy : MonoBehaviour, IDamageable
         aiPath.enabled = true;
     }
 
+    private IEnumerator damageIndicator() {
+        yield return new WaitForEndOfFrame();
+        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        GetComponentInChildren<SpriteRenderer>().color = Color.white;
+    }
     
 }

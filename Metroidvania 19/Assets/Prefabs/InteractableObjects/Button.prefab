@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118403618488577483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -316,6 +316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2204ad5fed3312143b88328e2262244a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activationSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ea36bbd9621164044b216fa662ecdad7, type: 2}
   buttonSprite: {fileID: 8807441644787150749}
   activatedColor: {r: 0, g: 0.8113208, b: 0.13259104, a: 1}
   deactivatedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -323,10 +327,6 @@ MonoBehaviour:
   isVertical: 1
   isActivated: 0
   interactableObject: {fileID: 0}
-  activationSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: ea36bbd9621164044b216fa662ecdad7, type: 2}
 --- !u!1 &189616455667093786
 GameObject:
   m_ObjectHideFlags: 0

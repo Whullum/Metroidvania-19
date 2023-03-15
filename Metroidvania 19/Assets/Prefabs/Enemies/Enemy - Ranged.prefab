@@ -178,6 +178,7 @@ MonoBehaviour:
   patrolPositions:
   - {fileID: 4510918106309711910}
   - {fileID: 4510918105802665001}
+  bulletObject: {fileID: 8536633194640276554, guid: 37c3a9d15be3ed143a376a651893b089, type: 3}
   enemyAnimator: {fileID: 338796056}
 --- !u!114 &4510918105942456949
 MonoBehaviour:

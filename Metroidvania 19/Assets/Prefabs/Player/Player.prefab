@@ -254,7 +254,7 @@ MonoBehaviour:
   lifeTime: 3
   bulletSize: 1
   spreadAngle: 15
-  timeInactive: 0
+  timeInactive: 2
   bulletLimit: 5
   fireRate: 1
 --- !u!114 &734556329

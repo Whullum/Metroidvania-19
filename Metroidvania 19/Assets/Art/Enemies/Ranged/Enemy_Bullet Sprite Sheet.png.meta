@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a284db9386c4434786005cd2cce9304
+guid: 92b49b9b7e337ab4f9490d36b3ef1dc3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,119 +101,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC bubble projectile-Sheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46597767789fe434680f803cee1be0fb
-      internalID: -1188261165
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MC bubble projectile-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9d9d307ebee84d44831bd37ec154a05
-      internalID: 90903975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MC bubble projectile-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a72e6341f324f7c4ab9d4a48ca4f7503
-      internalID: 1791589211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MC bubble projectile-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 221c076b776c5374d9a7dd7e6b100f9d
-      internalID: 2052942930
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MC bubble projectile-Sheet_4
+      name: Enemy_Bullet Sprite Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -227,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3292781672cd3ef4187f6aa77b6f7d67
-      internalID: 831408346
+      spriteID: eec0050e6dc976b4dac5a71a14c650da
+      internalID: 220616520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC bubble projectile-Sheet_5
+      name: Enemy_Bullet Sprite Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -248,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 845960d1accc071458e2f99cfd327b26
-      internalID: 1726996012
+      spriteID: b4f184fcad0cf7c4cb82ad8d28e66af8
+      internalID: 1100234955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC bubble projectile-Sheet_6
+      name: Enemy_Bullet Sprite Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -269,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9352df3e73baff14399b7d7ad6608732
-      internalID: -202004344
+      spriteID: 172632b4f803c6d44bc443a42be00ebd
+      internalID: 763279636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC bubble projectile-Sheet_7
+      name: Enemy_Bullet Sprite Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -290,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73996b5a525402b4684065b4bfc04eb5
-      internalID: 1535815979
+      spriteID: 5cfbd802f739e2a499ec5a29c3e90fb6
+      internalID: 2131871951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC bubble projectile-Sheet_8
+      name: Enemy_Bullet Sprite Sheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -311,8 +203,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 593ae8a3d70443e4da00d781eefeafd0
-      internalID: -673598733
+      spriteID: 3078218a856121042a5e39aa1aec55f8
+      internalID: 7039932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Bullet Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644742ac5879b964f9845b298783ec17
+      internalID: -165262552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Bullet Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d26340564e5d246a7b563a9c5820bc
+      internalID: 506359662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Bullet Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a662c3877e72eb489144b9d716f4a7c
+      internalID: 2012690925
       vertices: []
       indices: 
       edges: []
@@ -321,22 +276,21 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MC bubble projectile-Sheet_2: 1791589211
-      MC bubble projectile-Sheet_6: -202004344
-      MC bubble projectile-Sheet_1: 90903975
-      MC bubble projectile-Sheet_0: -1188261165
-      MC bubble projectile-Sheet_3: 2052942930
-      MC bubble projectile-Sheet_8: -673598733
-      MC bubble projectile-Sheet_4: 831408346
-      MC bubble projectile-Sheet_5: 1726996012
-      MC bubble projectile-Sheet_7: 1535815979
+      Enemy_Bullet Sprite Sheet_0: 220616520
+      Enemy_Bullet Sprite Sheet_6: 506359662
+      Enemy_Bullet Sprite Sheet_4: 7039932
+      Enemy_Bullet Sprite Sheet_1: 1100234955
+      Enemy_Bullet Sprite Sheet_2: 763279636
+      Enemy_Bullet Sprite Sheet_7: 2012690925
+      Enemy_Bullet Sprite Sheet_5: -165262552
+      Enemy_Bullet Sprite Sheet_3: 2131871951
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
