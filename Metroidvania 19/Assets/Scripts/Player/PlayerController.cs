@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         for (int i = 1; i < startingBodySize; i++)
         {
-            Debug.LogError("Bing bing " + i);
             AddBodySegment();
         }
         maxHealth = segmentHealth * bodyParts.Count;
@@ -96,7 +95,6 @@ public class PlayerController : MonoBehaviour, IDamageable
             segmentPrefab = tailSegment;
             bodyIndex = bodyParts.Count;
         } else {
-            Debug.LogError("POOP");
             shader.ToggleSegment(bodyIndex - 1, true);
         }
         // If the head and the tail are present, we create the base body segment
