@@ -22,6 +22,7 @@ public class Door : InteractableObject
     [SerializeField] private DoorLock doorLock;
     [SerializeField] private DoorDirection playerSpawnDirection;
     [SerializeField] private const int playerSpawnDistance = 5;
+    [SerializeField] private bool isSpawning;
 
     public static Action LevelLoaded;
 
@@ -39,6 +40,7 @@ public class Door : InteractableObject
     {
         mapManager = GameObject.FindObjectOfType<MapManager>();
         foregroundObj = GameObject.Find("FG");
+        isSpawning = false;
 
         if (parentMapNode == null)
             parentMapNode = GetComponentInParent<MapNode>();
@@ -65,7 +67,7 @@ public class Door : InteractableObject
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && CheckDoorLockStatus())
+        if (collision.gameObject.tag == "Player" && CheckDoorLockStatus() && !isSpawning)
         {
             StartCoroutine(transitionAnim(collision));
             // // Access the correct MapNode through the mapLevels dictionary
@@ -118,8 +120,9 @@ public class Door : InteractableObject
 
     private IEnumerator transitionAnim(Collision2D collision) {
         yield return new WaitForEndOfFrame();
+        isSpawning = true;
         LeanTween.alpha(foregroundObj.GetComponent<RectTransform>(), 1f, 0.3f);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
 
         // Access the correct MapNode through the mapLevels dictionary
         MapNode connectingNode = null;
@@ -158,18 +161,28 @@ public class Door : InteractableObject
 
             // Spawn the player in front of the door with the matching doorNumber in the connected level/node
             Door connectingDoor = connectingNode.GetConnectingDoorNumber(this.doorNumber);
+            //Debug.LogError("connecting door position" + connectingDoor.transform.position.ToString());
+            //Debug.LogError("comparing new and old door number: " + connectingDoor.doorNumber + " " + this.doorNumber);
             collision.gameObject.transform.position = connectingDoor.transform.position + startingDisplacement;
+            //Debug.LogError("new player position" + collision.gameObject.transform.position);
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 
+            yield return new WaitForSeconds(0.1f);
+
             LevelLoaded?.Invoke();
+            
+            GameObject.FindObjectOfType<PlayerController>().transform.position = connectingDoor.transform.position + startingDisplacement;
 
             Destroy(this.parentMapNode.gameObject);
+
             foreach (PlayerHealthRestore meat in GameObject.FindObjectsOfType<PlayerHealthRestore>()) {
                 Destroy(meat.gameObject);
             }
 
             GetTarget getTarget = GameObject.FindObjectOfType<GetTarget>();
             getTarget.targets = new List<Transform>();
+            
+            // yield return new WaitForSeconds(0.1f);
         }
         else
         {
@@ -178,6 +191,8 @@ public class Door : InteractableObject
 
         
         LeanTween.alpha(foregroundObj.GetComponent<RectTransform>(), 0f, 0.3f);
+        yield return new WaitForSeconds(0.5f);
+        isSpawning = false;
     }
 
     private bool CheckDoorLockStatus()

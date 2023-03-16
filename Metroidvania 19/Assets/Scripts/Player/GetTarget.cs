@@ -173,7 +173,7 @@ public class GetTarget : MonoBehaviour
     {
         if (targets.Contains(collision.transform))
         {
-            Debug.LogError("Removing thingey");
+            //Debug.LogError("Removing thingey");
             CheckObjects(collision);
         }
 

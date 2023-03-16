@@ -64,6 +64,10 @@ public class PlayerController : MonoBehaviour, IDamageable
         CreateInitialBody();
     }
 
+    // private void Update() {
+    //     Debug.LogWarning("Player Position: " + transform.position);
+    // }
+
     /// <summary>
     /// Initializes the body with the minimum shape it will have: HEAD - BASE BODY - BODY SEGMENT - TAIL.
     /// </summary>
@@ -238,6 +242,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         body.AddTorque(transform.up.x * body.velocity.magnitude);
         StartCoroutine(FindObjectOfType<PauseMenu>().FadeOutAnim());
         MusicManager.instance.death.SetValue();
-        MusicManager.instance.StopMsuic();
+        MusicManager.instance.StopMusic();
     }
 }

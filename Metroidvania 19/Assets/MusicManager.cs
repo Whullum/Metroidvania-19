@@ -30,7 +30,7 @@ public class MusicManager : MonoBehaviour
         stageMusic.Post(gameObject);
     }
 
-    public void StopMsuic()
+    public void StopMusic()
     {
         stopStageMusic.Post(gameObject);
     }

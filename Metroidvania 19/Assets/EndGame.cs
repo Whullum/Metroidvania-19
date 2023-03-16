@@ -10,6 +10,7 @@ public class EndGame : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            MusicManager.instance.StopMusic();
             SceneManager.LoadScene("Start Menu");
         }
     }
