@@ -55,13 +55,13 @@ public class PlayerMelee : MonoBehaviour
         {
             for (int i = 0; i < damagedEntities.Length; i++)
             {
-                if (damagedEntities[i].TryGetComponent(out IDamageable damageable))
+                if (damagedEntities[i] != null && damagedEntities[i].TryGetComponent(out IDamageable damageable))
                     if (damageable.Damage(attackDamage))
                         damageable.Death();
             }
         }
 
-        //yield return new WaitForSeconds(attackCooldown);
+        yield return new WaitForSeconds(attackCooldown);
 
         GetComponent<PlayerAnimation>().ResetTriggerBiteAnimation();
         isAttacking = false;

@@ -135,7 +135,7 @@ public class Door : InteractableObject
             Vector3 startingDisplacement = new Vector3();
 
             int adaptedPlayerSpawnDistance = playerSpawnDistance + (PlayerController.BodyParts.Count / 2);
-            Debug.LogError(adaptedPlayerSpawnDistance);
+            
             switch (playerSpawnDirection)
             {
                 // Doors are rotated, so use the door's local X axis to get the correct starting direction

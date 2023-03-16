@@ -30,7 +30,6 @@ public class DialogueItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("TS: " + Time.timeScale);
         // Temp variables
         Vector2 playerDirection = player.transform.position - transform.position;
         float playerDistance = (playerDirection).magnitude;

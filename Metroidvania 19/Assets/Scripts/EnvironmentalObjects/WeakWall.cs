@@ -41,7 +41,7 @@ public class WeakWall : MonoBehaviour, IDamageable
     {
         Instantiate(wallDestroyedEffect, transform.position, Quaternion.identity);
         wallBreakingSound.Post(gameObject);
-
+        
         Destroy(gameObject);
         tilemap.SetTile(tilemap.WorldToCell(this.gameObject.transform.position), null);
     }
