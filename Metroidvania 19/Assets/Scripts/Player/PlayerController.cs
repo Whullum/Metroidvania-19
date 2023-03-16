@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public int SegmentHealth { get { return segmentHealth; } set { segmentHealth = value; } }
     public int StartingBodySize { get { return startingBodySize; } set { startingBodySize = value; } }
 
-    private static List<BodySegment> bodyParts;
+    public static List<BodySegment> bodyParts;
     private HealthShader shader;
     private int minimumBodySize = 2;
     public int currentHealth;

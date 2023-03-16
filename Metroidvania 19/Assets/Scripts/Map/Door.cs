@@ -133,20 +133,23 @@ public class Door : InteractableObject
 
             // Spawn the player in the correct direction
             Vector3 startingDisplacement = new Vector3();
+
+            int adaptedPlayerSpawnDistance = playerSpawnDistance + (PlayerController.BodyParts.Count / 2);
+            Debug.LogError(adaptedPlayerSpawnDistance);
             switch (playerSpawnDirection)
             {
                 // Doors are rotated, so use the door's local X axis to get the correct starting direction
                 case DoorDirection.NORTH:
-                    startingDisplacement = new Vector3(0, -playerSpawnDistance);
+                    startingDisplacement = new Vector3(0, -adaptedPlayerSpawnDistance);
                     break;
                 case DoorDirection.EAST:
-                    startingDisplacement = new Vector3(-playerSpawnDistance, 0);
+                    startingDisplacement = new Vector3(-adaptedPlayerSpawnDistance, 0);
                     break;
                 case DoorDirection.SOUTH:
-                    startingDisplacement = new Vector3(0, playerSpawnDistance);
+                    startingDisplacement = new Vector3(0, adaptedPlayerSpawnDistance);
                     break;
                 case DoorDirection.WEST:
-                    startingDisplacement = new Vector3(playerSpawnDistance, 0);
+                    startingDisplacement = new Vector3(adaptedPlayerSpawnDistance, 0);
                     break;
             }
 

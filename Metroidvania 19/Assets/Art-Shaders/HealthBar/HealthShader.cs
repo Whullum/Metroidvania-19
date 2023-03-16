@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthShader : MonoBehaviour
 {
-    [SerializeField] Image[] _bodySegments;
+    [SerializeField] public Image[] _bodySegments;
     [SerializeField] Image _head;
     [SerializeField] Image _tail;
 

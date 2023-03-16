@@ -42,6 +42,7 @@ public class PlayerMelee : MonoBehaviour
         
     private IEnumerator Attack()
     {
+        yield return new WaitForEndOfFrame();
         isAttacking = true;
 
         // ** MELEE ATTACK SOUND ** 
@@ -50,7 +51,7 @@ public class PlayerMelee : MonoBehaviour
 
         Collider2D[] damagedEntities = Physics2D.OverlapCircleAll(attackPosition.position, attackRadius, ~playerLayer);
 
-        if (damagedEntities.Length > 0)
+        if (damagedEntities != null && damagedEntities.Length > 0)
         {
             for (int i = 0; i < damagedEntities.Length; i++)
             {
@@ -60,7 +61,7 @@ public class PlayerMelee : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(attackCooldown);
+        //yield return new WaitForSeconds(attackCooldown);
 
         GetComponent<PlayerAnimation>().ResetTriggerBiteAnimation();
         isAttacking = false;

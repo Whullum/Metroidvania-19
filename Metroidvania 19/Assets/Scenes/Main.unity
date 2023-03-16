@@ -1542,9 +1542,21 @@ PrefabInstance:
       propertyPath: attackCooldown
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4404285533535578092, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.284629
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404285533535578092, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.0182
+      objectReference: {fileID: 0}
     - target: {fileID: 4916553186024403380, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
       propertyPath: segmentHealth
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916553186024403380, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
+      propertyPath: startingBodySize
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4916553186024403384, guid: 0f7d1a1399d951d43a6f42b9b12a3cdc, type: 3}
       propertyPath: sineWaveScale
