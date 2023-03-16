@@ -171,24 +171,24 @@ public class GetTarget : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // if (targets.Contains(collision.transform))
-        // {
-        //     Debug.LogError("Removing thingey");
-        //     CheckObjects(collision);
-        // }
-
-        if(!targets.Contains(collision.transform) && (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Lever") && !caught) {
-            
-
-            targets.Remove(collision.transform);
-
-            //Debug.Log("Got Object");
-            objectTransform = GetNearestTarget();
-            
-
-            
-            
+        if (targets.Contains(collision.transform))
+        {
+            Debug.LogError("Removing thingey");
+            CheckObjects(collision);
         }
+
+        // if(!targets.Contains(collision.transform) && (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Lever") && !caught) {
+            
+
+        //     targets.Remove(collision.transform);
+
+        //     //Debug.Log("Got Object");
+        //     objectTransform = GetNearestTarget();
+            
+
+            
+            
+        // }
 
         //targets.Clear();
     }
@@ -244,6 +244,27 @@ public class GetTarget : MonoBehaviour
         }
         
     }
+
+    /// <summary>
+    /// Determines if collier can be removed.
+    /// </summary>
+    /// <param name="col"> collider to be removed</param>
+    public void CheckObjects(Transform transform =null)
+    {
+        //remove last caught object
+        if(transform != objectTransform) {
+
+            targets.Remove(transform);
+
+
+        }
+        else if((transform == objectTransform && caught == false))
+        {
+            targets.Remove(transform);
+            objectTransform = null;
+        }
+    }
+
     public bool IsObjectClose() {
         
         return objectClose;

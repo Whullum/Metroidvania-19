@@ -44,6 +44,25 @@ public class Door : InteractableObject
             parentMapNode = GetComponentInParent<MapNode>();
     }
 
+    // private void Update() { // Used SOLELY for testing reasons
+    //     if (doorLock != null && doorLock.isLocked) {
+    //         GetComponent<SpriteRenderer>().color = Color.clear;
+    //     } else {
+    //         if (playerSpawnDirection == DoorDirection.NORTH) {
+    //             GetComponent<SpriteRenderer>().color = Color.cyan;
+    //         }
+    //         else if (playerSpawnDirection == DoorDirection.SOUTH) {
+    //             GetComponent<SpriteRenderer>().color = Color.blue;
+    //         }
+    //         else if (playerSpawnDirection == DoorDirection.EAST) {
+    //             GetComponent<SpriteRenderer>().color = Color.green;
+    //         }
+    //         else if (playerSpawnDirection == DoorDirection.WEST) {
+    //             GetComponent<SpriteRenderer>().color = Color.black;
+    //         }
+    //     }
+    // }
+
     protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && CheckDoorLockStatus())

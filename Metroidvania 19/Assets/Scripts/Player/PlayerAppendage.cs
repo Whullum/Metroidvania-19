@@ -60,14 +60,23 @@ public class PlayerAppendage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         
         if (Input.GetMouseButton(1) && (target.IsObjectClose() || target.isCaught()) && cooldown < Time.time) {
             
             if (target.objectTransform != null)
             {
+                grapplePoint = gameObject.transform.parent.transform;
+                copyGrapplePoint = grapplePoint.position;
+
+                for (int x = 0; x < appendageSize; x++)
+        {
+
+                    appendageSegments.Add(new AppendageSegment(grapplePoint.position));
+                    
+                    copyGrapplePoint -= new Vector3(0, segmentSize);
 
 
+                }
                 
                 objectPos = target.objectTransform.position;
                 if(wasGrappling == false) {
@@ -123,7 +132,8 @@ public class PlayerAppendage : MonoBehaviour
             //Debug.Log("Detached Time: " + timeInactive);
             if(wasGrappling && cooldown == 0) {
                 Debug.Log("Timer Start ");
-                cooldown = Time.time + timeInactive; 
+                cooldown = Time.time + timeInactive;
+                target.CheckObjects(target.objectTransform);
             }
 
 
@@ -188,7 +198,7 @@ public class PlayerAppendage : MonoBehaviour
             appendageSegments[x] = firstSeg;
         }
         
-        for(int x =0; x < 5000; x++)
+        for(int x =0; x < 500; x++)
         {
             Constraints();
         }
