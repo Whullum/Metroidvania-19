@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6606737886024938889}
   - component: {fileID: 2183798026758820330}
   - component: {fileID: 858773818642930485}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20270,6 +20270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_EastWest
       objectReference: {fileID: 0}
+    - target: {fileID: 2625546156795323068, guid: 4452edc5824880640bf26047b883bb23, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5157774276166049501, guid: 4452edc5824880640bf26047b883bb23, type: 3}
       propertyPath: doorLock
       value: 
@@ -20315,9 +20319,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1723893266406425678}
     m_Modifications:
+    - target: {fileID: 118403618488577483, guid: 25f4bd85e4535554d92f432116eae29c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 167611575764301904, guid: 25f4bd85e4535554d92f432116eae29c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 189616454031341462, guid: 25f4bd85e4535554d92f432116eae29c, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 189616454031341462, guid: 25f4bd85e4535554d92f432116eae29c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 189616454031341463, guid: 25f4bd85e4535554d92f432116eae29c, type: 3}
       propertyPath: m_RootOrder
@@ -20367,6 +20383,14 @@ PrefabInstance:
       propertyPath: interactableObject
       value: 
       objectReference: {fileID: 5640687877940412956}
+    - target: {fileID: 189616454657256534, guid: 25f4bd85e4535554d92f432116eae29c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 189616455667093786, guid: 25f4bd85e4535554d92f432116eae29c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25f4bd85e4535554d92f432116eae29c, type: 3}
 --- !u!4 &1629895563067538613 stripped

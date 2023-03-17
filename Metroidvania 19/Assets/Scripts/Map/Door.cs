@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 // Direction that the player will be looking in when they are spawned into a new room
 public enum DoorDirection
@@ -121,7 +122,7 @@ public class Door : InteractableObject
     private IEnumerator transitionAnim(Collision2D collision) {
         yield return new WaitForEndOfFrame();
         isSpawning = true;
-        LeanTween.alpha(foregroundObj.GetComponent<RectTransform>(), 1f, 0.3f);
+        if (foregroundObj != null) { LeanTween.alpha(foregroundObj.GetComponent<RectTransform>(), 1f, 0.3f); }
         yield return new WaitForSeconds(0.6f);
 
         // Access the correct MapNode through the mapLevels dictionary
@@ -178,6 +179,8 @@ public class Door : InteractableObject
             foreach (PlayerHealthRestore meat in GameObject.FindObjectsOfType<PlayerHealthRestore>()) {
                 Destroy(meat.gameObject);
             }
+
+            AstarPath.active.Scan();
 
             GetTarget getTarget = GameObject.FindObjectOfType<GetTarget>();
             getTarget.targets = new List<Transform>();
