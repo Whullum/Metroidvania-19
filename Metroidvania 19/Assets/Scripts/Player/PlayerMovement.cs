@@ -65,11 +65,20 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void GetInput()
     {
+        if (Input.GetKeyDown(KeyCode.W) || 
+            Input.GetKeyDown(KeyCode.A) ||
+            Input.GetKeyDown(KeyCode.S) ||
+            Input.GetKeyDown(KeyCode.D))
+            inputType = InputType.Keyboard;
+        else if (Input.GetMouseButtonDown(0)) {
+            inputType = InputType.Mouse;
+        }
+
         if (inputType == InputType.Keyboard)
         {
             horizontalTurn = Input.GetAxis("Horizontal");
 
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.W))
                 movementInput = 1;
             else
                 movementInput = 0;
