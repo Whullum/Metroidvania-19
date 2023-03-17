@@ -67,8 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Orange meat pieces like these help your body grow and increase your max
-    HP.
+  m_text: Green orbs like these help your body grow and increase your max HP.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 538471ae964f4344fbd2aac57aba127b, type: 2}
   m_sharedMaterial: {fileID: -1854378251495898994, guid: 538471ae964f4344fbd2aac57aba127b, type: 2}

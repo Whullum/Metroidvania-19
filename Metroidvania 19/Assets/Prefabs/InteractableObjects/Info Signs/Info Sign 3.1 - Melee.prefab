@@ -434,6 +434,7 @@ MonoBehaviour:
   - {fileID: 4453181399410182561}
   - {fileID: 6491363122791763236}
   detectDistance: 6
+  abilityRequired: 1
 --- !u!1 &3447898515486426449
 GameObject:
   m_ObjectHideFlags: 0

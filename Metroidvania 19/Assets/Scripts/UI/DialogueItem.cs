@@ -6,6 +6,14 @@ using TMPro;
 
 public class DialogueItem : MonoBehaviour
 {
+    public enum AbilityRequired
+    {
+        NONE,
+        MELEE,
+        PROJECTILE,
+        DASH
+    }
+
     private GameObject player;
     private bool nearby;
     private bool inDialogue;
@@ -15,6 +23,7 @@ public class DialogueItem : MonoBehaviour
     public GameObject dialogueBar;
     public List<GameObject> dialogueContent;
     public float detectDistance;
+    public AbilityRequired abilityRequired;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +34,17 @@ public class DialogueItem : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         dialogueBar = GameObject.Find("DialogueBar");
         wipeDialogue();
+        if (abilityRequired != AbilityRequired.NONE) {
+            if (player.GetComponent<AbilitiesManager>().MeleeAbility == false && abilityRequired == AbilityRequired.MELEE) {
+                gameObject.SetActive(false);
+            }
+            if (player.GetComponent<AbilitiesManager>().ProjectileAbility == false && abilityRequired == AbilityRequired.PROJECTILE) {
+                gameObject.SetActive(false);
+            }
+            if (player.GetComponent<AbilitiesManager>().DashAbility == false && abilityRequired == AbilityRequired.DASH) {
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame

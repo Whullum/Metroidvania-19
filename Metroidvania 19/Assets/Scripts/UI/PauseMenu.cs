@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -23,6 +24,8 @@ public class PauseMenu : MonoBehaviour
     }
 
     private IEnumerator FadeInAnim() {
+        yield return new WaitForEndOfFrame();
+        LeanTween.alpha(pauseCanvasForeground.GetComponent<RectTransform>(), 1f, 0f);
         yield return new WaitForEndOfFrame();
         LeanTween.alpha(pauseCanvasForeground.GetComponent<RectTransform>(), 0f, 2f).setEaseInExpo();
         yield return new WaitForSeconds(2f);

@@ -524,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303928472791780245, guid: 8ce2f33a7c78cf54fb3f3b19f0fe62d0, type: 3}
       propertyPath: targetPull
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4303928472791780245, guid: 8ce2f33a7c78cf54fb3f3b19f0fe62d0, type: 3}
       propertyPath: breakDistance

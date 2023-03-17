@@ -19,9 +19,16 @@ public class PlayerHealthRestore : DroppedObject
             if (collision.TryGetComponent(out PlayerController player))
                 player.RestoreHealth(restoreAmount);
 
+            meatEatedEffect.Stop();
+            meatEatedEffect.Clear();
+
+            ParticleSystem.MainModule main = meatEatedEffect.main;
+            main.duration = 1f;
+
             meatEatedEffect.Play();
             meatEatedEffect.transform.parent = null;
             meatEatedEffect.transform.localScale = Vector3.one;
+            
 
             Destroy(gameObject);
         }
