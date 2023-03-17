@@ -38,7 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Health: 100
+    - _Health: 80
     - _HealthRange: 54.7
     - _NoiseScale: 1
     - _NoiseSpeed: 2

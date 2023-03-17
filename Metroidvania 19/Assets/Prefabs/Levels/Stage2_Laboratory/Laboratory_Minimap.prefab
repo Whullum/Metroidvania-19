@@ -179,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3618593864559453649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.42, y: -10.19, z: -2}
+  m_LocalPosition: {x: 1.34, y: -4.17, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -299,6 +299,7 @@ MonoBehaviour:
     - Room_10
     - Room_11
     - Center
+    - Room_5
     m_values:
     - {fileID: 0}
     - {fileID: 4158351017259904304}
@@ -311,6 +312,7 @@ MonoBehaviour:
     - {fileID: 8344702776877185046}
     - {fileID: 5673620992384445415}
     - {fileID: 400007631233551384}
+    - {fileID: 4258184711440317607}
   startingTransform: {fileID: 8297519150624019095}
   startingRoomName: Room_9
   minimapCameraGameObject: {fileID: 400007631233551385}
@@ -1513,7 +1515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7845601434852042530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.48, y: -13.02, z: -2}
+  m_LocalPosition: {x: 1.35, y: -10.24, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
