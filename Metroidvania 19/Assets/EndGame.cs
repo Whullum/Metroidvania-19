@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class EndGame : MonoBehaviour
 {
 
+    public GameObject evilHead;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
@@ -14,8 +16,13 @@ public class EndGame : MonoBehaviour
             foreach (PlayerHealthRestore meat in GameObject.FindObjectsOfType<PlayerHealthRestore>()) {
                 Destroy(meat.gameObject);
             }
-            MusicManager.instance.StopMusic();
-            SceneManager.LoadScene("Start Menu");
+            LeanTween.moveLocalY(evilHead, evilHead.transform.position.y + 8, 1f).setEaseOutExpo();
+
+            if (GameObject.FindObjectOfType<PauseMenu>() != null)
+                GameObject.FindObjectOfType<PauseMenu>().endgame = true;
+                if (collision.gameObject.GetComponent<IDamageable>().Damage(1000)) {
+                    collision.gameObject.GetComponent<IDamageable>().Death();
+            }
         }
 
         

@@ -180,8 +180,6 @@ public class Door : InteractableObject
                 Destroy(meat.gameObject);
             }
 
-            AstarPath.active.Scan();
-
             GetTarget getTarget = GameObject.FindObjectOfType<GetTarget>();
             getTarget.targets = new List<Transform>();
             
@@ -194,6 +192,7 @@ public class Door : InteractableObject
 
         
         LeanTween.alpha(foregroundObj.GetComponent<RectTransform>(), 0f, 0.3f);
+        AstarPath.active.Scan();
         yield return new WaitForSeconds(0.5f);
         isSpawning = false;
     }

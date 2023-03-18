@@ -18,7 +18,6 @@ public class AbilityPickup : MonoBehaviour
 
     private void Start()
     {
-        //this.gameObject.SetActive(!abilityPickupLock.isLocked); //Old bool for ability visibility.
         LeanTween.moveLocalY(gameObject, transform.localPosition.y + 1f, 1f).setLoopPingPong().setEaseInOutQuad();
         if (abilitySprite != null) 
             GetComponent<SpriteRenderer>().sprite = abilitySprite;
@@ -62,7 +61,8 @@ public class AbilityPickup : MonoBehaviour
                     break;
             }
 
-            abilityPickupLock.isLocked = true;
+            if (abilityPickupLock != null) 
+                abilityPickupLock.isLocked = true;
 
             abilityPickupEvent.Post(gameObject);
 

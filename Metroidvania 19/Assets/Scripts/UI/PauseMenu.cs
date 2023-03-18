@@ -19,7 +19,10 @@ public class PauseMenu : MonoBehaviour
     public AK.Wwise.Event uiConfirm;
     public AK.Wwise.Event uiCancel;
 
+    public bool endgame;
+
     private void Start() {
+        endgame = false;
         StartCoroutine(FadeInAnim());
     }
 
@@ -34,11 +37,15 @@ public class PauseMenu : MonoBehaviour
 
     public IEnumerator FadeOutAnim() {
         yield return new WaitForEndOfFrame();
+        float fadeTime = (endgame == true) ? 5f : 3f;
         PlayerController player = FindObjectOfType<PlayerController>();
-        LeanTween.alpha(pauseCanvasForeground.GetComponent<RectTransform>(), 1f, 3f);
-        LeanTween.scale(gameHUDCanvasGroup, new Vector3(2f, 2f, 2f), 3f).setEaseOutQuad();
-        yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LeanTween.alpha(pauseCanvasForeground.GetComponent<RectTransform>(), 1f, fadeTime);
+        LeanTween.scale(gameHUDCanvasGroup, new Vector3(2f, 2f, 2f), fadeTime).setEaseOutQuad();
+        yield return new WaitForSeconds(fadeTime + 1);
+        if (endgame)
+            SceneManager.LoadScene("Start Menu");
+        else
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
     private void Update() {
