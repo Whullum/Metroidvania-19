@@ -81,6 +81,8 @@ public class Enemy : MonoBehaviour, IDamageable
         transform.position = patrolPositions[0].transform.position;
         aiDestSetter.target = patrolPositions[0];
         aiPath.maxSpeed = patrolSpeed;
+
+        StartCoroutine(findLineOfSight());
     }
 
     // Update is called once per frame
@@ -136,6 +138,7 @@ public class Enemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(1f);
         onPatrol = true;
         enemyAnimator.SetBool("playerSpotted", false);
+        StartCoroutine(findLineOfSight());
     }
 
     // Function that's called once to transition from patrol to attack
