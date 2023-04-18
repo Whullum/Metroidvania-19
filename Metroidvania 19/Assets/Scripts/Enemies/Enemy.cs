@@ -28,6 +28,9 @@ public class Enemy : MonoBehaviour, IDamageable
     private bool readyToFire;
     private float scaleSize;
     private GameObject player;
+    private Vector2 playerDirection;
+    private float playerDistance;
+    private RaycastHit2D lineOfSight;
 
     // Component variables
     private Seeker seeker;
@@ -72,7 +75,6 @@ public class Enemy : MonoBehaviour, IDamageable
         canSwapTarget = true;
         onPatrol = true;
         onAttack = false;
-        readyToFire = true;
         scaleSize = transform.localScale.x;
 
         // Sets up enemy at first patrol position, and sets A* Path target as well
@@ -83,35 +85,17 @@ public class Enemy : MonoBehaviour, IDamageable
 
     // Update is called once per frame
     void Update() {
-    
-        // Temp variables
-        Vector2 playerDirection = player.transform.position - transform.position;
-        float playerDistance = (playerDirection).magnitude;
 
-        RaycastHit2D lineOfSight = Physics2D.Raycast(transform.position, playerDirection, 100f);
-        //Debug.DrawRay(transform.position,playerDirection * 100f, Color.red); // Uncomment to debug line of sight
-
-        // Update calles for beginning patrol or attack
-        if (playerDistance < detectDistance // Close enough
-            && (lineOfSight.collider.tag == "Player" || lineOfSight.collider.tag == "PlayerSegment") // Can see player
-            && onPatrol) // In the midst of a patrol
-        { 
-            StartCoroutine(BeginAttack());
-        }
-        else if (playerDistance > detectDistance // Far enough
-                 && onAttack) // In the midst of attacking
-        { 
-            StartCoroutine(BeginPatrol());
-        }
-
-        // Update calls while on patrol or attack
-        if (onPatrol) {
+        // Update calls for figuring out patrol/attack patterns
+        if (onPatrol) { // In the midst of a patrol
+            if (playerDistance < detectDistance // Close enough
+            && (lineOfSight.collider.tag == "Player" || lineOfSight.collider.tag == "PlayerSegment")) { // Can see player
+                StartCoroutine(BeginAttack());
+            }
             Patrol();
-            enemyAnimator.SetBool("playerSpotted", false);
         }
-        else if (onAttack) {
-            Attack();
-            enemyAnimator.SetBool("playerSpotted", true);
+        else if (onAttack && (playerDistance > detectDistance)) { // In the midst of attacking & player is too far
+            StartCoroutine(BeginPatrol());
         }
         
         // Flips the sprite horizontally based on what direction it wants to travel
@@ -151,6 +135,7 @@ public class Enemy : MonoBehaviour, IDamageable
         // Wait for a bit before setting onPatrol true again
         yield return new WaitForSeconds(1f);
         onPatrol = true;
+        enemyAnimator.SetBool("playerSpotted", false);
     }
 
     // Function that's called once to transition from patrol to attack
@@ -167,7 +152,13 @@ public class Enemy : MonoBehaviour, IDamageable
         // Wait for a bit before setting onAttack true again
         yield return new WaitForSeconds(1f);
         onAttack = true;
+        enemyAnimator.SetBool("playerSpotted", true);
         //Debug.Log("ATTACK!");
+
+        aiPath.maxSpeed = attackSpeed;
+        if (enemyType == "Ranged") {
+            StartCoroutine(FireAnim());
+        }
     }
 
     // Function that's constantly called while on patrol mode.
@@ -204,26 +195,19 @@ public class Enemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.1f);
         canSwapTarget = true;
     }
-    
-    // Function that's constantly called while on attack mode.
-    private void Attack() {
-        aiPath.maxSpeed = attackSpeed;
-        if (enemyType == "Ranged" && readyToFire) {
-            StartCoroutine(FireAnim());
-        }
-    }
 
     // Function that spaces out how much time it takes to fire each enemy bullet.
     private IEnumerator FireAnim() {
-        readyToFire = false;
-        Fire();
-        yield return new WaitForSeconds(3f);
-        readyToFire = true;
+        yield return new WaitForEndOfFrame();
+        while (onAttack) {
+            Fire();
+            yield return new WaitForSeconds(3f);
+        }
     }
 
-    // Function used to fire projectiles at the plaer
+    // Function used to fire projectiles at the player
     private void Fire() {
-        Vector2 playerDirection = player.transform.position - transform.position;
+        playerDirection = player.transform.position - transform.position;
         GameObject bulletInstance = Instantiate(bulletObject, transform.position, transform.rotation);
         bulletInstance.GetComponent<Rigidbody2D>().velocity = playerDirection;
     }
@@ -271,5 +255,15 @@ public class Enemy : MonoBehaviour, IDamageable
         GetComponentInChildren<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(0.5f);
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
+    }
+
+    private IEnumerator findLineOfSight() {
+        yield return new WaitForEndOfFrame();
+        while (onPatrol) {
+            playerDirection = player.transform.position - transform.position;
+            playerDistance = (playerDirection).magnitude;
+            lineOfSight = Physics2D.Raycast(transform.position, playerDirection, 100f);
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 }
